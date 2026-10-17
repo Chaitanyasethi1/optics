@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Eye, ShieldCheck, UserCheck, RefreshCw, Award, HeartHandshake } from "lucide-react";
+import { Eye, ShieldCheck, UserCheck, RefreshCw, Award } from "lucide-react";
+import Eyebrow from "@/components/ui/Eyebrow";
 
 const REASONS = [
   {
     icon: Eye,
-    title: "Free Comprehensive Eye Test",
+    title: "Complimentary 14-Step Eye Test",
     description: "Our in-house certified optometrists use computerized German wavefront diagnostics across 14 clinical vision checkpoints.",
   },
   {
@@ -33,42 +34,46 @@ const REASONS = [
 
 export default function WhyDemoOptics() {
   return (
-    <section className="py-20 bg-[#F3ECE2] border-y border-[#EADFD2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="why-us"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#F7F3EC] border-y border-[#14110F]/8"
+    >
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 mb-2">
-            <HeartHandshake className="w-3.5 h-3.5 text-[#B08968]" />
-            <span className="font-sans text-[11px] uppercase tracking-[0.2em] font-semibold text-[#B08968]">
-              THE DEMOOPTICS PROMISE
-            </span>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-6 h-[1px] bg-[#B89B6A]" />
+            <Eyebrow>THE DEMOOPTICS PROMISE</Eyebrow>
+            <span className="w-6 h-[1px] bg-[#B89B6A]" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#2B2622] font-medium">
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
             Why Discerning Clients Choose DemoOptics
           </h2>
-          <div className="w-12 h-[1px] bg-[#B08968] mx-auto mt-3 mb-4" />
-          <p className="text-xs sm:text-sm text-[#7C746C]">
+          <p className="text-xs sm:text-sm text-[#7A7168] mt-3">
             We operate as an unhurried optical salon rather than a high-volume chain. Experience bespoke care, German precision, and authentic luxury.
           </p>
         </div>
 
         {/* 5 Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {REASONS.map((item) => {
+          {REASONS.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="bg-white border border-[#EADFD2] rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 shadow-xs"
+                className="bg-[#EDE5D8]/40 border border-[#14110F]/8 rounded-[2px] p-8 flex flex-col justify-between hover:border-[#B89B6A]/50 transition-all duration-300 hover:shadow-md group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-full bg-[#FAF7F2] border border-[#EADFD2] flex items-center justify-center text-[#7A5A43] mb-5">
-                    <Icon className="w-5 h-5 text-[#B08968]" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-10 h-10 rounded-[2px] bg-[#F7F3EC] border border-[#14110F]/10 flex items-center justify-center text-[#B89B6A] group-hover:bg-[#B89B6A] group-hover:text-[#14110F] transition-colors">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="font-mono text-xs text-[#7A7168]/60">0{idx + 1}</span>
                   </div>
-                  <h3 className="font-serif text-lg text-[#2B2622] font-medium mb-2.5">
+                  <h3 className="font-serif text-lg sm:text-xl text-[#14110F] font-normal mb-3 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#7C746C] leading-relaxed">
+                  <p className="text-xs text-[#7A7168] leading-relaxed font-light">
                     {item.description}
                   </p>
                 </div>

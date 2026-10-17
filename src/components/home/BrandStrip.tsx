@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Eyebrow from "@/components/ui/Eyebrow";
 
 const BRANDS = [
   { name: "Ray-Ban", slug: "ray-ban" },
@@ -18,29 +19,33 @@ const BRANDS = [
 
 export default function BrandStrip() {
   return (
-    <section aria-label="Official Brand Partners" className="border-y border-[#EADFD2] bg-white py-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center justify-between">
-        <span className="font-sans text-[11px] uppercase tracking-[0.2em] font-semibold text-[#B08968]">
-          Authorized Showroom Retailer
-        </span>
+    <section
+      aria-label="Official Brand Partners"
+      className="border-y border-[#14110F]/8 bg-[#F7F3EC] py-10 overflow-hidden"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 mb-6 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="w-5 h-[1px] bg-[#B89B6A]" />
+          <Eyebrow>OFFICIAL MAISON PARTNERS</Eyebrow>
+        </div>
         <Link
           href="/brands"
-          className="text-xs text-[#7A5A43] hover:text-[#2B2622] font-medium underline underline-offset-2 transition-colors"
+          className="text-xs uppercase tracking-[0.16em] text-[#14110F] hover:text-[#B89B6A] font-medium transition-colors"
         >
-          View All Brands (12+)
+          View All Maisons →
         </Link>
       </div>
 
-      {/* Clean Editorial Marquee / Grid */}
+      {/* Clean Luxury Marquee / Strip */}
       <div className="relative w-full overflow-hidden">
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 px-4 py-2">
+        <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-10 lg:gap-12 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-2">
           {BRANDS.map((brand) => (
             <Link
               key={brand.name}
               href={`/brands?brand=${encodeURIComponent(brand.name)}`}
-              className="group py-2 px-3 transition-transform duration-300 hover:-translate-y-0.5"
+              className="group py-2 transition-all duration-300"
             >
-              <span className="font-serif text-lg sm:text-xl md:text-2xl tracking-wider text-[#7C746C] group-hover:text-[#2B2622] group-hover:font-semibold transition-colors duration-200">
+              <span className="font-serif text-lg sm:text-xl md:text-2xl tracking-[0.08em] text-[#7A7168] group-hover:text-[#14110F] transition-colors duration-200">
                 {brand.name}
               </span>
             </Link>

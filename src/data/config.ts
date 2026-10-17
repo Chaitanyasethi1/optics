@@ -8,7 +8,7 @@ export const EMAIL = "concierge@demooptics.com";
 export const TIMINGS = "Mon - Sun: 10:00 AM – 9:00 PM";
 export const GOOGLE_MAPS_URL = "https://maps.google.com/?q=Indiranagar+100ft+Road+Bengaluru";
 
-export const getWhatsAppLink = (message: string) => {
+export const getWhatsAppLink = (message: string = `Hello ${STORE_NAME}, I would like to connect with your optical concierge.`) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
 

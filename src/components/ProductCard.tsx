@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
+import { MessageCircle, ArrowUpRight, Sparkles, Glasses } from "lucide-react";
 import { Product } from "@/types";
 import { getProductEnquiryLink } from "@/data/config";
 
@@ -16,24 +16,40 @@ export default function ProductCard({ product }: ProductCardProps) {
   const enquiryLink = getProductEnquiryLink(product.name, product.brand, product.price);
 
   return (
-    <div className="group relative bg-white border border-[#EADFD2] rounded-2xl overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-      {/* Top Image Container with hover transition to second image */}
-      <div className="relative aspect-[4/3] w-full bg-[#FAF7F2] p-6 flex items-center justify-center overflow-hidden border-b border-[#EADFD2]/60">
+    <div
+      className="group relative bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] overflow-hidden hover:border-[#B89B6A]/50 transition-all duration-500 flex flex-col justify-between hover:shadow-lg"
+      data-cursor="VIEW"
+    >
+      {/* Top Image Container: 4:5 portrait luxury aspect ratio */}
+      <div className="relative aspect-[4/5] w-full bg-[#EDE5D8]/40 p-6 sm:p-8 flex items-center justify-center overflow-hidden border-b border-[#14110F]/8">
         {/* Floating Badges */}
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start">
+        <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start">
           {product.discountPercent && (
-            <span className="px-2.5 py-1 text-[10px] uppercase font-bold tracking-wider rounded-full bg-[#7A5A43] text-white shadow-xs">
-              {product.discountPercent}% OFF
+            <span className="px-2.5 py-0.5 text-[9px] uppercase font-mono font-medium tracking-[0.15em] bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/30">
+              {product.discountPercent}% PRIVILEGE
             </span>
           )}
           {product.tags && product.tags.length > 0 && (
-            <span className="px-2.5 py-1 text-[10px] uppercase font-semibold tracking-wider rounded-full bg-[#F3ECE2] border border-[#EADFD2] text-[#7A5A43]">
+            <span className="px-2.5 py-0.5 text-[9px] uppercase font-sans font-medium tracking-[0.15em] bg-[#F7F3EC]/90 backdrop-blur-xs border border-[#14110F]/10 text-[#7A7168]">
               {product.tags[0]}
             </span>
           )}
         </div>
 
-        {/* Primary Image */}
+        {/* Quick Try-On Pill Button in Top Right */}
+        {(product.category === "sunglasses" || product.category === "eyeglasses") && (
+          <Link
+            href={`/try-on?product=${product.slug}`}
+            className="absolute top-4 right-4 z-20 inline-flex items-center gap-1 px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] font-sans font-medium bg-[#14110F]/80 backdrop-blur-xs text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30 transition-all duration-300 opacity-90 group-hover:opacity-100 shadow-sm"
+            title="Experience live webcam try-on"
+            data-cursor="TRY ON"
+          >
+            <Glasses className="w-3 h-3 text-[#B89B6A] group-hover:text-[#14110F]" />
+            <span className="hidden sm:inline">Try On</span>
+          </Link>
+        )}
+
+        {/* Primary Image Link */}
         <Link
           href={`/product/${product.slug}`}
           className="relative w-full h-full block"
@@ -44,8 +60,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               src={product.images[0]}
               alt={product.name}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className={`object-cover object-center rounded-xl transition-all duration-500 ease-out group-hover:scale-105 ${
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              className={`object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 ${
                 product.images[1] ? "group-hover:opacity-0" : ""
               } ${imageLoaded ? "opacity-100" : "opacity-90"}`}
               onLoad={() => setImageLoaded(true)}
@@ -57,8 +73,8 @@ export default function ProductCard({ product }: ProductCardProps) {
                 src={product.images[1]}
                 alt={`${product.name} alternate view`}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover object-center rounded-xl absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                className="object-cover object-center absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
               />
             )}
           </div>
@@ -66,67 +82,70 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Content Details */}
-      <div className="p-5 flex-1 flex flex-col justify-between bg-white">
+      <div className="p-6 flex-1 flex flex-col justify-between bg-[#F7F3EC]">
         <div>
           {/* Brand & Shape */}
-          <div className="flex items-center justify-between text-xs mb-1">
-            <span className="font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold text-[11px]">
+          <div className="flex items-center justify-between text-xs mb-1.5">
+            <span className="font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-medium text-[10px]">
               {product.brand}
             </span>
-            <span className="text-[11px] text-[#7C746C] capitalize">
+            <span className="text-[10px] text-[#7A7168] uppercase tracking-[0.1em]">
               {product.specs.shape}
             </span>
           </div>
 
-          {/* Product Name in Serif */}
-          <Link href={`/product/${product.slug}`} className="block">
-            <h3 className="font-serif text-lg text-[#2B2622] group-hover:text-[#7A5A43] transition-colors line-clamp-1">
+          {/* Product Name in Serif with thin champagne underline on hover */}
+          <Link href={`/product/${product.slug}`} className="block group/title">
+            <h3 className="font-serif text-lg sm:text-xl text-[#14110F] font-normal leading-snug line-clamp-1 relative inline-block">
               {product.name}
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#B89B6A] transition-all duration-300 group-hover/title:w-full" />
             </h3>
           </Link>
 
           {/* Spec preview snippet */}
-          <p className="text-xs text-[#7C746C] mt-1 line-clamp-1">
+          <p className="text-[11px] text-[#7A7168] mt-1.5 line-clamp-1 tracking-wide">
             {product.specs.material} • {product.specs.gender}
           </p>
 
-          {/* Price with strikethrough & discount */}
-          <div className="flex items-baseline gap-2.5 mt-3">
-            <span className="text-base font-semibold text-[#2B2622]">
+          {/* Price with tabular numbers & muted strikethrough */}
+          <div className="flex items-baseline gap-2.5 mt-3 pt-2 border-t border-[#14110F]/6">
+            <span className="text-base font-sans font-medium text-[#14110F] tabular-nums tracking-tight">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.oldPrice && (
-              <span className="text-xs text-[#7C746C] line-through">
+              <span className="text-xs text-[#7A7168]/70 line-through tabular-nums">
                 ₹{product.oldPrice.toLocaleString("en-IN")}
               </span>
             )}
             {product.category === "lenses" && (
-              <span className="text-[11px] text-[#7C746C]">starting</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#7A7168]">
+                from
+              </span>
             )}
           </div>
         </div>
 
-        {/* Action Buttons (Strictly NO Cart / NO Buy Now) */}
-        <div className="mt-5 pt-4 border-t border-[#EADFD2]/70 grid grid-cols-2 gap-2">
-          {/* Primary Action: Enquire on WhatsApp */}
+        {/* Action Buttons: Minimal Outlined/Ghost Luxury Buttons (Strictly NO Cart) */}
+        <div className="mt-5 pt-3 border-t border-[#14110F]/8 grid grid-cols-2 gap-2">
+          {/* WhatsApp Inquire */}
           <a
             href={enquiryLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full text-[11px] font-sans uppercase tracking-[0.1em] font-medium bg-[#B08968] text-white hover:bg-[#7A5A43] transition-all duration-300 shadow-xs"
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.16em] font-medium border border-[#14110F]/20 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
             title="Inquire directly with our store optician via WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+            <MessageCircle className="w-3 h-3 text-[#B89B6A]" />
             <span className="truncate">WhatsApp</span>
           </a>
 
-          {/* Secondary Action: View Details */}
+          {/* View Details */}
           <Link
             href={`/product/${product.slug}`}
-            className="inline-flex items-center justify-center gap-1 px-3 py-2.5 rounded-full text-[11px] font-sans uppercase tracking-[0.1em] font-medium border border-[#B08968] text-[#7A5A43] hover:bg-[#B08968] hover:text-white transition-all duration-300"
+            className="inline-flex items-center justify-center gap-1 px-3 py-2.5 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.16em] font-medium border border-[#B89B6A] text-[#14110F] hover:bg-[#B89B6A] hover:text-[#14110F] transition-all duration-300"
           >
             <span className="truncate">Details</span>
-            <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+            <ArrowUpRight className="w-3 h-3" />
           </Link>
         </div>
       </div>

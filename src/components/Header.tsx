@@ -10,13 +10,12 @@ import {
   Menu, 
   X, 
   ChevronDown, 
-  Phone, 
   Calendar,
   Sparkles,
-  MapPin,
-  Clock
+  Clock,
+  ArrowRight
 } from "lucide-react";
-import { STORE_NAME, PHONE, WHATSAPP_NUMBER, getWhatsAppLink } from "@/data/config";
+import { STORE_NAME, PHONE, getWhatsAppLink } from "@/data/config";
 import SearchModal from "@/components/SearchModal";
 
 export default function Header() {
@@ -40,28 +39,37 @@ export default function Header() {
     setActiveDropdown(null);
   }, [pathname]);
 
+  const navLinkStyle = (href: string) => {
+    const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
+    return `relative py-1 text-xs uppercase tracking-[0.16em] font-medium transition-colors duration-300 ${
+      isActive ? "text-[#B89B6A] font-semibold" : "text-[#14110F] hover:text-[#B89B6A]"
+    } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-[#B89B6A] after:transition-all after:duration-300 ${
+      isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+    }`;
+  };
+
   return (
     <>
       {/* 1. Slim Top Announcement Bar */}
-      <div className="bg-[#F3ECE2] border-b border-[#EADFD2] text-xs py-2 px-4 transition-all">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-[#7C746C]">
+      <div className="bg-[#EDE5D8] border-b border-[#14110F]/8 text-xs py-2 px-4 transition-all">
+        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-[#7A7168]">
           <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="inline-flex items-center gap-1.5 font-medium text-[#7A5A43]">
-              <Sparkles className="w-3.5 h-3.5 text-[#B08968]" />
-              Free Comprehensive 14-Step Eye Examination at Store
+            <span className="inline-flex items-center gap-1.5 font-medium text-[#14110F]">
+              <Sparkles className="w-3.5 h-3.5 text-[#B89B6A]" />
+              Complimentary 14-Step Precision Eye Examination at Flagship Showroom
             </span>
-            <span className="hidden md:inline text-[#D9BFA3]">•</span>
+            <span className="hidden md:inline text-[#B89B6A]">•</span>
             <span className="hidden md:inline">Certified Zeiss & Essilor Master Optometrists</span>
           </div>
           <div className="flex items-center gap-4 text-[11px] sm:text-xs">
-            <span className="flex items-center gap-1 text-[#7A5A43]">
-              <Clock className="w-3.5 h-3.5 text-[#B08968]" />
+            <span className="flex items-center gap-1 text-[#14110F]">
+              <Clock className="w-3.5 h-3.5 text-[#B89B6A]" />
               Mon-Sun: 10 AM - 9 PM
             </span>
-            <span className="text-[#D9BFA3]">•</span>
+            <span className="text-[#B89B6A]">•</span>
             <Link
               href="/book-eye-test"
-              className="text-[#7A5A43] hover:text-[#2B2622] font-semibold underline underline-offset-2 transition-colors"
+              className="text-[#14110F] hover:text-[#B89B6A] font-medium underline underline-offset-2 transition-colors"
             >
               Book Complimentary Slot
             </Link>
@@ -69,43 +77,38 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. Main Sticky Header */}
+      {/* 2. Main Sticky Header with Maison Blur & Hairline Border */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-40 w-full transition-all duration-500 ${
           scrolled
-            ? "bg-[#FAF7F2]/95 backdrop-blur-md shadow-sm border-b border-[#EADFD2]"
-            : "bg-[#FAF7F2] border-b border-[#EADFD2]"
+            ? "bg-[#F7F3EC]/92 backdrop-blur-md shadow-xs border-b border-[#14110F]/8 py-3"
+            : "bg-[#F7F3EC] border-b border-[#14110F]/8 py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-between h-14">
             {/* Left: Brand Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-full bg-[#F3ECE2] border border-[#EADFD2] flex items-center justify-center text-[#7A5A43] group-hover:bg-[#B08968] group-hover:text-white transition-all duration-300">
-                <Glasses className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-9 h-9 rounded-[2px] bg-[#EDE5D8] border border-[#14110F]/10 flex items-center justify-center text-[#14110F] group-hover:bg-[#B89B6A] group-hover:text-[#14110F] transition-all duration-300">
+                <Glasses className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#2B2622]">
+                <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#14110F]">
                   {STORE_NAME}
                 </span>
-                <span className="text-[9px] tracking-[0.2em] uppercase font-sans text-[#B08968] font-medium -mt-1">
-                  Optical Showroom
+                <span className="text-[8.5px] tracking-[0.28em] uppercase font-sans text-[#B89B6A] font-medium -mt-1">
+                  Haute Optique
                 </span>
               </div>
             </Link>
 
             {/* Center: Desktop Navigation with Mega Menus */}
-            <nav className="hidden xl:flex items-center space-x-1 lg:space-x-2">
-              <Link
-                href="/"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname === "/" ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
+            <nav className="hidden xl:flex items-center space-x-6">
+              <Link href="/" className={navLinkStyle("/")}>
                 Home
               </Link>
 
-              {/* Sunglasses with Mega Dropdown */}
+              {/* Sunglasses with Dropdown */}
               <div
                 className="relative group"
                 onMouseEnter={() => setActiveDropdown("sunglasses")}
@@ -113,51 +116,42 @@ export default function Header() {
               >
                 <Link
                   href="/sunglasses"
-                  className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                    pathname.startsWith("/sunglasses") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                  }`}
+                  className={`inline-flex items-center gap-1 ${navLinkStyle("/sunglasses")}`}
                 >
                   Sunglasses
-                  <ChevronDown className="w-3.5 h-3.5 text-[#B08968] transition-transform duration-200 group-hover:rotate-180" />
+                  <ChevronDown className="w-3 h-3 text-[#B89B6A] transition-transform duration-200 group-hover:rotate-180" />
                 </Link>
 
-                {/* Dropdown Menu */}
                 {activeDropdown === "sunglasses" && (
-                  <div className="absolute top-full left-0 w-80 bg-white border border-[#EADFD2] shadow-xl rounded-2xl p-5 mt-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    <div className="text-[11px] font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold mb-3">
-                      Curated By Gender & Need
+                  <div className="absolute top-full left-0 w-80 bg-[#F7F3EC] border border-[#14110F]/10 shadow-xl rounded-[2px] p-6 mt-2 animate-in fade-in duration-200 z-50">
+                    <div className="text-[10px] font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-semibold mb-3">
+                      Haute Sunwear
                     </div>
-                    <div className="grid grid-cols-2 gap-2 pb-4 border-b border-[#EADFD2]">
-                      <Link href="/sunglasses?gender=Men" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1 transition-colors">
-                        Men&apos;s Sunglasses
-                      </Link>
-                      <Link href="/sunglasses?gender=Women" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1 transition-colors">
-                        Women&apos;s Sunglasses
-                      </Link>
-                      <Link href="/sunglasses?gender=Kids" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1 transition-colors">
-                        Kids UV-Shield
-                      </Link>
-                      <Link href="/sunglasses?filter=polarized" className="text-sm text-[#7A5A43] font-medium py-1 transition-colors">
-                        Polarized High Clarity
-                      </Link>
-                    </div>
-
-                    <div className="text-[11px] font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold mt-4 mb-2">
-                      Popular Silhouettes
-                    </div>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-[#7C746C]">
-                      <Link href="/sunglasses?shape=Aviator" className="hover:text-[#2B2622]">Aviator Pilot</Link>
-                      <Link href="/sunglasses?shape=Wayfarer" className="hover:text-[#2B2622]">Retro Wayfarer</Link>
-                      <Link href="/sunglasses?shape=Round" className="hover:text-[#2B2622]">Round Vintage</Link>
-                      <Link href="/sunglasses?shape=Cat-eye" className="hover:text-[#2B2622]">Oversized Cat-Eye</Link>
-                      <Link href="/sunglasses?shape=Square" className="hover:text-[#2B2622]">Executive Square</Link>
-                      <Link href="/sunglasses?shape=Geometric" className="hover:text-[#2B2622]">Bold Geometric</Link>
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      <div>
+                        <span className="font-medium text-[#14110F] block mb-2">By Demographic</span>
+                        <div className="space-y-1.5 text-[#7A7168]">
+                          <Link href="/sunglasses?gender=Men" className="block hover:text-[#B89B6A]">Gentlemen</Link>
+                          <Link href="/sunglasses?gender=Women" className="block hover:text-[#B89B6A]">Ladies</Link>
+                          <Link href="/sunglasses?gender=Kids" className="block hover:text-[#B89B6A]">Juniors</Link>
+                          <Link href="/sunglasses?gender=Unisex" className="block hover:text-[#B89B6A]">Unisex Atelier</Link>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="font-medium text-[#14110F] block mb-2">Iconic Silhouettes</span>
+                        <div className="space-y-1.5 text-[#7A7168]">
+                          <Link href="/sunglasses?shape=Aviator" className="block hover:text-[#B89B6A]">Aviator</Link>
+                          <Link href="/sunglasses?shape=Wayfarer" className="block hover:text-[#B89B6A]">Wayfarer</Link>
+                          <Link href="/sunglasses?shape=Round" className="block hover:text-[#B89B6A]">Round & Oval</Link>
+                          <Link href="/sunglasses?shape=Cat-eye" className="block hover:text-[#B89B6A]">Sculpted Cat-eye</Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Eyeglasses with Mega Dropdown */}
+              {/* Eyeglasses with Dropdown */}
               <div
                 className="relative group"
                 onMouseEnter={() => setActiveDropdown("eyeglasses")}
@@ -165,44 +159,24 @@ export default function Header() {
               >
                 <Link
                   href="/eyeglasses"
-                  className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                    pathname.startsWith("/eyeglasses") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                  }`}
+                  className={`inline-flex items-center gap-1 ${navLinkStyle("/eyeglasses")}`}
                 >
                   Eyeglasses
-                  <ChevronDown className="w-3.5 h-3.5 text-[#B08968] transition-transform duration-200 group-hover:rotate-180" />
+                  <ChevronDown className="w-3 h-3 text-[#B89B6A] transition-transform duration-200 group-hover:rotate-180" />
                 </Link>
 
                 {activeDropdown === "eyeglasses" && (
-                  <div className="absolute top-full left-0 w-80 bg-white border border-[#EADFD2] shadow-xl rounded-2xl p-5 mt-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    <div className="text-[11px] font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold mb-3">
-                      Master Craftsmanship
+                  <div className="absolute top-full left-0 w-80 bg-[#F7F3EC] border border-[#14110F]/10 shadow-xl rounded-[2px] p-6 mt-2 animate-in fade-in duration-200 z-50">
+                    <div className="text-[10px] font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-semibold mb-3">
+                      Architectural Optical Frames
                     </div>
-                    <div className="grid grid-cols-2 gap-2 pb-4 border-b border-[#EADFD2]">
-                      <Link href="/eyeglasses?material=Pure+Titanium" className="text-sm font-medium text-[#7A5A43] hover:underline py-1">
-                        Japanese Titanium
-                      </Link>
-                      <Link href="/eyeglasses?shape=Rimless" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1">
-                        Rimless Minimalist
-                      </Link>
-                      <Link href="/eyeglasses?material=Handcrafted+Italian+Acetate" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1">
-                        Italian Mazzucchelli
-                      </Link>
-                      <Link href="/eyeglasses?gender=Women" className="text-sm text-[#2B2622] hover:text-[#7A5A43] py-1">
-                        Women&apos;s Optical
-                      </Link>
-                    </div>
-
-                    <div className="text-[11px] font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold mt-4 mb-2">
-                      Browse by Frame Shape
-                    </div>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-[#7C746C]">
-                      <Link href="/eyeglasses?shape=Aviator" className="hover:text-[#2B2622]">Aviator Frames</Link>
-                      <Link href="/eyeglasses?shape=Round" className="hover:text-[#2B2622]">Intellectual Round</Link>
-                      <Link href="/eyeglasses?shape=Cat-eye" className="hover:text-[#2B2622]">Sculpted Cat-eye</Link>
-                      <Link href="/eyeglasses?shape=Wayfarer" className="hover:text-[#2B2622]">Classic Wayfarer</Link>
-                      <Link href="/eyeglasses?shape=Rectangle" className="hover:text-[#2B2622]">Clean Rectangle</Link>
-                      <Link href="/eyeglasses?shape=Square" className="hover:text-[#2B2622]">Architectural Square</Link>
+                    <div className="grid grid-cols-2 gap-3 text-xs text-[#7A7168]">
+                      <Link href="/eyeglasses?shape=Aviator" className="hover:text-[#B89B6A]">Aviator Frames</Link>
+                      <Link href="/eyeglasses?shape=Round" className="hover:text-[#B89B6A]">Intellectual Round</Link>
+                      <Link href="/eyeglasses?shape=Cat-eye" className="hover:text-[#B89B6A]">Sculpted Cat-eye</Link>
+                      <Link href="/eyeglasses?shape=Wayfarer" className="hover:text-[#B89B6A]">Classic Wayfarer</Link>
+                      <Link href="/eyeglasses?shape=Rectangle" className="hover:text-[#B89B6A]">Clean Rectangle</Link>
+                      <Link href="/eyeglasses?shape=Square" className="hover:text-[#B89B6A]">Architectural Square</Link>
                     </div>
                   </div>
                 )}
@@ -216,97 +190,72 @@ export default function Header() {
               >
                 <Link
                   href="/lenses"
-                  className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                    pathname.startsWith("/lenses") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                  }`}
+                  className={`inline-flex items-center gap-1 ${navLinkStyle("/lenses")}`}
                 >
                   Lenses
-                  <ChevronDown className="w-3.5 h-3.5 text-[#B08968] transition-transform duration-200 group-hover:rotate-180" />
+                  <ChevronDown className="w-3 h-3 text-[#B89B6A] transition-transform duration-200 group-hover:rotate-180" />
                 </Link>
 
                 {activeDropdown === "lenses" && (
-                  <div className="absolute top-full left-0 w-80 bg-white border border-[#EADFD2] shadow-xl rounded-2xl p-5 mt-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    <div className="text-[11px] font-sans uppercase tracking-[0.15em] text-[#B08968] font-semibold mb-3">
+                  <div className="absolute top-full left-0 w-80 bg-[#F7F3EC] border border-[#14110F]/10 shadow-xl rounded-[2px] p-6 mt-2 animate-in fade-in duration-200 z-50">
+                    <div className="text-[10px] font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-semibold mb-3">
                       Precision Ophthalmic Solutions
                     </div>
-                    <div className="space-y-2 text-sm">
-                      <Link href="/lenses" className="block text-[#2B2622] hover:text-[#7A5A43] p-1.5 rounded-lg hover:bg-[#FAF7F2]">
+                    <div className="space-y-2 text-xs">
+                      <Link href="/lenses" className="block text-[#14110F] hover:text-[#B89B6A] p-1.5 rounded-[2px] hover:bg-[#EDE5D8]">
                         <span className="font-medium">Single Vision</span>
-                        <span className="block text-xs text-[#7C746C]">Zeiss SmartLife & Essilor Crizal Sapphire</span>
+                        <span className="block text-[11px] text-[#7A7168]">Zeiss SmartLife & Essilor Crizal Sapphire</span>
                       </Link>
-                      <Link href="/lenses" className="block text-[#2B2622] hover:text-[#7A5A43] p-1.5 rounded-lg hover:bg-[#FAF7F2]">
+                      <Link href="/lenses" className="block text-[#14110F] hover:text-[#B89B6A] p-1.5 rounded-[2px] hover:bg-[#EDE5D8]">
                         <span className="font-medium">Progressive (Multifocal)</span>
-                        <span className="block text-xs text-[#7C746C]">Varilux Comfort Max & Zeiss Individual</span>
+                        <span className="block text-[11px] text-[#7A7168]">Varilux Comfort Max & Zeiss Individual</span>
                       </Link>
-                      <Link href="/lenses" className="block text-[#2B2622] hover:text-[#7A5A43] p-1.5 rounded-lg hover:bg-[#FAF7F2]">
+                      <Link href="/lenses" className="block text-[#14110F] hover:text-[#B89B6A] p-1.5 rounded-[2px] hover:bg-[#EDE5D8]">
                         <span className="font-medium">Blue Cut & Digital Relax</span>
-                        <span className="block text-xs text-[#7C746C]">HOYA Sync III Accommodation Support</span>
-                      </Link>
-                      <Link href="/lenses" className="block text-[#2B2622] hover:text-[#7A5A43] p-1.5 rounded-lg hover:bg-[#FAF7F2]">
-                        <span className="font-medium">Photochromic & Night Drive</span>
-                        <span className="block text-xs text-[#7C746C]">Transitions Gen S & Zeiss DriveSafe</span>
+                        <span className="block text-[11px] text-[#7A7168]">HOYA Sync III Digital Ergonomics</span>
                       </Link>
                     </div>
                   </div>
                 )}
               </div>
 
-              <Link
-                href="/contact-lenses"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname.startsWith("/contact-lenses") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
+              <Link href="/contact-lenses" className={navLinkStyle("/contact-lenses")}>
                 Contact Lenses
               </Link>
 
+              {/* VIRTUAL TRY-ON LINK (NEW FEATURE) */}
               <Link
-                href="/brands"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname.startsWith("/brands") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
+                href="/try-on"
+                className={`relative inline-flex items-center gap-1.5 py-1 text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
+                  pathname === "/try-on" ? "text-[#B89B6A] font-semibold" : "text-[#14110F] hover:text-[#B89B6A]"
                 }`}
               >
-                Brands
-              </Link>
-
-              <Link
-                href="/offers"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname.startsWith("/offers") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
-                <span className="inline-flex items-center gap-1 text-[#7A5A43]">
-                  Offers
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B08968]"></span>
+                <span>Virtual Try-On</span>
+                <span className="px-1.5 py-0.5 text-[8px] uppercase tracking-widest font-mono bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/40 rounded-[2px]">
+                  NEW
                 </span>
               </Link>
 
-              <Link
-                href="/blog"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname.startsWith("/blog") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
-                Blog
+              <Link href="/brands" className={navLinkStyle("/brands")}>
+                Brands
               </Link>
 
-              <Link
-                href="/contact"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname === "/contact" ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
+              <Link href="/offers" className={navLinkStyle("/offers")}>
+                Offers
+              </Link>
+
+              <Link href="/contact" className={navLinkStyle("/contact")}>
                 Contact
               </Link>
             </nav>
 
             {/* Right: Actions (Search, WhatsApp, Book Eye Test CTA - NO CART, NO ACCOUNT) */}
-            <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               {/* Search Button */}
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search catalogue"
-                className="p-2.5 rounded-full text-[#2B2622] hover:text-[#7A5A43] hover:bg-[#F3ECE2] transition-colors"
+                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
                 title="Search frames & lenses"
               >
                 <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -318,7 +267,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Enquire on WhatsApp"
-                className="p-2.5 rounded-full text-[#7A5A43] bg-[#F3ECE2] hover:bg-[#B08968] hover:text-white transition-all duration-300"
+                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
                 title="Direct WhatsApp Concierge"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -327,7 +276,7 @@ export default function Header() {
               {/* Book Free Eye Test CTA Pill */}
               <Link
                 href="/book-eye-test"
-                className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs uppercase tracking-[0.12em] font-medium bg-[#B08968] text-white hover:bg-[#7A5A43] shadow-sm transition-all duration-300"
+                className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.18em] font-sans font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] shadow-xs transition-all duration-300"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Book Free Eye Test</span>
@@ -337,7 +286,7 @@ export default function Header() {
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open navigation menu"
-                className="xl:hidden p-2.5 rounded-full text-[#2B2622] hover:bg-[#F3ECE2] transition-colors"
+                className="xl:hidden p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
               >
                 <Menu className="w-6 h-6" />
               </button>
@@ -351,27 +300,27 @@ export default function Header() {
         <div className="fixed inset-0 z-50 xl:hidden">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-[#14110F]/60 backdrop-blur-xs transition-opacity"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Drawer content */}
-          <div className="fixed inset-y-0 right-0 max-w-sm w-full bg-[#FAF7F2] shadow-2xl p-6 overflow-y-auto flex flex-col justify-between border-l border-[#EADFD2]">
+          <div className="fixed inset-y-0 right-0 max-w-sm w-full bg-[#F7F3EC] shadow-2xl p-6 overflow-y-auto flex flex-col justify-between border-l border-[#14110F]/10">
             <div>
               {/* Header inside drawer */}
-              <div className="flex items-center justify-between pb-6 border-b border-[#EADFD2]">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#F3ECE2] flex items-center justify-center text-[#7A5A43]">
+              <div className="flex items-center justify-between pb-6 border-b border-[#14110F]/10">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-[2px] bg-[#EDE5D8] flex items-center justify-center text-[#14110F]">
                     <Glasses className="w-4 h-4" />
                   </div>
-                  <span className="font-serif text-xl font-medium text-[#2B2622]">
+                  <span className="font-serif text-xl font-medium text-[#14110F]">
                     {STORE_NAME}
                   </span>
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="Close menu"
-                  className="p-2 rounded-full text-[#7C746C] hover:text-[#2B2622] hover:bg-[#F3ECE2]"
+                  className="p-2 text-[#7A7168] hover:text-[#14110F]"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -381,61 +330,70 @@ export default function Header() {
               <nav className="mt-6 space-y-1">
                 <Link
                   href="/"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Home
                 </Link>
                 <Link
+                  href="/try-on"
+                  className="flex items-center justify-between px-3 py-2.5 text-base font-serif text-[#B89B6A] font-medium rounded-[2px] hover:bg-[#EDE5D8]"
+                >
+                  <span>Virtual Try-On</span>
+                  <span className="px-2 py-0.5 text-[9px] uppercase font-mono bg-[#14110F] text-[#B89B6A] rounded-[2px]">
+                    NEW
+                  </span>
+                </Link>
+                <Link
                   href="/sunglasses"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Sunglasses
                 </Link>
                 <Link
                   href="/eyeglasses"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Eyeglasses
                 </Link>
                 <Link
                   href="/lenses"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Lenses
                 </Link>
                 <Link
                   href="/contact-lenses"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Contact Lenses
                 </Link>
                 <Link
                   href="/brands"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Brands
                 </Link>
                 <Link
                   href="/offers"
-                  className="block px-3 py-2.5 text-base font-serif text-[#7A5A43] font-medium rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#B89B6A] font-medium rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Special Offers
                 </Link>
                 <Link
                   href="/about"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/blog"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Eye Care Blog
                 </Link>
                 <Link
                   href="/contact"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
+                  className="block px-3 py-2.5 text-base font-serif text-[#14110F] hover:text-[#B89B6A] rounded-[2px] hover:bg-[#EDE5D8]"
                 >
                   Visit & Contact
                 </Link>
@@ -443,36 +401,29 @@ export default function Header() {
             </div>
 
             {/* Bottom Actions inside drawer */}
-            <div className="pt-6 border-t border-[#EADFD2] space-y-3">
+            <div className="pt-6 border-t border-[#14110F]/10 space-y-3">
               <Link
                 href="/book-eye-test"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs uppercase tracking-[0.12em] font-medium bg-[#B08968] text-white hover:bg-[#7A5A43] transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[2px] text-xs uppercase tracking-[0.16em] font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] transition-colors"
               >
                 <Calendar className="w-4 h-4" />
-                Book Free Eye Test
+                <span>Book Free Eye Test</span>
               </Link>
               <a
-                href={getWhatsAppLink(`Hello ${STORE_NAME}, I'd like to inquire about your eyewear collection.`)}
+                href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs uppercase tracking-[0.12em] font-medium border border-[#B08968] text-[#7A5A43] hover:bg-[#B08968] hover:text-white transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[2px] text-xs uppercase tracking-[0.16em] font-medium border border-[#14110F]/20 text-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-colors"
               >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp Showroom
-              </a>
-              <a
-                href={`tel:${PHONE}`}
-                className="w-full inline-flex items-center justify-center gap-2 text-xs text-[#7C746C] hover:text-[#2B2622] pt-2"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                Call: {PHONE}
+                <MessageCircle className="w-4 h-4 text-[#B89B6A]" />
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* 4. Live Local Search Modal */}
+      {/* 4. Search Modal */}
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

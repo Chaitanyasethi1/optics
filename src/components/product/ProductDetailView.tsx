@@ -15,7 +15,8 @@ import {
   MapPin,
   Clock,
   Ruler,
-  Maximize2
+  Maximize2,
+  Glasses
 } from "lucide-react";
 import { Product } from "@/types";
 import { STORE_NAME, PHONE, ADDRESS, getProductEnquiryLink, getWhatsAppLink } from "@/data/config";
@@ -254,12 +255,23 @@ export default function ProductDetailView({
 
             {/* ACTION BUTTONS (Strictly NO Cart, NO Buy Now) */}
             <div className="pt-8 mt-6 border-t border-[#EADFD2] space-y-3">
+              {/* Virtual Try-On Button */}
+              {(product.category === "sunglasses" || product.category === "eyeglasses") && (
+                <Link
+                  href={`/try-on?product=${product.slug}`}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.16em] font-medium bg-[#14110F] text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30 transition-all duration-300 shadow-sm"
+                >
+                  <Glasses className="w-4 h-4 text-[#B89B6A]" />
+                  <span>Experience Virtual Try-On</span>
+                </Link>
+              )}
+
               {/* Primary Action 1: Enquire on WhatsApp */}
               <a
                 href={enquiryLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs uppercase tracking-[0.14em] font-medium bg-[#B08968] text-white hover:bg-[#7A5A43] transition-all duration-300 shadow-md"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.14em] font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] transition-all duration-300 shadow-xs"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Enquire on WhatsApp</span>

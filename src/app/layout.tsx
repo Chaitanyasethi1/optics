@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import MobileStickyBar from "@/components/MobileStickyBar";
+import CustomCursor from "@/components/CustomCursor";
 import { STORE_NAME, TAGLINE, ADDRESS } from "@/data/config";
 
 const cormorant = Cormorant_Garamond({
@@ -66,7 +67,8 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${inter.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#2B2622] font-sans">
+      <body className="min-h-full flex flex-col bg-[#F7F3EC] text-[#14110F] font-sans">
+        <CustomCursor />
         <Header />
         <main className="flex-1 pb-16 sm:pb-0">{children}</main>
         <Footer />

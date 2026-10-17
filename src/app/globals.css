@@ -1,52 +1,165 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #2B2622;
-  --color-warm-white: #FAF7F2;
-  --color-warm-bg: #FAF7F2;
-  --color-beige-light: #F3ECE2;
-  --color-accent-brown: #B08968;
-  --color-accent-tan: #D9BFA3;
-  --color-dark-brown: #7A5A43;
-  --color-charcoal: #2B2622;
-  --color-muted-brown: #7C746C;
-  --color-border-warm: #EADFD2;
+  /* Luxury Maison Palette */
+  --ivory: #F7F3EC;
+  --sand: #EDE5D8;
+  --ink: #14110F;
+  --graphite: #2A2623;
+  --champagne: #B89B6A;
+  --champagne-light: #D4BE96;
+  --muted: #7A7168;
+
+  /* Legacy aliases for backwards compatibility with existing components */
+  --background: #F7F3EC;
+  --foreground: #14110F;
+  --color-warm-white: #F7F3EC;
+  --color-warm-bg: #F7F3EC;
+  --color-beige-light: #EDE5D8;
+  --color-accent-brown: #B89B6A;
+  --color-accent-tan: #D4BE96;
+  --color-dark-brown: #2A2623;
+  --color-charcoal: #14110F;
+  --color-muted-brown: #7A7168;
+  --color-border-warm: rgba(20, 17, 15, 0.1);
 }
 
 * {
-  border-color: #EADFD2;
+  border-color: rgba(20, 17, 15, 0.1);
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FAF7F2;
-  color: #2B2622;
+  background-color: var(--ivory);
+  color: var(--ink);
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
+/* Luxury Typography */
 h1, h2, h3, h4, .font-serif {
   font-family: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  letter-spacing: -0.015em;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Desktop Scroll Snap Container (proximity for smooth, natural settling) */
+@media (min-width: 1280px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+  }
+  .snap-frame {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+/* Hairline border utility */
+.border-hairline {
+  border-width: 1px;
+  border-color: rgba(20, 17, 15, 0.08);
+}
+
+.border-hairline-champagne {
+  border-width: 1px;
+  border-color: rgba(184, 155, 106, 0.3);
+}
+
+/* Luxury Corner Brackets */
+.corner-bracket-tl {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid var(--champagne);
+  border-left: 1px solid var(--champagne);
+  pointer-events: none;
+}
+
+.corner-bracket-tr {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid var(--champagne);
+  border-right: 1px solid var(--champagne);
+  pointer-events: none;
+}
+
+.corner-bracket-bl {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1px solid var(--champagne);
+  border-left: 1px solid var(--champagne);
+  pointer-events: none;
+}
+
+.corner-bracket-br {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1px solid var(--champagne);
+  border-right: 1px solid var(--champagne);
+  pointer-events: none;
+}
+
+/* Luxury mirror vignette */
+.mirror-vignette {
+  background: radial-gradient(circle at center, transparent 60%, rgba(20, 17, 15, 0.35) 100%);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: var(--ivory);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D9BFA3;
-  border-radius: 9999px;
+  background: var(--sand);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B08968;
+  background: var(--champagne);
 }
 
 ::selection {
-  background: #D9BFA3;
-  color: #2B2622;
+  background: var(--champagne);
+  color: #FFFFFF;
+}
+
+/* Keyframes for Ken Burns & animations */
+@keyframes kenburns {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
 }

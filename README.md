@@ -8,29 +8,29 @@
 
 ## ✦ Key Features
 
-- **Design System**: Warm off-white (`#FAF7F2`), pure white (`#FFFFFF`), very light beige (`#F3ECE2`), primary accent light brown (`#B08968`), soft tan (`#D9BFA3`), dark brown (`#7A5A43`), and charcoal text (`#2B2622`).
+- **Design System**: Maison Luxury Palette: Ivory (`#F7F3EC`), Sand (`#EDE5D8`), Ink (`#14110F`), Graphite (`#2A2623`), Champagne Accent (`#B89B6A`), and Muted (`#7A7168`).
 - **Typography**: Cormorant Garamond / Playfair Display serif headings paired with Inter sans-serif body typography.
+- **Virtual Try-On Studio (`/try-on`)**: Real-time browser-based webcam face tracking powered by MediaPipe Face Landmarker (WASM). Computes eye centers, interpupillary distance, head roll angle, yaw/pitch, and nose bridge position with Lerp smoothing. Includes live lens tint switcher, manual fit sliders, snapshot capture with watermark, and still photo upload fallback.
 - **Local Catalogue File**: Over 40 curated optical products stored in `src/data/products.ts` across Sunglasses, Eyeglasses, Precision Lenses, and Contact Lenses.
 - **Top Announcement Bar**: Highlights complimentary 14-step precision eye tests and showroom hours.
-- **Header**: Desktop mega-menus, live local search modal, WhatsApp concierge icon, and responsive mobile slide-over drawer.
-- **Home Page Sections (in strict order)**:
-  1. **Hero**: 4-slide full-width banner slider with editorial headlines and direct CTA buttons.
-  2. **Brand Strip**: Official brand partner marquee (Ray-Ban, Gucci, Tommy Hilfiger, Calvin Klein, Carrera, Oakley, Burberry, Police, Scott, Mont Blanc).
-  3. **Shop by Category**: Tall visual cards for Sunglasses, Eyeglasses, Lenses, and Contact Lenses.
-  4. **Premium Collection: Titanium Frames**: Row of 4 Japanese and Austrian featherweight titanium frames + "View All".
-  5. **Polarized Sunglasses**: Curated trio for *His*, *Her*, and *Kids*.
-  6. **Special Offers: Up to 40% Off**: Privilege savings cards with strikethrough original prices and discount badges.
-  7. **Luxury Brands Showcase**: Interactive tabbed maison showcase for Gucci, Maui Jim, Silhouette, and Mont Blanc.
+- **Header**: Transparent over hero, backdrop-blur ivory on scroll, centered maison logo, Virtual Try-On link with "NEW" tag, and mobile drawer.
+- **Home Page Sections (in strict order, 1440px desktop frames with scroll snap & progress indicator)**:
+  1. **Hero**: 4-slide full-width banner slider with Ken Burns zoom, clamp typography, and Virtual Try-On CTA.
+  2. **Brand Strip**: Official maison partner strip (Ray-Ban, Gucci, Tommy Hilfiger, Calvin Klein, Carrera, Oakley, Burberry, Police, Scott, Mont Blanc).
+  3. **Shop by Category**: Tall visual cards (4:5 portrait) with gold corner brackets for Sunglasses, Eyeglasses, Lenses, and Contact Lenses.
+  4. **Premium Collection: Titanium Frames**: Row of 4 Japanese and Austrian featherweight titanium frames + "View All" + "Try On".
+  5. **Polarized Sunglasses**: Curated trio for *Gentlemen*, *Ladies*, and *Juniors*.
+  6. **Special Offers: Up to 40% Off**: Privilege savings cards with dark ink & champagne discount badges.
+  7. **Luxury Maisons Showcase**: Dark contrast maison frame for Gucci, Maui Jim, Silhouette, and Mont Blanc.
   8. **Precision Lenses**: Zeiss, Essilor, and Hoya single-vision and progressive multifocal breakdowns with "starting from" prices.
   9. **Contact Lenses**: Brand feature cards for Alcon, Bausch & Lomb, CooperVision, and Johnson & Johnson.
-  10. **Why DemoOptics**: 5 foundational trust pillars (Free Eye Test, 100% Original Brands, Expert Opticians, Easy Replacement, Warranty).
+  10. **Why DemoOptics**: 5 foundational trust pillars on warm ivory/sand background.
   11. **Customer Reviews**: Testimonial slider with 5-star ratings, verified patron badges, and review previews.
   12. **Instagram Feed**: 6 curated aesthetic images with hover captions and "Follow Us" link.
   13. **Visit Our Store**: Flagship showroom address, timings, amenities, interactive map embed, and "Get Directions".
-  14. **Footer**: Warm beige background, quick links, category sitemap, policies, contact details, and certifications.
+  14. **Footer**: Dark ink background, hairline borders, quick links, category sitemap, policies, and contact details.
 - **Collection Pages**: Real-time left filter sidebar (Brand, Gender, Shape, Material, Price, Polarized, Titanium) + Sort dropdown.
-- **Product Detail Page**: Interactive image gallery with zoom, full technical specifications, craftsmanship notes, WhatsApp enquiry button, and related curations.
-- **Service Pages**: Book Eye Test (with 14-step clinical protocol & WhatsApp booking), About Us, Contact & FAQ, Vision Health Blog with 3 clinical articles, Privacy Policy, and Terms of Consultation.
+- **Product Detail Page**: Interactive image gallery with zoom, full technical specifications, craftsmanship notes, "Experience Virtual Try-On" button, and WhatsApp enquiry button.
 - **Sticky Actions**:
   - Floating WhatsApp concierge button on every page.
   - Sticky mobile bottom bar: **Call Store | WhatsApp | Book Eye Test**.
@@ -136,3 +136,36 @@ export const TIMINGS = "Mon - Sun: 10:00 AM – 9:00 PM";
 ```
 
 Edit this file to update the showroom address, telephone, or WhatsApp recipient across the entire website instantly.
+
+---
+
+## ✦ How to Add New Try-On Frames
+
+Frames for the Virtual Try-On Studio are registered in `src/data/tryon.ts`.
+
+To add a new frame:
+1. Open `src/data/tryon.ts`.
+2. Add a new object to the `TRYON_FRAMES` array:
+   ```typescript
+   {
+     id: "tryon-my-new-frame",
+     slug: "my-frame-slug", // Matches the product slug in src/data/products.ts
+     name: "Gold Aviator Luxe",
+     brand: "Ray-Ban",
+     price: 14500,
+     category: "sunglasses", // "sunglasses" | "eyeglasses"
+     gender: "Unisex",
+     shape: "Aviator",
+     frameWidthMm: 138,
+     bridgeMm: 14,
+     lensWidthMm: 58,
+     lensHeightMm: 50,
+     image: "/images/your-product-image.jpg",
+     frameColor: "#B89B6A", // Hex color of the frame rims
+     accentColor: "#EADFD2",
+     defaultTint: "g15", // "g15" | "black" | "brown" | "blue" | "gradient" | "clear"
+     svgTemplate: "aviator", // "aviator" | "wayfarer" | "round" | "cateye" | "geometric" | "rimless" | "rectangle"
+     suitableFaceShapes: ["Oval", "Square", "Heart"],
+   }
+   ```
+3. The new frame automatically appears in the `/try-on` carousel and can be deep-linked using `/try-on?product=my-frame-slug`.

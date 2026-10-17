@@ -12,29 +12,33 @@ import WhyDemoOptics from "@/components/home/WhyDemoOptics";
 import ReviewsSlider from "@/components/home/ReviewsSlider";
 import InstagramGrid from "@/components/home/InstagramGrid";
 import VisitStoreSection from "@/components/home/VisitStoreSection";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="relative snap-container">
+      {/* Desktop Vertical Section Indicator */}
+      <ScrollProgress />
+
       {/* 1. Hero: 4-slide full-width banner */}
       <HeroSlider />
 
       {/* 2. Brand Strip: 10 luxury brand partners */}
       <BrandStrip />
 
-      {/* 3. Shop by Category: 5 tall image cards */}
+      {/* 3. Shop by Category: 4 tall image cards */}
       <ShopByCategory />
 
       {/* 4. Premium Collection: Titanium Frames (4 cards) + View All */}
       <TitaniumRow />
 
-      {/* 5. Polarized Sunglasses (His / Her / Kids) */}
+      {/* 5. Polarized Sunglasses (Gentlemen / Ladies / Juniors) */}
       <PolarizedRow />
 
       {/* 6. Special Offers: Up to 40% Off */}
       <SpecialOffersRow />
 
-      {/* 7. Luxury Brands: Gucci, Maui Jim, Silhouette, Mont Blanc */}
+      {/* 7. Luxury Maisons: Gucci, Maui Jim, Silhouette, Mont Blanc (Dark Section) */}
       <LuxuryBrandsSection />
 
       {/* 8. Lenses: Zeiss, Essilor, Hoya Single Vision & Progressive */}
@@ -43,7 +47,7 @@ export default function HomePage() {
       {/* 9. Contact Lenses: Alcon, Bausch & Lomb, CooperVision, Johnson & Johnson */}
       <ContactLensesSection />
 
-      {/* 10. Why DemoOptics: 5 trust pillars on warm beige background */}
+      {/* 10. Why DemoOptics: 5 trust pillars */}
       <WhyDemoOptics />
 
       {/* 11. Customer Reviews: 6 sample reviews with star ratings */}

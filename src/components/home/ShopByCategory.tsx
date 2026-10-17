@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import Eyebrow from "@/components/ui/Eyebrow";
 
 const CATEGORIES = [
   {
@@ -42,56 +43,68 @@ const CATEGORIES = [
 
 export default function ShopByCategory() {
   return (
-    <section className="py-20 bg-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="categories"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#EDE5D8]"
+    >
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="font-sans text-[11px] uppercase tracking-[0.2em] font-semibold text-[#B08968]">
-            CURATED DEPARTMENTS
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#2B2622] font-medium mt-2 mb-3">
-            Shop by Category
-          </h2>
-          <div className="w-12 h-[1px] bg-[#B08968] mx-auto mb-4" />
-          <p className="text-xs sm:text-sm text-[#7C746C]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-6 h-[1px] bg-[#B89B6A]" />
+              <Eyebrow>CURATED DEPARTMENTS</Eyebrow>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
+              Shop by Category
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-[#7A7168] max-w-md">
             Explore our curated optical categories, where international luxury meets ophthalmic engineering.
           </p>
         </div>
 
-        {/* 4 Tall Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* 4 Tall Cards Grid (4:5 portrait ratio) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.title}
               href={cat.link}
-              className="group relative h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-[#EADFD2] shadow-sm flex flex-col justify-end p-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+              className="group relative h-[420px] xl:h-[480px] rounded-[2px] overflow-hidden border border-[#14110F]/10 shadow-xs flex flex-col justify-end p-6 transition-all duration-500 hover:-translate-y-1 hover:border-[#B89B6A]/50 hover:shadow-xl"
+              data-cursor="EXPLORE"
             >
+              {/* Luxury Gold Corner Brackets on Hover */}
+              <div className="corner-bracket-tl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="corner-bracket-tr opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="corner-bracket-bl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="corner-bracket-br opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
               {/* Background Image */}
               <Image
                 src={cat.image}
                 alt={cat.title}
                 fill
-                sizes="(max-width: 768px) 50vw, 20vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
               />
 
               {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2B2622]/90 via-[#2B2622]/40 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#14110F]/90 via-[#14110F]/35 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
 
               {/* Minimalist Card Label */}
-              <div className="relative z-10 text-white space-y-1">
-                <span className="text-[10px] uppercase tracking-[0.15em] text-[#D9BFA3] font-medium block">
+              <div className="relative z-10 text-white space-y-1.5">
+                <span className="text-[10px] uppercase tracking-[0.24em] text-[#D4BE96] font-medium block">
                   {cat.itemCount}
                 </span>
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-white group-hover:text-[#D9BFA3] transition-colors">
+                  <h3 className="font-serif text-2xl xl:text-3xl font-normal tracking-tight text-white group-hover:text-[#D4BE96] transition-colors">
                     {cat.title}
                   </h3>
-                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-xs flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
+                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
-                <p className="text-[11px] text-[#FAF7F2]/80 line-clamp-1">
+                <p className="text-xs text-[#F7F3EC]/80 line-clamp-1 font-light">
                   {cat.subtitle}
                 </p>
               </div>

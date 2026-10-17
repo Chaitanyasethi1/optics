@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Glasses, Sparkles } from "lucide-react";
+import Eyebrow from "@/components/ui/Eyebrow";
 
 interface Slide {
   id: string;
@@ -73,14 +74,15 @@ export default function HeroSlider() {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(nextSlide, 6500);
+    const interval = setInterval(nextSlide, 7000);
     return () => clearInterval(interval);
   }, [nextSlide, isPaused]);
 
   return (
     <section
+      id="hero"
       aria-label="Hero Highlights"
-      className="relative w-full h-[580px] sm:h-[640px] lg:h-[720px] bg-[#FAF7F2] overflow-hidden"
+      className="relative w-full min-h-[90vh] xl:min-h-screen bg-[#F7F3EC] overflow-hidden snap-frame flex flex-col justify-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -94,49 +96,59 @@ export default function HeroSlider() {
               isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
             }`}
           >
-            {/* Background Image with warm gradient overlay */}
-            <div className="absolute inset-0">
+            {/* Background Image with Ken Burns zoom */}
+            <div className="absolute inset-0 overflow-hidden">
               <Image
                 src={slide.image}
                 alt={slide.imageAlt}
                 fill
                 priority={index === 0}
-                className="object-cover object-center scale-105 transition-transform duration-10000 ease-out"
+                className={`object-cover object-center ${
+                  isActive ? "animate-kenburns scale-105" : "scale-100"
+                } transition-all duration-1000`}
               />
-              {/* Dual warm vignette overlay for luxurious editorial contrast */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/95 via-[#FAF7F2]/80 to-transparent lg:w-3/5" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/90 via-transparent to-black/10" />
+              {/* Luxury dual scrim overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3EC] via-[#F7F3EC]/85 to-transparent w-full lg:w-3/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F7F3EC] via-transparent to-black/10" />
             </div>
 
             {/* Slide Content */}
-            <div className="relative h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col justify-center">
-              <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6">
-                {/* Uppercase Tracking Label */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#EADFD2] backdrop-blur-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-[#B08968]" />
-                  <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-semibold text-[#B08968]">
-                    {slide.tag}
-                  </span>
+            <div className="relative h-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex flex-col justify-center pt-20 pb-16">
+              <div className="max-w-xl lg:max-w-3xl space-y-5 sm:space-y-6">
+                {/* Eyebrow Label */}
+                <div className="flex items-center gap-2">
+                  <span className="w-6 h-[1px] bg-[#B89B6A]" />
+                  <Eyebrow>{slide.tag}</Eyebrow>
                 </div>
 
-                {/* Main Serif Headline */}
-                <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#2B2622] leading-[1.12]">
+                {/* Main Serif Headline with clamp typography */}
+                <h1 className="font-serif text-4xl sm:text-6xl xl:text-[clamp(3.2rem,5.5vw,5.5rem)] font-normal tracking-tight text-[#14110F] leading-[1.08]">
                   {slide.title}
                 </h1>
 
                 {/* Subtext */}
-                <p className="text-sm sm:text-base text-[#7C746C] leading-relaxed max-w-lg font-normal">
+                <p className="text-sm sm:text-base text-[#7A7168] leading-relaxed max-w-xl font-normal">
                   {slide.subtitle}
                 </p>
 
-                {/* Single CTA Button */}
-                <div className="pt-2">
+                {/* Dual CTA Buttons (Strictly NO Cart) */}
+                <div className="pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+                  {/* Primary Section CTA */}
                   <Link
                     href={slide.ctaLink}
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.14em] font-medium bg-[#B08968] text-white hover:bg-[#7A5A43] transition-all duration-300 shadow-md hover:shadow-lg group"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.18em] font-sans font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] transition-all duration-300 shadow-sm group"
                   >
                     <span>{slide.ctaText}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+
+                  {/* Prominent Virtual Try-On CTA */}
+                  <Link
+                    href="/try-on"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.18em] font-sans font-medium border border-[#14110F]/20 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300 group"
+                  >
+                    <Glasses className="w-4 h-4 text-[#B89B6A] group-hover:text-[#B89B6A]" />
+                    <span>Experience Virtual Try-On</span>
                   </Link>
                 </div>
               </div>
@@ -149,31 +161,29 @@ export default function HeroSlider() {
       <button
         onClick={prevSlide}
         aria-label="Previous slide"
-        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/80 hover:bg-white border border-[#EADFD2] text-[#2B2622] hover:text-[#7A5A43] flex items-center justify-center transition-all duration-200 shadow-sm backdrop-blur-xs"
+        className="absolute left-6 sm:left-10 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-[2px] bg-[#F7F3EC]/80 hover:bg-[#F7F3EC] border border-[#14110F]/10 text-[#14110F] hover:text-[#B89B6A] flex items-center justify-center transition-all duration-200 backdrop-blur-xs"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-4 h-4" />
       </button>
 
       <button
         onClick={nextSlide}
         aria-label="Next slide"
-        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/80 hover:bg-white border border-[#EADFD2] text-[#2B2622] hover:text-[#7A5A43] flex items-center justify-center transition-all duration-200 shadow-sm backdrop-blur-xs"
+        className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-[2px] bg-[#F7F3EC]/80 hover:bg-[#F7F3EC] border border-[#14110F]/10 text-[#14110F] hover:text-[#B89B6A] flex items-center justify-center transition-all duration-200 backdrop-blur-xs"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-4 h-4" />
       </button>
 
-      {/* Bottom Indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 bg-white/60 backdrop-blur-md px-4 py-2 rounded-full border border-[#EADFD2]/70">
-        {SLIDES.map((slide, idx) => (
-          <button
-            key={slide.id}
-            onClick={() => setCurrent(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
-            className={`transition-all duration-300 rounded-full h-1.5 ${
-              idx === current ? "w-8 bg-[#7A5A43]" : "w-2 bg-[#D9BFA3] hover:bg-[#B08968]"
-            }`}
+      {/* Bottom Editorial Numbered Pagination */}
+      <div className="absolute bottom-10 left-6 sm:left-10 lg:left-20 z-20 flex items-center gap-4 text-xs font-mono tracking-widest text-[#14110F]">
+        <span className="font-semibold text-[#B89B6A]">0{current + 1}</span>
+        <div className="w-16 h-[1px] bg-[#14110F]/20 relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 h-full bg-[#B89B6A] transition-all duration-500"
+            style={{ width: `${((current + 1) / SLIDES.length) * 100}%` }}
           />
-        ))}
+        </div>
+        <span className="text-[#7A7168]">0{SLIDES.length}</span>
       </div>
     </section>
   );
