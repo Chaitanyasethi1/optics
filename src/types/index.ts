@@ -2,8 +2,7 @@ export type ProductCategory =
   | "sunglasses"
   | "eyeglasses"
   | "lenses"
-  | "contact-lenses"
-  | "watches";
+  | "contact-lenses";
 
 export type Gender = "Men" | "Women" | "Unisex" | "Kids";
 

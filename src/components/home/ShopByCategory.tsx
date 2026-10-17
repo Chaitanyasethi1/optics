@@ -38,14 +38,6 @@ const CATEGORIES = [
     image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
     ratio: "tall",
   },
-  {
-    title: "Curated Watches",
-    subtitle: "Swiss & Japanese Horology",
-    itemCount: "Boutique Collection",
-    link: "/watches",
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
-    ratio: "tall",
-  },
 ];
 
 export default function ShopByCategory() {
@@ -66,8 +58,8 @@ export default function ShopByCategory() {
           </p>
         </div>
 
-        {/* 5 Tall Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        {/* 4 Tall Cards Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.title}

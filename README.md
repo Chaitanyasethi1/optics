@@ -10,13 +10,13 @@
 
 - **Design System**: Warm off-white (`#FAF7F2`), pure white (`#FFFFFF`), very light beige (`#F3ECE2`), primary accent light brown (`#B08968`), soft tan (`#D9BFA3`), dark brown (`#7A5A43`), and charcoal text (`#2B2622`).
 - **Typography**: Cormorant Garamond / Playfair Display serif headings paired with Inter sans-serif body typography.
-- **Local Catalogue File**: Over 40 curated optical products stored in `src/data/products.ts` across Sunglasses, Eyeglasses, Precision Lenses, Contact Lenses, and Watches.
+- **Local Catalogue File**: Over 40 curated optical products stored in `src/data/products.ts` across Sunglasses, Eyeglasses, Precision Lenses, and Contact Lenses.
 - **Top Announcement Bar**: Highlights complimentary 14-step precision eye tests and showroom hours.
 - **Header**: Desktop mega-menus, live local search modal, WhatsApp concierge icon, and responsive mobile slide-over drawer.
 - **Home Page Sections (in strict order)**:
   1. **Hero**: 4-slide full-width banner slider with editorial headlines and direct CTA buttons.
   2. **Brand Strip**: Official brand partner marquee (Ray-Ban, Gucci, Tommy Hilfiger, Calvin Klein, Carrera, Oakley, Burberry, Police, Scott, Mont Blanc).
-  3. **Shop by Category**: Tall visual cards for Sunglasses, Eyeglasses, Lenses, Contact Lenses, and Watches.
+  3. **Shop by Category**: Tall visual cards for Sunglasses, Eyeglasses, Lenses, and Contact Lenses.
   4. **Premium Collection: Titanium Frames**: Row of 4 Japanese and Austrian featherweight titanium frames + "View All".
   5. **Polarized Sunglasses**: Curated trio for *His*, *Her*, and *Kids*.
   6. **Special Offers: Up to 40% Off**: Privilege savings cards with strikethrough original prices and discount badges.

@@ -261,15 +261,6 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/watches"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  pathname.startsWith("/watches") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
-                }`}
-              >
-                Watches
-              </Link>
-
-              <Link
                 href="/brands"
                 className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
                   pathname.startsWith("/brands") ? "text-[#7A5A43] font-semibold" : "text-[#2B2622] hover:text-[#7A5A43]"
@@ -417,12 +408,6 @@ export default function Header() {
                   className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
                 >
                   Contact Lenses
-                </Link>
-                <Link
-                  href="/watches"
-                  className="block px-3 py-2.5 text-base font-serif text-[#2B2622] hover:text-[#7A5A43] rounded-lg hover:bg-[#F3ECE2]"
-                >
-                  Watches
                 </Link>
                 <Link
                   href="/brands"

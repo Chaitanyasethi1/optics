@@ -160,11 +160,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/watches" className="hover:text-[#2B2622] transition-colors">
-                  Curated Timepieces
-                </Link>
-              </li>
-              <li>
                 <Link href="/offers" className="text-[#7A5A43] font-medium hover:underline">
                   Special Privilege Offers
                 </Link>
