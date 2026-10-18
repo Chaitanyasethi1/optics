@@ -37,6 +37,7 @@ export interface TryOnFrame {
   lensWidthMm: number;
   lensHeightMm: number;
   image: string;
+  overlayUrl: string; // High-resolution photorealistic isolated front cutout
   frameColor: string;
   accentColor: string;
   defaultTint: string;
@@ -60,6 +61,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 58,
     lensHeightMm: 50,
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/aviator-gold.svg",
     frameColor: "#B89B6A",
     accentColor: "#EADFD2",
     defaultTint: "g15",
@@ -80,6 +82,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 50,
     lensHeightMm: 41,
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/wayfarer-black.svg",
     frameColor: "#14110F",
     accentColor: "#B89B6A",
     defaultTint: "g15",
@@ -100,6 +103,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 52,
     lensHeightMm: 38,
     image: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/rimless-titanium.svg",
     frameColor: "#D4BE96",
     accentColor: "#B89B6A",
     defaultTint: "clear",
@@ -120,6 +124,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 51,
     lensHeightMm: 48,
     image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/round-gold.svg",
     frameColor: "#B89B6A",
     accentColor: "#14110F",
     defaultTint: "brown",
@@ -140,6 +145,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 54,
     lensHeightMm: 44,
     image: "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/cateye-black.svg",
     frameColor: "#2A2623",
     accentColor: "#B89B6A",
     defaultTint: "gradient",
@@ -160,6 +166,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 53,
     lensHeightMm: 40,
     image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/geometric-gunmetal.svg",
     frameColor: "#2A2623",
     accentColor: "#B89B6A",
     defaultTint: "clear",
@@ -180,6 +187,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 65,
     lensHeightMm: 42,
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/holbrook-square.svg",
     frameColor: "#14110F",
     accentColor: "#1e3a5f",
     defaultTint: "blue",
@@ -200,6 +208,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     lensWidthMm: 57,
     lensHeightMm: 43,
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    overlayUrl: "/frames/holbrook-square.svg",
     frameColor: "#14110F",
     accentColor: "#1e3a5f",
     defaultTint: "blue",

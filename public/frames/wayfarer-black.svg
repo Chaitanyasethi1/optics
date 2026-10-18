@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <!-- Deep Glossy Acetate Gradient -->
+    <linearGradient id="acetateBlack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2928" />
+      <stop offset="15%" stop-color="#141414" />
+      <stop offset="60%" stop-color="#0a0a0a" />
+      <stop offset="100%" stop-color="#1f1e1d" />
+    </linearGradient>
+
+    <!-- Chrome Rivet Studs Gradient -->
+    <linearGradient id="chromeStud" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#e0e0e0" />
+      <stop offset="70%" stop-color="#999999" />
+      <stop offset="100%" stop-color="#555555" />
+    </linearGradient>
+
+    <!-- G-15 Dark Green / Neutral Black Lens -->
+    <linearGradient id="wayfarerLens" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#101a14" stop-opacity="0.94" />
+      <stop offset="70%" stop-color="#19261f" stop-opacity="0.86" />
+      <stop offset="100%" stop-color="#1f3027" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Studio Softbox Glare -->
+    <linearGradient id="wayfarerGlare" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+    </linearGradient>
+
+    <filter id="wayfarerShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g id="wayfarer-frame" filter="url(#wayfarerShadow)">
+    <!-- 1. Left Lens Cutout -->
+    <path id="left-lens"
+      d="M 175,135
+         L 375,145
+         C 388,146 395,158 392,175
+         L 368,285
+         C 362,315 340,325 305,325
+         L 230,325
+         C 185,325 158,300 152,260
+         L 142,165
+         C 140,145 152,134 175,135 Z"
+      fill="url(#wayfarerLens)" />
+
+    <!-- Left Glare -->
+    <path
+      d="M 175,135
+         L 375,145
+         C 388,146 395,158 392,175
+         L 368,285
+         C 362,315 340,325 305,325
+         L 230,325
+         C 185,325 158,300 152,260
+         L 142,165
+         C 140,145 152,134 175,135 Z"
+      fill="url(#wayfarerGlare)" />
+
+    <!-- 2. Right Lens Cutout -->
+    <path id="right-lens"
+      d="M 825,135
+         L 625,145
+         C 612,146 605,158 608,175
+         L 632,285
+         C 638,315 660,325 695,325
+         L 770,325
+         C 815,325 842,300 848,260
+         L 858,165
+         C 860,145 848,134 825,135 Z"
+      fill="url(#wayfarerLens)" />
+
+    <!-- Right Glare -->
+    <path
+      d="M 825,135
+         L 625,145
+         C 612,146 605,158 608,175
+         L 632,285
+         C 638,315 660,325 695,325
+         L 770,325
+         C 815,325 842,300 848,260
+         L 858,165
+         C 860,145 848,134 825,135 Z"
+      fill="url(#wayfarerGlare)" />
+
+    <!-- 3. Outer Bold Acetate Frame Body -->
+    <path
+      d="M 80,135
+         C 75,115 95,105 125,108
+         L 440,118
+         C 465,119 475,135 480,155
+         C 485,175 490,185 500,185
+         C 510,185 515,175 520,155
+         C 525,135 535,119 560,118
+         L 875,108
+         C 905,105 925,115 920,135
+         L 905,200
+         C 900,215 885,225 870,225
+         C 862,255 850,305 825,335
+         C 785,365 745,360 675,360
+         C 625,360 605,335 595,295
+         L 580,240
+         C 575,215 560,195 535,195
+         C 520,195 510,205 500,205
+         C 490,205 480,195 465,195
+         C 440,195 425,215 420,240
+         L 405,295
+         C 395,335 375,360 325,360
+         C 255,360 215,365 175,335
+         C 150,305 138,255 130,225
+         C 115,225 100,215 95,200
+         Z
+         M 175,135
+         L 375,145
+         C 388,146 395,158 392,175
+         L 368,285
+         C 362,315 340,325 305,325
+         L 230,325
+         C 185,325 158,300 152,260
+         L 142,165
+         C 140,145 152,134 175,135 Z
+         M 825,135
+         L 625,145
+         C 612,146 605,158 608,175
+         L 632,285
+         C 638,315 660,325 695,325
+         L 770,325
+         C 815,325 842,300 848,260
+         L 858,165
+         C 860,145 848,134 825,135 Z"
+      fill="url(#acetateBlack)"
+      fill-rule="evenodd"
+      stroke="#383635"
+      stroke-width="1.5" />
+
+    <!-- 4. Top Specular Edge Highlight (Acetate Chamfer Gloss) -->
+    <path
+      d="M 125,109 L 440,119 C 460,120 470,132 475,150"
+      stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round" />
+    <path
+      d="M 875,109 L 560,119 C 540,120 530,132 525,150"
+      stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round" />
+
+    <!-- 5. Chrome Rhomboid Rivets (Signature Wayfarer Studs) -->
+    <!-- Left Rivet -->
+    <g transform="translate(108, 148) rotate(-8)">
+      <polygon points="0,-4 14,0 0,4 -14,0" fill="url(#chromeStud)" stroke="#333" stroke-width="0.8" />
+      <polygon points="-6,-1 2,-1 4,1 -4,1" fill="#ffffff" opacity="0.6" />
+    </g>
+
+    <!-- Right Rivet -->
+    <g transform="translate(892, 148) rotate(8)">
+      <polygon points="0,-4 14,0 0,4 -14,0" fill="url(#chromeStud)" stroke="#333" stroke-width="0.8" />
+      <polygon points="-4,-1 4,-1 6,1 -2,1" fill="#ffffff" opacity="0.6" />
+    </g>
+  </g>
+</svg>

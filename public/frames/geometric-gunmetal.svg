@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <linearGradient id="gunmetalTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#737982" />
+      <stop offset="35%" stop-color="#41454c" />
+      <stop offset="70%" stop-color="#2a2c30" />
+      <stop offset="100%" stop-color="#545861" />
+    </linearGradient>
+
+    <!-- Clear Prescription Lens with Blue-Cut Reflex -->
+    <linearGradient id="geoClear" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#d9ebf7" stop-opacity="0.22" />
+      <stop offset="50%" stop-color="#cadff2" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#93beee" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="geoGlare" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+    </linearGradient>
+
+    <filter id="geoShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <g id="geometric-frame" filter="url(#geoShadow)">
+    <!-- Silicone Nose Pads -->
+    <ellipse cx="435" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#41454c" stroke-width="1.8" />
+    <path d="M435,225 Q445,215 452,218" stroke="url(#gunmetalTitanium)" stroke-width="3" fill="none" stroke-linecap="round" />
+
+    <ellipse cx="565" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#41454c" stroke-width="1.8" />
+    <path d="M565,225 Q555,215 548,218" stroke="url(#gunmetalTitanium)" stroke-width="3" fill="none" stroke-linecap="round" />
+
+    <!-- Left Octagonal Polygon Lens -->
+    <polygon
+      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
+      fill="url(#geoClear)" />
+    <polygon
+      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
+      fill="url(#geoGlare)" />
+    <!-- Metallic Rim -->
+    <polygon
+      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
+      fill="none" stroke="url(#gunmetalTitanium)" stroke-width="5" stroke-linejoin="round" />
+    <polygon
+      points="201,141 343,141 394,191 394,259 343,309 201,309 150,259 150,191"
+      fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" stroke-linejoin="round" />
+
+    <!-- Right Octagonal Polygon Lens -->
+    <polygon
+      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
+      fill="url(#geoClear)" />
+    <polygon
+      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
+      fill="url(#geoGlare)" />
+    <!-- Metallic Rim -->
+    <polygon
+      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
+      fill="none" stroke="url(#gunmetalTitanium)" stroke-width="5" stroke-linejoin="round" />
+    <polygon
+      points="799,141 657,141 606,191 606,259 657,309 799,309 850,259 850,191"
+      fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" stroke-linejoin="round" />
+
+    <!-- Architectural Titanium Bridge -->
+    <line x1="395" y1="205" x2="605" y2="205" stroke="url(#gunmetalTitanium)" stroke-width="5.5" stroke-linecap="round" />
+    <line x1="396" y1="203" x2="604" y2="203" stroke="#FFFFFF" stroke-width="1" opacity="0.7" />
+
+    <!-- End Pieces -->
+    <rect x="135" y="195" width="16" height="10" rx="2" fill="url(#gunmetalTitanium)" />
+    <rect x="849" y="195" width="16" height="10" rx="2" fill="url(#gunmetalTitanium)" />
+  </g>
+</svg>

@@ -15,8 +15,8 @@ import {
   Eye,
   Maximize2
 } from "lucide-react";
-import { TryOnFrame } from "@/data/tryon";
-import { drawGlassesOnCanvas } from "./glassesRenderer";
+import { TryOnFrame, TRYON_FRAMES } from "@/data/tryon";
+import { drawGlassesOnCanvas, preloadAllFrames } from "./glassesRenderer";
 import { STORE_NAME, getWhatsAppLink } from "@/data/config";
 
 interface TryOnStageProps {
@@ -191,6 +191,11 @@ export default function TryOnStage({
     reader.readAsDataURL(file);
   };
 
+  // Preload all photorealistic frames on mount
+  useEffect(() => {
+    preloadAllFrames(TRYON_FRAMES);
+  }, []);
+
   // Process a static photo with FaceLandmarker
   const processStillImage = (img: HTMLImageElement) => {
     const canvas = canvasRef.current;
@@ -220,7 +225,7 @@ export default function TryOnStage({
             tintId: selectedTintId,
             x: canvas.width * 0.5,
             y: canvas.height * 0.42,
-            scale: canvas.width / 450,
+            ipd: canvas.width * 0.22,
             angle: 0,
             yaw: 0,
             sizeAdjustment,
@@ -265,7 +270,7 @@ export default function TryOnStage({
     }
   };
 
-  // 6. Draw Frame Overlay onto Canvas from Landmarks
+  // 6. Draw Photorealistic Frame Overlay onto Canvas from Landmarks
   const renderFrameOverlay = (
     ctx: CanvasRenderingContext2D,
     landmarks: any[],
@@ -276,69 +281,67 @@ export default function TryOnStage({
     // MediaPipe key landmark indices:
     // Left eye outer: 33, inner: 133
     // Right eye outer: 263, inner: 362
-    // Nose bridge: 168 (glabella / upper bridge)
-    const leftOuter = landmarks[33];
-    const leftInner = landmarks[133];
-    const rightOuter = landmarks[263];
-    const rightInner = landmarks[362];
-    const bridge = landmarks[168];
-
-    // Compute eye centers
-    const leftEye = {
-      x: ((leftOuter.x + leftInner.x) / 2) * width,
-      y: ((leftOuter.y + leftInner.y) / 2) * height,
+    // Nose bridge root (Sellion): 6
+    const eye1 = {
+      x: ((landmarks[33].x + landmarks[133].x) / 2) * width,
+      y: ((landmarks[33].y + landmarks[133].y) / 2) * height,
     };
-    const rightEye = {
-      x: ((rightOuter.x + rightInner.x) / 2) * width,
-      y: ((rightOuter.y + rightInner.y) / 2) * height,
+    const eye2 = {
+      x: ((landmarks[263].x + landmarks[362].x) / 2) * width,
+      y: ((landmarks[263].y + landmarks[362].y) / 2) * height,
     };
 
-    const bridgePos = {
-      x: bridge.x * width,
-      y: bridge.y * height,
-    };
+    // Guarantee leftEye is horizontally to the left of rightEye on the rendered canvas
+    const leftEye = eye1.x < eye2.x ? eye1 : eye2;
+    const rightEye = eye1.x < eye2.x ? eye2 : eye1;
 
-    // Interpupillary distance in pixels
+    // True interpupillary distance in pixels
     const ipd = Math.hypot(rightEye.x - leftEye.x, rightEye.y - leftEye.y);
 
     // Roll angle in radians
     const rawAngle = Math.atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x);
 
-    // Scale calibrated against real adult average IPD (~63mm)
-    const targetScale = ipd / 58;
+    // Pupil center line
+    const pupilMidX = (leftEye.x + rightEye.x) / 2;
+    const pupilMidY = (leftEye.y + rightEye.y) / 2;
+
+    // Sellion (root of nose bridge between eyes) or pupil line
+    const noseRoot = landmarks[6] ? { x: landmarks[6].x * width, y: landmarks[6].y * height } : null;
+    const targetY = noseRoot ? noseRoot.y * 0.7 + pupilMidY * 0.3 : pupilMidY;
+    const targetX = pupilMidX;
 
     // Estimate yaw (horizontal turning)
-    const eyeMidX = (leftEye.x + rightEye.x) / 2;
-    const rawYaw = (bridgePos.x - eyeMidX) / (ipd * 0.35 || 1);
+    const noseTip = landmarks[4] ? landmarks[4].x * width : pupilMidX;
+    const rawYaw = (noseTip - pupilMidX) / (ipd * 0.4 || 1);
 
     // Smoothing with Lerp (Low-pass filter to eliminate jitter)
     if (!smoothedPose.current) {
       smoothedPose.current = {
-        x: bridgePos.x,
-        y: bridgePos.y,
-        scale: targetScale,
+        x: targetX,
+        y: targetY,
+        scale: ipd,
         angle: rawAngle,
         yaw: rawYaw,
       };
     } else {
-      const lerpFactor = 0.28;
-      smoothedPose.current.x += (bridgePos.x - smoothedPose.current.x) * lerpFactor;
-      smoothedPose.current.y += (bridgePos.y - smoothedPose.current.y) * lerpFactor;
-      smoothedPose.current.scale += (targetScale - smoothedPose.current.scale) * lerpFactor;
+      const lerpFactor = 0.32;
+      smoothedPose.current.x += (targetX - smoothedPose.current.x) * lerpFactor;
+      smoothedPose.current.y += (targetY - smoothedPose.current.y) * lerpFactor;
+      smoothedPose.current.scale += (ipd - smoothedPose.current.scale) * lerpFactor;
       smoothedPose.current.angle += (rawAngle - smoothedPose.current.angle) * lerpFactor;
       smoothedPose.current.yaw += (rawYaw - smoothedPose.current.yaw) * lerpFactor;
     }
 
-    const { x, y, scale, angle, yaw } = smoothedPose.current;
+    const { x, y, scale: smoothedIpd, angle, yaw } = smoothedPose.current;
 
-    // Render primary selected frame
+    // Render photorealistic selected frame overlay
     drawGlassesOnCanvas({
       ctx,
       frame: selectedFrame,
       tintId: selectedTintId,
       x,
       y,
-      scale,
+      ipd: smoothedIpd,
       angle,
       yaw,
       sizeAdjustment,

@@ -41,7 +41,7 @@ export default function Header() {
 
   const navLinkStyle = (href: string) => {
     const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
-    return `relative py-1 text-xs uppercase tracking-[0.16em] font-medium transition-colors duration-300 ${
+    return `relative py-1 text-[11px] 2xl:text-xs uppercase tracking-[0.12em] 2xl:tracking-[0.16em] font-medium whitespace-nowrap transition-colors duration-300 ${
       isActive ? "text-[#B89B6A] font-semibold" : "text-[#14110F] hover:text-[#B89B6A]"
     } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-[#B89B6A] after:transition-all after:duration-300 ${
       isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
@@ -50,30 +50,97 @@ export default function Header() {
 
   return (
     <>
-      {/* 1. Slim Top Announcement Bar */}
-      <div className="bg-[#EDE5D8] border-b border-[#14110F]/8 text-xs py-2 px-4 transition-all">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-[#7A7168]">
-          <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="inline-flex items-center gap-1.5 font-medium text-[#14110F]">
-              <Sparkles className="w-3.5 h-3.5 text-[#B89B6A]" />
-              Complimentary 14-Step Precision Eye Examination at Flagship Showroom
+      {/* 1. Slim Top Announcement Bar with Running Luxury Sale Marquee */}
+      <div className="bg-[#14110F] text-[#F7F3EC] border-b border-[#B89B6A]/20 text-xs py-2 overflow-hidden transition-all relative">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
+          
+          {/* Left badge */}
+          <div className="hidden sm:flex items-center gap-2 shrink-0 z-10 bg-[#14110F] pr-3">
+            <span className="px-2 py-0.5 rounded-[2px] bg-[#B89B6A] text-[#14110F] text-[9.5px] font-mono uppercase tracking-widest font-semibold">
+              SALE
             </span>
-            <span className="hidden md:inline text-[#B89B6A]">•</span>
-            <span className="hidden md:inline">Certified Zeiss & Essilor Master Optometrists</span>
+            <span className="text-[11px] uppercase tracking-[0.18em] font-sans text-[#D4BE96] font-medium">
+              MAISON OFFERS
+            </span>
+            <span className="text-[#B89B6A]/50">|</span>
           </div>
-          <div className="flex items-center gap-4 text-[11px] sm:text-xs">
-            <span className="flex items-center gap-1 text-[#14110F]">
-              <Clock className="w-3.5 h-3.5 text-[#B89B6A]" />
-              Mon-Sun: 10 AM - 9 PM
-            </span>
-            <span className="text-[#B89B6A]">•</span>
+
+          {/* Center: Running Endless Sale & Showroom Marquee */}
+          <div className="flex-1 overflow-hidden relative cursor-default">
+            <div className="animate-marquee flex items-center gap-8 text-[11px] tracking-[0.14em] font-light">
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <Sparkles className="w-3 h-3 text-[#B89B6A]" />
+                <strong className="font-medium text-[#D4BE96]">MAISON SEASONAL SALE:</strong> UP TO 40% OFF DESIGNER SUNWEAR
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">FREE 14-STEP EYE TEST:</strong> ZEISS & ESSILOR MASTER OPTOMETRISTS (WORTH ₹1,500)
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">PURE TITANIUM:</strong> FLAT 30% OFF HANDCRAFTED JAPANESE FRAMES
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">VIRTUAL AR TRY-ON:</strong> FIT FRAMES LIVE ON YOUR WEBCAM
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">FREE ZEISS COATING:</strong> ON ALL PROGRESSIVE & MULTIFOCAL LENSES
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">100% ORIGINAL MAISONS:</strong> GUCCI • RAY-BAN • MONTBLANC • SILHOUETTE • OAKLEY
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+
+              {/* Exact duplicate for smooth infinite continuous loop */}
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <Sparkles className="w-3 h-3 text-[#B89B6A]" />
+                <strong className="font-medium text-[#D4BE96]">MAISON SEASONAL SALE:</strong> UP TO 40% OFF DESIGNER SUNWEAR
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">FREE 14-STEP EYE TEST:</strong> ZEISS & ESSILOR MASTER OPTOMETRISTS (WORTH ₹1,500)
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">PURE TITANIUM:</strong> FLAT 30% OFF HANDCRAFTED JAPANESE FRAMES
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">VIRTUAL AR TRY-ON:</strong> FIT FRAMES LIVE ON YOUR WEBCAM
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">FREE ZEISS COATING:</strong> ON ALL PROGRESSIVE & MULTIFOCAL LENSES
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+              <span className="inline-flex items-center gap-2 text-[#F7F3EC]">
+                <strong className="font-medium text-[#D4BE96]">100% ORIGINAL MAISONS:</strong> GUCCI • RAY-BAN • MONTBLANC • SILHOUETTE • OAKLEY
+              </span>
+              <span className="text-[#B89B6A]">✦</span>
+            </div>
+          </div>
+
+          {/* Right Action: Direct Quick Links */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0 z-10 bg-[#14110F] pl-3 text-[11px]">
+            <Link
+              href="/offers"
+              className="text-[#D4BE96] hover:text-white font-medium uppercase tracking-[0.16em] flex items-center gap-1 transition-colors"
+            >
+              <span>Explore Offers</span>
+              <ArrowRight className="w-3 h-3 text-[#B89B6A]" />
+            </Link>
+            <span className="text-white/20">|</span>
             <Link
               href="/book-eye-test"
-              className="text-[#14110F] hover:text-[#B89B6A] font-medium underline underline-offset-2 transition-colors"
+              className="text-[#F7F3EC] hover:text-[#B89B6A] transition-colors"
             >
-              Book Complimentary Slot
+              Book Eye Test
             </Link>
           </div>
+
         </div>
       </div>
 
@@ -81,29 +148,29 @@ export default function Header() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-500 ${
           scrolled
-            ? "bg-[#F7F3EC]/92 backdrop-blur-md shadow-xs border-b border-[#14110F]/8 py-3"
-            : "bg-[#F7F3EC] border-b border-[#14110F]/8 py-4"
+            ? "bg-[#F7F3EC]/95 backdrop-blur-md shadow-xs border-b border-[#14110F]/8 py-2.5 sm:py-3"
+            : "bg-[#F7F3EC] border-b border-[#14110F]/8 py-3.5 sm:py-4"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="flex items-center justify-between h-14">
-            {/* Left: Brand Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-[2px] bg-[#EDE5D8] border border-[#14110F]/10 flex items-center justify-center text-[#14110F] group-hover:bg-[#B89B6A] group-hover:text-[#14110F] transition-all duration-300">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4 h-14">
+            {/* Left: Brand Logo (shrink-0 with clean spacing) */}
+            <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 mr-2 lg:mr-4">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[2px] bg-[#EDE5D8] border border-[#14110F]/10 flex items-center justify-center text-[#14110F] group-hover:bg-[#B89B6A] group-hover:text-[#14110F] transition-all duration-300 shrink-0">
                 <Glasses className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#14110F]">
+              <div className="flex flex-col shrink-0">
+                <span className="font-serif text-xl sm:text-2xl 2xl:text-3xl font-medium tracking-tight text-[#14110F] whitespace-nowrap">
                   {STORE_NAME}
                 </span>
-                <span className="text-[8.5px] tracking-[0.28em] uppercase font-sans text-[#B89B6A] font-medium -mt-1">
+                <span className="text-[7.5px] sm:text-[8.5px] tracking-[0.28em] uppercase font-sans text-[#B89B6A] font-medium -mt-1 whitespace-nowrap">
                   Haute Optique
                 </span>
               </div>
             </Link>
 
             {/* Center: Desktop Navigation with Mega Menus */}
-            <nav className="hidden xl:flex items-center space-x-6">
+            <nav className="hidden xl:flex items-center gap-3.5 2xl:gap-5 justify-center flex-1 min-w-0 px-2">
               <Link href="/" className={navLinkStyle("/")}>
                 Home
               </Link>
@@ -226,12 +293,12 @@ export default function Header() {
               {/* VIRTUAL TRY-ON LINK (NEW FEATURE) */}
               <Link
                 href="/try-on"
-                className={`relative inline-flex items-center gap-1.5 py-1 text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
+                className={`relative inline-flex items-center gap-1.5 py-1 text-[11px] 2xl:text-xs uppercase tracking-[0.12em] 2xl:tracking-[0.16em] font-medium whitespace-nowrap transition-colors ${
                   pathname === "/try-on" ? "text-[#B89B6A] font-semibold" : "text-[#14110F] hover:text-[#B89B6A]"
                 }`}
               >
                 <span>Virtual Try-On</span>
-                <span className="px-1.5 py-0.5 text-[8px] uppercase tracking-widest font-mono bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/40 rounded-[2px]">
+                <span className="px-1.5 py-0.5 text-[7.5px] 2xl:text-[8px] uppercase tracking-wider font-mono bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/40 rounded-[2px]">
                   NEW
                 </span>
               </Link>
@@ -250,12 +317,12 @@ export default function Header() {
             </nav>
 
             {/* Right: Actions (Search, WhatsApp, Book Eye Test CTA - NO CART, NO ACCOUNT) */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 ml-2 lg:ml-4">
               {/* Search Button */}
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search catalogue"
-                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
+                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
                 title="Search frames & lenses"
               >
                 <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -267,7 +334,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Enquire on WhatsApp"
-                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
+                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
                 title="Direct WhatsApp Concierge"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -276,17 +343,17 @@ export default function Header() {
               {/* Book Free Eye Test CTA Pill */}
               <Link
                 href="/book-eye-test"
-                className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.18em] font-sans font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] shadow-xs transition-all duration-300"
+                className="hidden lg:inline-flex items-center gap-1.5 px-3.5 2xl:px-4 py-2 2xl:py-2.5 rounded-[2px] text-[9.5px] 2xl:text-[10px] uppercase tracking-[0.16em] 2xl:tracking-[0.18em] font-sans font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] shadow-xs transition-all duration-300 shrink-0"
               >
                 <Calendar className="w-3.5 h-3.5" />
-                <span>Book Free Eye Test</span>
+                <span className="whitespace-nowrap">Book Free Eye Test</span>
               </Link>
 
               {/* Mobile menu button */}
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open navigation menu"
-                className="xl:hidden p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors"
+                className="xl:hidden p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
               >
                 <Menu className="w-6 h-6" />
               </button>
