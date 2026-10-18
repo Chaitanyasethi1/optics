@@ -7,24 +7,24 @@
       <stop offset="100%" stop-color="#0a0a0d" />
     </linearGradient>
 
-    <!-- Prizm Sapphire Blue Mirror Lens Gradient -->
+    <!-- Prizm Sapphire Blue Semi-Transparent Tint (Eyes visible through!) -->
     <linearGradient id="sapphireMirror" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d47a1" stop-opacity="0.95" />
-      <stop offset="35%" stop-color="#1976d2" stop-opacity="0.9" />
-      <stop offset="70%" stop-color="#00bcd4" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#4a148c" stop-opacity="0.9" />
+      <stop offset="0%" stop-color="#0d47a1" stop-opacity="0.52" />
+      <stop offset="35%" stop-color="#1976d2" stop-opacity="0.45" />
+      <stop offset="70%" stop-color="#00bcd4" stop-opacity="0.40" />
+      <stop offset="100%" stop-color="#4a148c" stop-opacity="0.48" />
     </linearGradient>
 
     <linearGradient id="holbrookGlare" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
-      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.08" />
       <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
-      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.30" />
     </linearGradient>
 
     <filter id="squareShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.42" />
     </filter>
   </defs>
 
@@ -39,16 +39,16 @@
 
     <!-- Matte Frame Outer Body -->
     <path
-      d="M 95,120
+      d="M 68,120
          L 445,125
          C 465,126 475,138 480,158
          C 485,178 490,190 500,190
          C 510,190 515,178 520,158
          C 525,138 535,126 555,125
-         L 905,120
-         C 925,120 935,132 930,150
-         L 915,225
-         C 908,255 890,325 850,335
+         L 932,120
+         C 948,120 955,132 950,150
+         L 935,225
+         C 928,255 905,325 865,335
          L 600,335
          C 580,335 565,315 565,285
          L 565,245
@@ -58,10 +58,10 @@
          C 455,208 440,225 435,245
          L 435,285
          C 435,315 420,335 400,335
-         L 150,335
-         C 110,325 92,255 85,225
-         L 70,150
-         C 65,132 75,120 95,120 Z
+         L 135,335
+         C 95,325 78,255 70,225
+         L 55,150
+         C 50,132 58,120 68,120 Z
          M 155,145
          L 389,145
          A 14 14 0 0 1 403,159
@@ -86,11 +86,11 @@
       stroke-width="1.5" />
 
     <!-- Top Rim Chamfer Reflection -->
-    <line x1="105" y1="123" x2="445" y2="128" stroke="#ffffff" stroke-width="2" opacity="0.35" stroke-linecap="round" />
-    <line x1="895" y1="123" x2="555" y2="128" stroke="#ffffff" stroke-width="2" opacity="0.35" stroke-linecap="round" />
+    <line x1="85" y1="123" x2="445" y2="128" stroke="#ffffff" stroke-width="2" opacity="0.35" stroke-linecap="round" />
+    <line x1="915" y1="123" x2="555" y2="128" stroke="#ffffff" stroke-width="2" opacity="0.35" stroke-linecap="round" />
 
     <!-- Chrome Rivet Dots -->
-    <circle cx="108" cy="148" r="3.5" fill="#e0e0e0" stroke="#333" stroke-width="0.8" />
-    <circle cx="892" cy="148" r="3.5" fill="#e0e0e0" stroke="#333" stroke-width="0.8" />
+    <circle cx="88" cy="148" r="3.5" fill="#e0e0e0" stroke="#333" stroke-width="0.8" />
+    <circle cx="912" cy="148" r="3.5" fill="#e0e0e0" stroke="#333" stroke-width="0.8" />
   </g>
 </svg>

@@ -81,25 +81,23 @@ export function drawGlassesOnCanvas({
   ctx.save();
 
   // 1. Move to the bridge center between the user's eyes
-  // Pitch naturally slides the frame slightly down the nasal slope when looking down
-  const pitchYOffset = clampedPitch * (ipd * 0.10);
-  ctx.translate(x, y + verticalAdjustment + pitchYOffset);
+  // Locked onto the biological optical center
+  ctx.translate(x, y + verticalAdjustment);
   ctx.rotate(angle);
 
-  // 2. Optical-grade scaling
-  // In our SVG master artboards (1000px × 450px), adult frame width scales to IPD / 0.42
-  const baseW = (ipd / 0.42) * (1 + sizeAdjustment / 100);
+  // 2. Optical-grade scaling (adult frame width = ~2.25x IPD, temple-to-temple cheekbone span)
+  const baseW = (ipd / 0.38) * (1 + sizeAdjustment / 100);
   const baseH = baseW * (450 / 1000);
 
   // 3. 3D Perspective Foreshortening
   // As head turns, the frontal width naturally foreshortens by cos(yaw)
   const cosYaw = Math.cos(clampedYaw * 0.95);
   const projectedW = baseW * Math.abs(cosYaw);
-  const projectedH = baseH * (1 + Math.abs(clampedPitch) * 0.08);
+  const projectedH = baseH * (1 + Math.abs(clampedPitch) * 0.05);
 
-  // Optical center Y is at ~52% of height (matching pupil horizontal line in SVGs)
+  // Optical center Y is centered at 50% of the SVG artboard height
   const drawX = -projectedW / 2;
-  const drawY = -projectedH * 0.52;
+  const drawY = -projectedH * 0.50;
 
   // 4. Draw 3D Temple Arms (Dandi) when head turns!
   // In real glasses, turning head reveals the side temple arm going back to the ear.
@@ -192,10 +190,6 @@ export function drawGlassesOnCanvas({
   ctx.shadowOffsetX = -clampedYaw * projectedW * 0.06;
 
   // 6. Draw the Frame Artwork with 3D Perspective Scaling
-  // Apply a subtle trapezoid skew for 3D depth
-  const perspectiveSkew = -clampedYaw * 0.08;
-  ctx.transform(1, perspectiveSkew, 0, 1, 0, 0);
-
   ctx.drawImage(img, drawX, drawY, projectedW, projectedH);
   ctx.restore();
 

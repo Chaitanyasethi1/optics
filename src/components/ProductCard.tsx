@@ -18,10 +18,12 @@ function UserTryOnFaceCanvas({
   userPhoto,
   calibration,
   product,
+  yawOffset = 0,
 }: {
   userPhoto: string;
   calibration: any;
   product: Product;
+  yawOffset?: number;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -55,14 +57,14 @@ function UserTryOnFaceCanvas({
         y: calibration.y * scaleY,
         ipd: calibration.ipd * scaleX,
         angle: calibration.angle,
-        yaw: calibration.yaw || 0,
+        yaw: (calibration.yaw || 0) + yawOffset,
         pitch: calibration.pitch || 0,
         sizeAdjustment: 0,
         verticalAdjustment: 0,
       });
     };
     img.src = userPhoto;
-  }, [userPhoto, calibration, product]);
+  }, [userPhoto, calibration, product, yawOffset]);
 
   return (
     <canvas
@@ -74,11 +76,13 @@ function UserTryOnFaceCanvas({
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [activeAngle, setActiveAngle] = useState<"front" | "left" | "right">("front");
   const enquiryLink = getProductEnquiryLink(product.name, product.brand, product.price);
 
   const { isTryOnActive, userPhoto, calibration, setIsTryOnActive, setSetupModalOpen } = useTryOn();
   const isEyewear = product.category === "sunglasses" || product.category === "eyeglasses";
   const showTryOnFace = isTryOnActive && userPhoto && calibration && isEyewear;
+  const yawOffset = activeAngle === "left" ? -0.38 : activeAngle === "right" ? 0.38 : 0;
 
   const handleTryOnButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -148,6 +152,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               userPhoto={userPhoto}
               calibration={calibration}
               product={product}
+              yawOffset={yawOffset}
             />
           ) : (
             <div className="relative w-full h-full p-4 sm:p-5 flex items-center justify-center">
@@ -175,6 +180,66 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
         </Link>
+
+        {/* Interactive 3D Angle Toggle on the Product Card */}
+        {showTryOnFace && (
+          <div className="absolute bottom-2 inset-x-2 z-20 flex items-center justify-between px-2 py-1 bg-[#14110F]/90 backdrop-blur-md rounded-[2px] border border-[#B89B6A]/30 shadow-md">
+            <span className="text-[7.5px] uppercase font-mono font-bold tracking-[0.16em] text-[#B89B6A] flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B89B6A] animate-pulse" />
+              <span>3D POSE</span>
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveAngle("left");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  activeAngle === "left"
+                    ? "bg-[#B89B6A] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="View from Left"
+              >
+                ◀ Left
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveAngle("front");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  activeAngle === "front"
+                    ? "bg-[#B89B6A] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="Frontal View"
+              >
+                Front
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveAngle("right");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  activeAngle === "right"
+                    ? "bg-[#B89B6A] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="View from Right"
+              >
+                Right ▶
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Content Details */}

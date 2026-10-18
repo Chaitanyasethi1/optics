@@ -364,6 +364,7 @@ export default function TryOnStage({
         if (results.faceLandmarks && results.faceLandmarks.length > 0) {
           const landmarks = results.faceLandmarks[0];
           setFaceDetected(true);
+          smoothedPose.current = null;
           renderFrameOverlay(ctx, landmarks, canvas.width, canvas.height, false);
           estimateFaceShape(landmarks);
         } else {
@@ -632,8 +633,8 @@ export default function TryOnStage({
     const neutralNoseDist = ipd * 0.58;
     const rawPitch = (noseTipY - pupilMidY - neutralNoseDist) / (ipd * 0.45 || 1);
 
-    const noseRoot = landmarks[6] ? { x: landmarks[6].x * width, y: landmarks[6].y * height } : null;
-    const targetY = noseRoot ? noseRoot.y * 0.72 + pupilMidY * 0.28 : pupilMidY;
+    // Optical center alignment: frame lenses center directly on pupil line
+    const targetY = pupilMidY;
     const targetX = pupilMidX;
 
     const pose = {

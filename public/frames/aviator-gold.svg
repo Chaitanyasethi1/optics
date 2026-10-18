@@ -17,132 +17,113 @@
       <stop offset="100%" stop-color="#543A15" />
     </linearGradient>
 
-    <!-- Ray-Ban Classic G-15 Green Polarized Lens Tint -->
+    <!-- Ray-Ban Classic G-15 Green Semi-Transparent Lens Tint (Eyes visible through!) -->
     <linearGradient id="g15Lens" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#142419" stop-opacity="0.92" />
-      <stop offset="60%" stop-color="#1b3022" stop-opacity="0.82" />
-      <stop offset="100%" stop-color="#243d2c" stop-opacity="0.75" />
+      <stop offset="0%" stop-color="#142419" stop-opacity="0.52" />
+      <stop offset="50%" stop-color="#1b3022" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#243d2c" stop-opacity="0.40" />
     </linearGradient>
 
-    <!-- Realistic Studio Glass Glint / Softbox Highlight -->
+    <!-- Realistic Glass Glint -->
     <linearGradient id="glassGlare" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5" />
-      <stop offset="25%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.42" />
+      <stop offset="25%" stop-color="#ffffff" stop-opacity="0.10" />
       <stop offset="40%" stop-color="#ffffff" stop-opacity="0.0" />
       <stop offset="70%" stop-color="#ffffff" stop-opacity="0.0" />
-      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.18" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="90%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.28" />
     </linearGradient>
 
-    <!-- Drop Shadow Filter -->
     <filter id="frameShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.45" />
-    </filter>
-
-    <!-- Subtle Inner Rim Ambient Shadow -->
-    <filter id="rimGlow">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.6" />
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.38" />
     </filter>
   </defs>
 
   <g id="aviator-frame" filter="url(#frameShadow)">
     <!-- 1. Silicone Nose Pads behind bridge -->
-    <ellipse cx="445" cy="245" rx="10" ry="18" fill="#e8e2d5" opacity="0.85" stroke="#9C773D" stroke-width="2" />
-    <path d="M445,235 Q458,225 465,228" stroke="url(#goldRim)" stroke-width="4" fill="none" stroke-linecap="round" />
+    <ellipse cx="445" cy="240" rx="8" ry="16" fill="#f2ede4" opacity="0.9" stroke="#9C773D" stroke-width="1.6" />
+    <path d="M445,230 Q458,220 465,223" stroke="url(#goldRim)" stroke-width="3" fill="none" stroke-linecap="round" />
 
-    <ellipse cx="555" cy="245" rx="10" ry="18" fill="#e8e2d5" opacity="0.85" stroke="#9C773D" stroke-width="2" />
-    <path d="M555,235 Q542,225 535,228" stroke="url(#goldRim)" stroke-width="4" fill="none" stroke-linecap="round" />
+    <ellipse cx="555" cy="240" rx="8" ry="16" fill="#f2ede4" opacity="0.9" stroke="#9C773D" stroke-width="1.6" />
+    <path d="M555,230 Q542,220 535,223" stroke="url(#goldRim)" stroke-width="3" fill="none" stroke-linecap="round" />
 
-    <!-- 2. Left Teardrop Lens Glass -->
+    <!-- 2. Left Teardrop Lens Glass (Semi-Transparent) -->
     <path id="left-lens"
-      d="M 272,130 
-         C 380,130 425,175 425,245 
+      d="M 272,135 
+         C 380,135 425,180 425,248 
          C 425,320 375,348 290,348 
-         C 195,348 120,315 120,240 
-         C 120,175 175,130 272,130 Z"
+         C 195,348 120,315 120,242 
+         C 120,180 175,135 272,135 Z"
       fill="url(#g15Lens)" />
-
-    <!-- Left Lens Studio Glass Glare -->
     <path
-      d="M 272,130 
-         C 380,130 425,175 425,245 
+      d="M 272,135 
+         C 380,135 425,180 425,248 
          C 425,320 375,348 290,348 
-         C 195,348 120,315 120,240 
-         C 120,175 175,130 272,130 Z"
+         C 195,348 120,315 120,242 
+         C 120,180 175,135 272,135 Z"
       fill="url(#glassGlare)" />
 
     <!-- Left Metallic Wire Rim -->
     <path
-      d="M 272,130 
-         C 380,130 425,175 425,245 
+      d="M 272,135 
+         C 380,135 425,180 425,248 
          C 425,320 375,348 290,348 
-         C 195,348 120,315 120,240 
-         C 120,175 175,130 272,130 Z"
-      fill="none" stroke="url(#goldRim)" stroke-width="7" stroke-linejoin="round" />
+         C 195,348 120,315 120,242 
+         C 120,180 175,135 272,135 Z"
+      fill="none" stroke="url(#goldRim)" stroke-width="5.5" stroke-linejoin="round" />
     <path
-      d="M 272,130 
-         C 380,130 425,175 425,245 
+      d="M 272,135 
+         C 380,135 425,180 425,248 
          C 425,320 375,348 290,348 
-         C 195,348 120,315 120,240 
-         C 120,175 175,130 272,130 Z"
-      fill="none" stroke="#FFF7DB" stroke-width="1.8" opacity="0.6" />
+         C 195,348 120,315 120,242 
+         C 120,180 175,135 272,135 Z"
+      fill="none" stroke="#FFF7DB" stroke-width="1.2" opacity="0.75" />
 
-    <!-- 3. Right Teardrop Lens Glass -->
+    <!-- 3. Right Teardrop Lens Glass (Semi-Transparent) -->
     <path id="right-lens"
-      d="M 728,130 
-         C 620,130 575,175 575,245 
+      d="M 728,135 
+         C 620,135 575,180 575,248 
          C 575,320 625,348 710,348 
-         C 805,348 880,315 880,240 
-         C 880,175 825,130 728,130 Z"
+         C 805,348 880,315 880,242 
+         C 880,180 825,135 728,135 Z"
       fill="url(#g15Lens)" />
-
-    <!-- Right Lens Studio Glass Glare -->
     <path
-      d="M 728,130 
-         C 620,130 575,175 575,245 
+      d="M 728,135 
+         C 620,135 575,180 575,248 
          C 575,320 625,348 710,348 
-         C 805,348 880,315 880,240 
-         C 880,175 825,130 728,130 Z"
+         C 805,348 880,315 880,242 
+         C 880,180 825,135 728,135 Z"
       fill="url(#glassGlare)" />
 
     <!-- Right Metallic Wire Rim -->
     <path
-      d="M 728,130 
-         C 620,130 575,175 575,245 
+      d="M 728,135 
+         C 620,135 575,180 575,248 
          C 575,320 625,348 710,348 
-         C 805,348 880,315 880,240 
-         C 880,175 825,130 728,130 Z"
-      fill="none" stroke="url(#goldRim)" stroke-width="7" stroke-linejoin="round" />
+         C 805,348 880,315 880,242 
+         C 880,180 825,135 728,135 Z"
+      fill="none" stroke="url(#goldRim)" stroke-width="5.5" stroke-linejoin="round" />
     <path
-      d="M 728,130 
-         C 620,130 575,175 575,245 
+      d="M 728,135 
+         C 620,135 575,180 575,248 
          C 575,320 625,348 710,348 
-         C 805,348 880,315 880,240 
-         C 880,175 825,130 728,130 Z"
-      fill="none" stroke="#FFF7DB" stroke-width="1.8" opacity="0.6" />
+         C 805,348 880,315 880,242 
+         C 880,180 825,135 728,135 Z"
+      fill="none" stroke="#FFF7DB" stroke-width="1.2" opacity="0.75" />
 
-    <!-- 4. Double Aviator Brow & Bridge Bars -->
-    <!-- Top Straight Brow Bar -->
-    <line x1="390" y1="140" x2="610" y2="140" stroke="url(#goldBar)" stroke-width="6.5" stroke-linecap="round" />
-    <line x1="392" y1="138" x2="608" y2="138" stroke="#FFFFFF" stroke-width="1.2" opacity="0.75" />
+    <!-- 4. Top Sweat Bar (Signature Aviator Double Bridge) -->
+    <path d="M 390,138 Q 500,128 610,138" stroke="url(#goldBar)" stroke-width="5" fill="none" stroke-linecap="round" />
+    <path d="M 392,136 Q 500,126 608,136" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.85" stroke-linecap="round" />
 
-    <!-- Lower Arched Bridge -->
-    <path d="M 423,190 Q 500,165 577,190" stroke="url(#goldBar)" stroke-width="7" fill="none" stroke-linecap="round" />
-    <path d="M 425,188 Q 500,164 575,188" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.65" />
+    <!-- Lower Nose Bridge -->
+    <path d="M 425,180 Q 500,165 575,180" stroke="url(#goldRim)" stroke-width="4.5" fill="none" stroke-linecap="round" />
+    <path d="M 427,178 Q 500,163 573,178" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.8" stroke-linecap="round" />
 
-    <!-- 5. End Pieces / Hinge Barrels -->
-    <g id="left-hinge">
-      <rect x="100" y="180" width="22" height="12" rx="3" fill="url(#goldBar)" stroke="#7A5624" stroke-width="1.5" />
-      <circle cx="111" cy="186" r="3" fill="#66461D" />
-      <!-- Small rearward temple piece hint -->
-      <path d="M 100,183 L 75,178 L 75,187 L 100,187 Z" fill="url(#goldRim)" opacity="0.9" />
-    </g>
+    <!-- 5. 3D Outer Hinge Pieces -->
+    <path d="M 120,205 L 68,202 L 68,212 L 120,212 Z" fill="url(#goldRim)" />
+    <circle cx="116" cy="208" r="2.5" fill="#422c0f" />
 
-    <g id="right-hinge">
-      <rect x="878" y="180" width="22" height="12" rx="3" fill="url(#goldBar)" stroke="#7A5624" stroke-width="1.5" />
-      <circle cx="889" cy="186" r="3" fill="#66461D" />
-      <!-- Small rearward temple piece hint -->
-      <path d="M 900,183 L 925,178 L 925,187 L 900,187 Z" fill="url(#goldRim)" opacity="0.9" />
-    </g>
+    <path d="M 880,205 L 932,202 L 932,212 L 880,212 Z" fill="url(#goldRim)" />
+    <circle cx="884" cy="208" r="2.5" fill="#422c0f" />
   </g>
 </svg>

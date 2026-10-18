@@ -7,23 +7,23 @@
       <stop offset="100%" stop-color="#211f1e" />
     </linearGradient>
 
-    <!-- Sunset Gradient / Smoke Lens -->
+    <!-- Sunset Gradient / Semi-Transparent Smoke Lens (Eyes visible through!) -->
     <linearGradient id="cateyeLens" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2b1c19" stop-opacity="0.94" />
-      <stop offset="65%" stop-color="#4d2f26" stop-opacity="0.82" />
-      <stop offset="100%" stop-color="#a67358" stop-opacity="0.65" />
+      <stop offset="0%" stop-color="#2b1c19" stop-opacity="0.52" />
+      <stop offset="65%" stop-color="#4d2f26" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#a67358" stop-opacity="0.38" />
     </linearGradient>
 
     <linearGradient id="cateyeGlare" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
-      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.40" />
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.08" />
       <stop offset="55%" stop-color="#ffffff" stop-opacity="0.0" />
-      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
     </linearGradient>
 
     <filter id="cateyeShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.48" />
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.42" />
     </filter>
   </defs>
 
@@ -62,25 +62,25 @@
 
     <!-- Sculpted Cat-Eye Acetate Frame -->
     <path
-      d="M 90,110
-         C 105,100 135,115 175,125
+      d="M 68,105
+         C 85,95 125,115 175,125
          Q 290,115 440,145
          C 465,150 480,175 500,175
          C 520,175 535,150 560,145
          Q 710,115 825,125
-         C 865,115 895,100 910,110
-         C 935,125 930,165 905,215
-         C 885,255 860,320 815,355
-         C 755,385 690,365 625,325
+         C 875,115 915,95 932,105
+         C 955,125 948,165 925,215
+         C 905,255 880,320 835,355
+         C 775,385 700,365 635,325
          L 580,245
          C 570,225 550,200 525,200
          C 515,200 505,205 500,205
          C 495,205 485,200 475,200
          C 450,200 430,225 420,245
-         L 375,325
-         C 310,365 245,385 185,355
-         C 140,320 115,255 95,215
-         C 70,165 65,125 90,110 Z
+         L 365,325
+         C 300,365 225,385 165,355
+         C 120,320 95,255 75,215
+         C 52,165 48,125 68,105 Z
          M 180,150 
          Q 280,140 375,170
          C 385,185 375,280 340,310
@@ -97,11 +97,7 @@
       stroke-width="1.8" />
 
     <!-- Cat-Eye Upswept Brow Highlight (White Specular Streak) -->
-    <path d="M 120,118 Q 280,120 440,145" stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round" />
-    <path d="M 880,118 Q 720,120 560,145" stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round" />
-
-    <!-- Wing Tip Gold Studs -->
-    <circle cx="102" cy="130" r="4" fill="#B89B6A" stroke="#5E431E" stroke-width="0.8" />
-    <circle cx="898" cy="130" r="4" fill="#B89B6A" stroke="#5E431E" stroke-width="0.8" />
+    <path d="M 98,112 Q 280,118 440,145" stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round" />
+    <path d="M 902,112 Q 720,118 560,145" stroke="#FFFFFF" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round" />
   </g>
 </svg>

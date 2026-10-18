@@ -1,71 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
   <defs>
+    <!-- Ultra-Luxe Polished Champagne Gold Gradient -->
     <linearGradient id="roundGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF2C2" />
-      <stop offset="30%" stop-color="#D4AF67" />
-      <stop offset="60%" stop-color="#9C773D" />
-      <stop offset="85%" stop-color="#FCEBA6" />
-      <stop offset="100%" stop-color="#6E4C1D" />
+      <stop offset="0%" stop-color="#FFF5CE" />
+      <stop offset="20%" stop-color="#D4AF67" />
+      <stop offset="50%" stop-color="#9C773D" />
+      <stop offset="80%" stop-color="#FCEBA6" />
+      <stop offset="100%" stop-color="#7A5624" />
     </linearGradient>
 
-    <linearGradient id="amberLens" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b2413" stop-opacity="0.92" />
-      <stop offset="50%" stop-color="#54351b" stop-opacity="0.82" />
-      <stop offset="100%" stop-color="#734a26" stop-opacity="0.75" />
+    <!-- Beveled Edge Specular Highlight -->
+    <linearGradient id="bevelGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#D4AF67" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#6E4C1D" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.4" />
     </linearGradient>
 
-    <linearGradient id="roundGlare" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
-      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.1" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
-      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.3" />
+    <!-- Clear Prescription / Blue-Cut Optical Glass: Transparent so the user's eyes & pupils are 100% visible! -->
+    <linearGradient id="opticalClearLens" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#E2F0FD" stop-opacity="0.12" />
+      <stop offset="40%" stop-color="#CDE4FA" stop-opacity="0.05" />
+      <stop offset="75%" stop-color="#D6E8FC" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#8BB8EB" stop-opacity="0.16" />
     </linearGradient>
 
+    <!-- Diagonal Anti-Reflective (AR) Coating Glare -->
+    <linearGradient id="arGlare" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.38" />
+      <stop offset="22%" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="38%" stop-color="#72D2FF" stop-opacity="0.0" />
+      <stop offset="70%" stop-color="#997AFF" stop-opacity="0.0" />
+      <stop offset="88%" stop-color="#FFFFFF" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.28" />
+    </linearGradient>
+
+    <!-- Soft Ambient Frame Shadow on Skin -->
     <filter id="roundShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.4" />
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.35" />
     </filter>
   </defs>
 
   <g id="round-frame" filter="url(#roundShadow)">
-    <!-- Silicone Nose Pads -->
-    <ellipse cx="430" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#9C773D" stroke-width="1.8" />
-    <path d="M430,225 Q442,215 450,218" stroke="url(#roundGold)" stroke-width="3.5" fill="none" stroke-linecap="round" />
+    <!-- 1. Silicone Nose Pads with Gold Stems -->
+    <ellipse cx="430" cy="225" rx="7" ry="15" fill="#f4efe6" opacity="0.9" stroke="#9C773D" stroke-width="1.4" />
+    <path d="M430,216 Q442,206 450,210" stroke="url(#roundGold)" stroke-width="2.8" fill="none" stroke-linecap="round" />
 
-    <ellipse cx="570" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#9C773D" stroke-width="1.8" />
-    <path d="M570,225 Q558,215 550,218" stroke="url(#roundGold)" stroke-width="3.5" fill="none" stroke-linecap="round" />
+    <ellipse cx="570" cy="225" rx="7" ry="15" fill="#f4efe6" opacity="0.9" stroke="#9C773D" stroke-width="1.4" />
+    <path d="M570,216 Q558,206 550,210" stroke="url(#roundGold)" stroke-width="2.8" fill="none" stroke-linecap="round" />
 
-    <!-- Left Circular Lens -->
-    <circle cx="272" cy="220" r="120" fill="url(#amberLens)" />
-    <circle cx="272" cy="220" r="120" fill="url(#roundGlare)" />
+    <!-- 2. Left Optical Circular Lens (Clear transparent glass) -->
+    <circle cx="272" cy="225" r="128" fill="url(#opticalClearLens)" />
+    <circle cx="272" cy="225" r="128" fill="url(#arGlare)" />
 
-    <!-- Left Metallic Wire Rim -->
-    <circle cx="272" cy="220" r="120" fill="none" stroke="url(#roundGold)" stroke-width="6.5" />
-    <circle cx="272" cy="220" r="120" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.55" />
+    <!-- Left Metallic Wire Rim with Luxury Chamfer -->
+    <circle cx="272" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="5" />
+    <circle cx="272" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="1.2" opacity="0.8" />
+    <circle cx="272" cy="225" r="129.5" fill="none" stroke="#523814" stroke-width="0.8" opacity="0.4" />
 
-    <!-- Right Circular Lens -->
-    <circle cx="728" cy="220" r="120" fill="url(#amberLens)" />
-    <circle cx="728" cy="220" r="120" fill="url(#roundGlare)" />
+    <!-- 3. Right Optical Circular Lens (Clear transparent glass) -->
+    <circle cx="728" cy="225" r="128" fill="url(#opticalClearLens)" />
+    <circle cx="728" cy="225" r="128" fill="url(#arGlare)" />
 
-    <!-- Right Metallic Wire Rim -->
-    <circle cx="728" cy="220" r="120" fill="none" stroke="url(#roundGold)" stroke-width="6.5" />
-    <circle cx="728" cy="220" r="120" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.55" />
+    <!-- Right Metallic Wire Rim with Luxury Chamfer -->
+    <circle cx="728" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="5" />
+    <circle cx="728" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="1.2" opacity="0.8" />
+    <circle cx="728" cy="225" r="129.5" fill="none" stroke="#523814" stroke-width="0.8" opacity="0.4" />
 
-    <!-- Arched Filigree Bridge -->
-    <path d="M 390,210 Q 500,165 610,210" stroke="url(#roundGold)" stroke-width="6" fill="none" stroke-linecap="round" />
-    <path d="M 392,208 Q 500,164 608,208" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.7" />
+    <!-- 4. Sculpted Filigree Nose Bridge -->
+    <path d="M 398,212 Q 500,172 602,212" stroke="url(#roundGold)" stroke-width="5" fill="none" stroke-linecap="round" />
+    <path d="M 400,210 Q 500,170 600,210" stroke="#FFFFFF" stroke-width="1.2" fill="none" opacity="0.85" stroke-linecap="round" />
 
-    <!-- Hinge Barrels -->
+    <!-- 5. 3D Outer Hinge Barrels & Rivet Joints (extends to edges of face) -->
     <g id="left-hinge">
-      <rect x="135" y="212" width="18" height="12" rx="2" fill="url(#roundGold)" stroke="#6E4C1D" stroke-width="1.2" />
-      <circle cx="144" cy="218" r="2.5" fill="#523814" />
-      <path d="M 135,215 L 115,212 L 115,220 L 135,220 Z" fill="url(#roundGold)" />
+      <path d="M 144,220 L 72,218 L 72,228 L 144,228 Z" fill="url(#roundGold)" />
+      <rect x="130" y="217" width="16" height="12" rx="2" fill="url(#roundGold)" stroke="#6E4C1D" stroke-width="1.2" />
+      <circle cx="138" cy="223" r="2.2" fill="#422c0f" />
     </g>
 
     <g id="right-hinge">
-      <rect x="847" y="212" width="18" height="12" rx="2" fill="url(#roundGold)" stroke="#6E4C1D" stroke-width="1.2" />
-      <circle cx="856" cy="218" r="2.5" fill="#523814" />
-      <path d="M 865,215 L 885,212 L 885,220 L 865,220 Z" fill="url(#roundGold)" />
+      <path d="M 856,220 L 928,218 L 928,228 L 856,228 Z" fill="url(#roundGold)" />
+      <rect x="854" y="217" width="16" height="12" rx="2" fill="url(#roundGold)" stroke="#6E4C1D" stroke-width="1.2" />
+      <circle cx="862" cy="223" r="2.2" fill="#422c0f" />
     </g>
   </g>
 </svg>
