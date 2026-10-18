@@ -185,3 +185,16 @@ h1, h2, h3, h4, .font-serif {
   animation-play-state: paused;
 }
 
+/* Slower luxury marquee for tall editorial category cards */
+.animate-category-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: luxuryMarquee 54s linear infinite;
+}
+
+.animate-category-marquee:hover {
+  animation-play-state: paused;
+}
+
+
