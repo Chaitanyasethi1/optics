@@ -191,7 +191,7 @@ h3, h4 {
   animation: kenburns 24s ease-in-out infinite alternate;
 }
 
-/* Luxury Endless Marquee Ticker for Top Sale & Announcements */
+/* Luxury Endless Marquee Tickers */
 @keyframes luxuryMarquee {
   0% {
     transform: translate3d(0, 0, 0);
@@ -201,11 +201,23 @@ h3, h4 {
   }
 }
 
+/* Very smooth, gentle, slow pace for Top Sale Ribbon */
+.animate-sale-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: luxuryMarquee 75s linear infinite;
+}
+
+.animate-sale-marquee:hover {
+  animation-play-state: paused;
+}
+
 .animate-marquee {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: luxuryMarquee 38s linear infinite;
+  animation: luxuryMarquee 65s linear infinite;
 }
 
 .animate-marquee:hover {
@@ -217,7 +229,7 @@ h3, h4 {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: luxuryMarquee 54s linear infinite;
+  animation: luxuryMarquee 80s linear infinite;
 }
 
 .animate-category-marquee:hover {

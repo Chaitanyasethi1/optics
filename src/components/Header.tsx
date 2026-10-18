@@ -103,7 +103,7 @@ export default function Header() {
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
         }}
       >
-        <div className="animate-marquee flex items-center whitespace-nowrap">
+        <div className="animate-sale-marquee flex items-center whitespace-nowrap">
           {/* Track 1 */}
           <div className="flex items-center shrink-0">
             {MARQUEE_SALE_ITEMS.map((item, idx) => (
