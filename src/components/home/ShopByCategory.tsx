@@ -50,7 +50,7 @@ const CATEGORIES = [
     itemCount: "Featherweight",
     pill: "EXCLUSIVE",
     link: "/sunglasses",
-    image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Virtual Try-On",

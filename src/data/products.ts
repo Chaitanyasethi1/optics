@@ -53,8 +53,8 @@ export const PRODUCTS: Product[] = [
     price: 36000,
     tags: ["Titanium", "Luxury", "New"],
     images: [
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
     ],
     description: "An understated statement of executive prestige. Forged from high-density Japanese Beta Titanium with laser-engraved Mont Blanc star emblem on the temple tips.",
     craftsmanshipNotes: "Hand-finished in Sabae, Fukui Prefecture, Japan—the world capital of bespoke titanium eyewear.",
@@ -92,8 +92,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 14,
     tags: ["Titanium", "Bestseller"],
     images: [
-      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
     ],
     description: "The timeless 1960s intellectual aesthetic reimagined in ultra-pure Japanese titanium. Ultra-light, corrosion-resistant and hypoallergenic for effortless all-day wear.",
     craftsmanshipNotes: "Precision stamped in Japan with micro-filigree engravings along the eye rims and bridge.",
@@ -129,8 +129,8 @@ export const PRODUCTS: Product[] = [
     discountPercent: 20,
     tags: ["Titanium", "New"],
     images: [
-      "https://images.unsplash.com/photo-1502767089025-6572583495f9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Contemporary professional tailoring with razor-sharp lines. An everyday architectural frame balancing lightweight durability with understated refinement.",
     craftsmanshipNotes: "Constructed with dual-flex titanium temple springs for pressure-free ear hugging comfort.",
@@ -345,7 +345,7 @@ export const PRODUCTS: Product[] = [
     discountPercent: 38,
     tags: ["40% OFF", "Polarized"],
     images: [
-      "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Born from motorsport speed. Aerodynamic curved frame with the iconic Carrera 'C' logo monogram and polarized flash mirror lenses.",
@@ -498,7 +498,7 @@ export const PRODUCTS: Product[] = [
     tags: ["Luxury", "New"],
     images: [
       "https://images.unsplash.com/photo-1502767089025-6572583495f9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Constructed with palladium-plated stainless steel alloy and Zeiss-engineered solar lenses. The understated Meisterstück three-ring motif adorns the temples.",
     specs: {
@@ -586,7 +586,7 @@ export const PRODUCTS: Product[] = [
     price: 13990,
     tags: ["Polarized", "Bestseller"],
     images: [
-      "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Designed in collaboration with Olympic athletes. Lightweight O Matter frame with metal square O rivets and game-changing Prizm lens technology for hyper-tuned contrast.",
@@ -644,7 +644,7 @@ export const PRODUCTS: Product[] = [
     tags: ["New", "Polarized"],
     images: [
       "https://images.unsplash.com/photo-1563903530908-afdd155d057a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Unapologetically bold. High-impact wraparound geometry with contrasting rubber accents and high-definition anti-glare polarization.",
     specs: {
@@ -675,7 +675,7 @@ export const PRODUCTS: Product[] = [
     tags: ["Bestseller", "Handcrafted"],
     images: [
       "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
     ],
     description: "A cultural touchstone. The classic Wayfarer profile tailored for daily prescription wear in rich polished acetate with unmistakable temple silver rivets.",
     specs: {
@@ -729,7 +729,7 @@ export const PRODUCTS: Product[] = [
     price: 19800,
     tags: ["Luxury", "Handcrafted"],
     images: [
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Impeccably sharp Savile Row tailoring. Substantial square acetate front paired with brushed metal hinges engraved with the Burberry hallmark.",
@@ -815,7 +815,7 @@ export const PRODUCTS: Product[] = [
     price: 8990,
     tags: ["Titanium", "New"],
     images: [
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1502767089025-6572583495f9?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Constructed with Beta Titanium alloy wire rims, this executive square frame is engineered for boardroom presence and lightweight endurance.",
@@ -909,7 +909,7 @@ export const PRODUCTS: Product[] = [
     tags: ["Bestseller"],
     images: [
       "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
     ],
     description: "The most transparent lens coating ever made by Essilor. 360° Multi-Angular Technology reduces reflections from all angles, making lenses virtually invisible on camera and in person.",
     specs: {
@@ -1272,7 +1272,7 @@ export const PRODUCTS: Product[] = [
     tags: ["Luxury", "New"],
     images: [
       "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Understated British luxury. Compact oval profile in deep caramel horn acetate, perfect for diamond and square face shapes.",
     specs: {
@@ -1299,7 +1299,7 @@ export const PRODUCTS: Product[] = [
     price: 7200,
     tags: ["Bestseller"],
     images: [
-      "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&w=800&q=80",
     ],
     description: "Solid, structured rectangular frame with dark crystal transparency and gunmetal temple insets. Commands authority with all-day comfort.",
@@ -1446,7 +1446,7 @@ export const BLOG_POSTS: BlogPost[] = [
       role: "Luxury Eyewear Stylist",
       avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
     },
-    coverImage: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=1200&q=80",
     content: [
       "Eyewear is the only personal accessory situated directly on the visual focal point of human communication: the eyes. Selecting the right frame is not an exercise in chasing transient trends; it is an architectural study in balance and counter-tension.",
       "Round & Oval Faces: Introduce geometric tension. Rectangular frames, beveled cat-eyes, and sharp browlines create angular definition that elongates the cheek line.",
@@ -1510,7 +1510,7 @@ export const BRANDS = [
     founded: "1906",
     category: "Executive Prestige",
     description: "Impeccable German craftsmanship and Japanese titanium engineering marked by the iconic snowcap emblem.",
-    image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Maui Jim",
@@ -1542,7 +1542,7 @@ export const BRANDS = [
     founded: "1956",
     category: "Motorsport Heritage",
     description: "Dynamic, race-inspired sunglasses designed for daring personalities who live by their own rules.",
-    image: "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Burberry",
@@ -1550,7 +1550,7 @@ export const BRANDS = [
     founded: "1856",
     category: "British Luxury",
     description: "Timeless British heritage featuring house vintage check details and refined tortoiseshell frames.",
-    image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Police",
@@ -1574,7 +1574,7 @@ export const BRANDS = [
     founded: "1975",
     category: "Sport Performance & Optics",
     description: "Groundbreaking Prizm lens technology and durable O Matter frames trusted by world champion athletes.",
-    image: "https://images.unsplash.com/photo-1582142839970-2b971720656f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -1583,29 +1583,38 @@ export const LENS_BRANDS = [
   {
     brand: "ZEISS",
     country: "Germany",
+    flag: "DE",
     badge: "Precision German Optics",
     singleVisionStarting: 4990,
     progressiveStarting: 18500,
     popularTech: ["SmartLife Technology", "DuraVision Platinum AR", "DriveSafe Optics", "UVProtect Clear"],
     description: "Over 175 years of optical excellence. Zeiss lenses provide unmatched clarity, sharp contrast and comprehensive UV protection.",
+    image: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=800&q=80",
+    coatingBadge: "DuraVision Platinum AR",
   },
   {
     brand: "Essilor",
     country: "France",
+    flag: "FR",
     badge: "World Leader in Eyewear Lenses",
     singleVisionStarting: 5490,
     progressiveStarting: 14900,
     popularTech: ["Crizal Sapphire HR (360° AR)", "Varilux Comfort Max", "Eyezen Digital Filter", "Transitions Gen S"],
     description: "Inventors of the progressive lens (Varilux) and Crizal anti-reflective shields. Pioneering solutions for modern digital eye health.",
+    image: "https://images.unsplash.com/photo-1507646227500-4d389b0012be?auto=format&fit=crop&w=800&q=80",
+    coatingBadge: "Crizal Sapphire HR 360°",
   },
   {
     brand: "HOYA",
     country: "Japan",
+    flag: "JP",
     badge: "Advanced Japanese Engineering",
     singleVisionStarting: 4490,
     progressiveStarting: 13900,
     popularTech: ["Sync III Accommodation Support", "BlueControl Coating", "Hi-Vision LongLife", "Hoyalux iD Myself"],
     description: "Unmatched Japanese coating durability and computerized lens design tailored to active metropolitan lifestyles.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    coatingBadge: "Hi-Vision LongLife AR",
   },
 ];
 
@@ -1677,7 +1686,7 @@ export const INSTAGRAM_POSTS = [
   },
   {
     id: "ig-5",
-    image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=600&q=80",
     caption: "Executive sophistication with Mont Blanc Meisterstück frames. Available in our Indiranagar lounge. #MontBlanc",
     likes: "876",
   },

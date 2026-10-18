@@ -165,7 +165,7 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     bridgeMm: 18,
     lensWidthMm: 53,
     lensHeightMm: 40,
-    image: "https://images.unsplash.com/photo-1509695503492-4133342022e0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=800&q=80",
     overlayUrl: "/frames/geometric-gunmetal.svg",
     frameColor: "#2A2623",
     accentColor: "#B89B6A",
