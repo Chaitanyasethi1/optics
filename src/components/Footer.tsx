@@ -2,11 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Glasses, Phone, Mail, MapPin, Clock, MessageCircle, ShieldCheck, Sparkles, Award } from "lucide-react";
 import { STORE_NAME, PHONE, ADDRESS, EMAIL, TIMINGS, getWhatsAppLink } from "@/data/config";
 import { InstagramIcon, FacebookIcon, TwitterIcon } from "@/components/SocialIcons";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
+
   return (
     <footer className="bg-[#14110F] text-[#F7F3EC] border-t border-[#14110F]/10 pt-20 pb-16">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">

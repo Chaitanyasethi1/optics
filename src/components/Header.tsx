@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { STORE_NAME, PHONE, getWhatsAppLink } from "@/data/config";
 import SearchModal from "@/components/SearchModal";
+import { useNavbarTheme } from "@/context/NavbarThemeContext";
 
 const MARQUEE_SALE_ITEMS = [
   {
@@ -65,6 +66,9 @@ const MARQUEE_SALE_ITEMS = [
 
 export default function Header() {
   const pathname = usePathname();
+  const { theme, isHomeSnapDeck } = useNavbarTheme();
+  const isDark = isHomeSnapDeck && theme === "dark";
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -87,7 +91,11 @@ export default function Header() {
   const navLinkStyle = (href: string) => {
     const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
     return `relative py-1 text-[11.5px] 2xl:text-xs uppercase tracking-[0.14em] 2xl:tracking-[0.16em] font-medium whitespace-nowrap transition-colors duration-300 ${
-      isActive ? "text-[#B89B6A] font-semibold" : "text-[#14110F] hover:text-[#B89B6A]"
+      isActive
+        ? "text-[#B89B6A] font-semibold"
+        : isDark
+        ? "text-[#F7F3EC] hover:text-[#B89B6A]"
+        : "text-[#14110F] hover:text-[#B89B6A]"
     } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-[#B89B6A] after:transition-all after:duration-300 ${
       isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
     }`;
@@ -95,84 +103,104 @@ export default function Header() {
 
   return (
     <>
-      {/* 1. Continuous Luxury Infinite Marquee Ribbon ("Gole Gole Ghumne Wali Sale") */}
-      <div 
-        className="bg-[#EDE5D8] border-b border-[#14110F]/10 text-xs py-2.5 overflow-hidden relative select-none group transition-colors hover:bg-[#EAE1D3]"
-        style={{
-          maskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
-        }}
-      >
-        <div className="animate-sale-marquee flex items-center whitespace-nowrap">
-          {/* Track 1 */}
-          <div className="flex items-center shrink-0">
-            {MARQUEE_SALE_ITEMS.map((item, idx) => (
-              <Link
-                key={`m1-${idx}`}
-                href={item.href}
-                className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
-              >
-                <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
-                  {item.badge}
-                </span>
-                <span className="font-semibold text-[#14110F]">
-                  {item.title}:
-                </span>
-                <span className="text-[#2A2623] font-normal tracking-[0.06em]">
-                  {item.desc}
-                </span>
-                <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
-                  {item.action}
-                </span>
-                <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
-              </Link>
-            ))}
-          </div>
+      {/* 1. Continuous Luxury Infinite Marquee Ribbon - Rendered on inner pages */}
+      {!isHomeSnapDeck && (
+        <div 
+          className="bg-[#EDE5D8] border-b border-[#14110F]/10 text-xs py-2.5 overflow-hidden relative select-none group transition-colors hover:bg-[#EAE1D3]"
+          style={{
+            maskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
+          }}
+        >
+          <div className="animate-sale-marquee flex items-center whitespace-nowrap">
+            {/* Track 1 */}
+            <div className="flex items-center shrink-0">
+              {MARQUEE_SALE_ITEMS.map((item, idx) => (
+                <Link
+                  key={`m1-${idx}`}
+                  href={item.href}
+                  className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
+                >
+                  <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
+                    {item.badge}
+                  </span>
+                  <span className="font-semibold text-[#14110F]">
+                    {item.title}:
+                  </span>
+                  <span className="text-[#2A2623] font-normal tracking-[0.06em]">
+                    {item.desc}
+                  </span>
+                  <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
+                    {item.action}
+                  </span>
+                  <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
+                </Link>
+              ))}
+            </div>
 
-          {/* Track 2 (Exact duplicate for seamless continuous 360 loop) */}
-          <div className="flex items-center shrink-0" aria-hidden="true">
-            {MARQUEE_SALE_ITEMS.map((item, idx) => (
-              <Link
-                key={`m2-${idx}`}
-                href={item.href}
-                className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
-              >
-                <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
-                  {item.badge}
-                </span>
-                <span className="font-semibold text-[#14110F]">
-                  {item.title}:
-                </span>
-                <span className="text-[#2A2623] font-normal tracking-[0.06em]">
-                  {item.desc}
-                </span>
-                <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
-                  {item.action}
-                </span>
-                <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
-              </Link>
-            ))}
+            {/* Track 2 (Exact duplicate for seamless continuous 360 loop) */}
+            <div className="flex items-center shrink-0" aria-hidden="true">
+              {MARQUEE_SALE_ITEMS.map((item, idx) => (
+                <Link
+                  key={`m2-${idx}`}
+                  href={item.href}
+                  className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
+                >
+                  <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
+                    {item.badge}
+                  </span>
+                  <span className="font-semibold text-[#14110F]">
+                    {item.title}:
+                  </span>
+                  <span className="text-[#2A2623] font-normal tracking-[0.06em]">
+                    {item.desc}
+                  </span>
+                  <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
+                    {item.action}
+                  </span>
+                  <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* 2. Main Sticky Header with Maison Blur & Hairline Border */}
+      {/* 2. Main Solid Fixed/Sticky Header (Fixed 72px height, solid opaque) */}
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-500 ${
-          scrolled
-            ? "bg-[#F7F3EC]/95 backdrop-blur-md shadow-xs border-b border-[#14110F]/8 py-2.5 sm:py-3"
-            : "bg-[#F7F3EC] border-b border-[#14110F]/8 py-3.5 sm:py-4"
+        className={`z-40 w-full h-[72px] transition-colors duration-500 ${
+          isHomeSnapDeck
+            ? `fixed top-0 left-0 right-0 ${
+                isDark
+                  ? "bg-[#14110F] text-[#F7F3EC] border-b border-white/10"
+                  : "bg-[#F7F3EC] text-[#14110F] border-b border-[#14110F]/10"
+              }`
+            : `sticky top-0 ${
+                scrolled
+                  ? "bg-[#F7F3EC] shadow-sm border-b border-[#14110F]/10"
+                  : "bg-[#F7F3EC] border-b border-[#14110F]/10"
+              }`
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 h-14">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
+          <div className="flex items-center justify-between gap-4 h-full">
             {/* Left: Brand Logo (shrink-0 with clean spacing) */}
             <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 mr-2 lg:mr-4">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[2px] bg-[#EDE5D8] border border-[#14110F]/10 flex items-center justify-center text-[#14110F] group-hover:bg-[#B89B6A] group-hover:text-[#14110F] transition-all duration-300 shrink-0">
+              <div
+                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-[2px] flex items-center justify-center transition-all duration-300 shrink-0 ${
+                  isDark
+                    ? "bg-[#2A2623] border border-white/10 text-[#D4BE96] group-hover:bg-[#B89B6A] group-hover:text-[#14110F]"
+                    : "bg-[#EDE5D8] border border-[#14110F]/10 text-[#14110F] group-hover:bg-[#B89B6A] group-hover:text-[#14110F]"
+                }`}
+              >
                 <Glasses className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
               </div>
               <div className="flex flex-col shrink-0">
-                <span className="font-serif text-xl sm:text-2xl 2xl:text-3xl font-medium tracking-tight text-[#14110F] whitespace-nowrap">
+                <span
+                  className={`font-serif text-xl sm:text-2xl 2xl:text-3xl font-medium tracking-tight whitespace-nowrap transition-colors ${
+                    isDark ? "text-[#F7F3EC]" : "text-[#14110F]"
+                  }`}
+                >
                   {STORE_NAME}
                 </span>
                 <span className="text-[7.5px] sm:text-[8.5px] tracking-[0.28em] uppercase font-sans text-[#B89B6A] font-medium -mt-1 whitespace-nowrap">
@@ -330,7 +358,9 @@ export default function Header() {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search catalogue"
-                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
+                className={`p-2 transition-colors shrink-0 ${
+                  isDark ? "text-[#F7F3EC] hover:text-[#B89B6A]" : "text-[#14110F] hover:text-[#B89B6A]"
+                }`}
                 title="Search frames & lenses"
               >
                 <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -342,7 +372,9 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Enquire on WhatsApp"
-                className="p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
+                className={`p-2 transition-colors shrink-0 ${
+                  isDark ? "text-[#F7F3EC] hover:text-[#B89B6A]" : "text-[#14110F] hover:text-[#B89B6A]"
+                }`}
                 title="Direct WhatsApp Concierge"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -351,9 +383,13 @@ export default function Header() {
               {/* Book Free Eye Test CTA Pill - Pure Maison Luxury */}
               <Link
                 href="/book-eye-test"
-                className="hidden lg:inline-flex items-center gap-2 px-4 2xl:px-5 py-2 2xl:py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.2em] font-sans font-bold bg-[#14110F] text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30 shadow-xs transition-all duration-300 shrink-0"
+                className={`hidden lg:inline-flex items-center gap-2 px-4 2xl:px-5 py-2 2xl:py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.2em] font-sans font-bold shadow-xs transition-all duration-300 shrink-0 ${
+                  isDark
+                    ? "bg-[#B89B6A] text-[#14110F] hover:bg-[#F7F3EC]"
+                    : "bg-[#14110F] text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30"
+                }`}
               >
-                <Calendar className="w-3.5 h-3.5 text-[#B89B6A]" />
+                <Calendar className={`w-3.5 h-3.5 ${isDark ? "text-[#14110F]" : "text-[#B89B6A]"}`} />
                 <span className="whitespace-nowrap">Book Free Eye Test</span>
               </Link>
 
@@ -361,7 +397,9 @@ export default function Header() {
               <button
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Open navigation menu"
-                className="xl:hidden p-2 text-[#14110F] hover:text-[#B89B6A] transition-colors shrink-0"
+                className={`xl:hidden p-2 transition-colors shrink-0 ${
+                  isDark ? "text-[#F7F3EC] hover:text-[#B89B6A]" : "text-[#14110F] hover:text-[#B89B6A]"
+                }`}
               >
                 <Menu className="w-6 h-6" />
               </button>
