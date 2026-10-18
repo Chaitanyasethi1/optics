@@ -18,35 +18,47 @@ import {
 import { STORE_NAME, PHONE, getWhatsAppLink } from "@/data/config";
 import SearchModal from "@/components/SearchModal";
 
-const ANNOUNCEMENTS = [
+const MARQUEE_SALE_ITEMS = [
   {
-    tag: "MAISON SALE",
-    text: "Seasonal Private Atelier: Enjoy Up to 40% Off Handcrafted Sunglasses & Optical Frames",
-    cta: "Explore Offers",
+    badge: "MAISON SALE",
+    title: "PRIVATE ATELIER SALE",
+    desc: "UP TO 40% OFF HANDCRAFTED DESIGNER SUNWEAR & EYEWEAR",
+    action: "EXPLORE OFFERS →",
     href: "/offers",
   },
   {
-    tag: "PRECISION CLINIC",
-    text: "Complimentary 14-Step Precision Eye Examination with Master Optometrists (Worth ₹1,500)",
-    cta: "Book Free Slot",
+    badge: "FREE EYE TEST",
+    title: "14-STEP PRECISION EXAM",
+    desc: "COMPLIMENTARY CLINIC BY ZEISS & ESSILOR MASTER OPTOMETRISTS (WORTH ₹1,500)",
+    action: "BOOK FREE SLOT →",
     href: "/book-eye-test",
   },
   {
-    tag: "AR STUDIO",
-    text: "Virtual Try-On Salon: Fit Curated Designer Frames Live on Your Face in Real Time",
-    cta: "Try Frames Now",
+    badge: "AR SALON",
+    title: "VIRTUAL TRY-ON STUDIO",
+    desc: "EXPERIENCE DESIGNER FRAMES LIVE ON YOUR FACE IN REAL-TIME 3D",
+    action: "TRY ON LIVE →",
     href: "/try-on",
   },
   {
-    tag: "BESPOKE LENSES",
-    text: "Complimentary Zeiss Anti-Reflective Coating on all Progressive Lenses",
-    cta: "Explore Lenses",
+    badge: "TITANIUM",
+    title: "JAPANESE PURE TITANIUM",
+    desc: "FLAT 30% OFF FEATHERLIGHT ARCHITECTURAL EYEWEAR FROM FUKUI",
+    action: "VIEW TITANIUM →",
+    href: "/sunglasses",
+  },
+  {
+    badge: "FREE COATING",
+    title: "ZEISS DURACOAT LENSES",
+    desc: "COMPLIMENTARY ANTI-REFLECTIVE COATING ON ALL PROGRESSIVES",
+    action: "VIEW LENSES →",
     href: "/lenses",
   },
   {
-    tag: "AUTHENTIC MAISONS",
-    text: "100% Certified Original Maisons: Gucci • Ray-Ban • Montblanc • Silhouette • Oakley",
-    cta: "Explore Brands",
+    badge: "100% ORIGINAL",
+    title: "CERTIFIED LUXURY MAISONS",
+    desc: "GUCCI • RAY-BAN • MONTBLANC • SILHOUETTE • OAKLEY • BURBERRY",
+    action: "VIEW BRANDS →",
     href: "/brands",
   },
 ];
@@ -57,33 +69,6 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-
-  // Announcement rotator state
-  const [currentNotice, setCurrentNotice] = useState(0);
-  const [isFading, setIsFading] = useState(false);
-
-  const nextNotice = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentNotice((prev) => (prev + 1) % ANNOUNCEMENTS.length);
-      setIsFading(false);
-    }, 200);
-  };
-
-  const prevNotice = () => {
-    setIsFading(true);
-    setTimeout(() => {
-      setCurrentNotice((prev) => (prev - 1 + ANNOUNCEMENTS.length) % ANNOUNCEMENTS.length);
-      setIsFading(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextNotice();
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,72 +95,64 @@ export default function Header() {
 
   return (
     <>
-      {/* 1. Ultra-Refined Luxury Top Announcement Bar */}
-      <div className="bg-[#EDE5D8] border-b border-[#14110F]/10 text-xs py-2 px-4 transition-colors">
-        <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
-          
-          {/* Left: Maison Tag & Interactive Controls */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
-            <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[9px] font-mono uppercase tracking-[0.2em] font-medium shadow-2xs">
-              {ANNOUNCEMENTS[currentNotice].tag}
-            </span>
-            <div className="flex items-center gap-1 text-[#7A7168] pl-1 select-none">
-              <button
-                onClick={prevNotice}
-                aria-label="Previous announcement"
-                className="w-4 h-4 flex items-center justify-center hover:text-[#14110F] transition-colors text-xs font-bold"
-              >
-                ‹
-              </button>
-              <span className="text-[10px] font-mono tracking-tighter text-[#7A7168]">
-                {currentNotice + 1}/{ANNOUNCEMENTS.length}
-              </span>
-              <button
-                onClick={nextNotice}
-                aria-label="Next announcement"
-                className="w-4 h-4 flex items-center justify-center hover:text-[#14110F] transition-colors text-xs font-bold"
-              >
-                ›
-              </button>
-            </div>
-          </div>
-
-          {/* Center: Curated Announcement with Smooth Cross-Fade */}
-          <div className="flex-1 flex items-center justify-center text-center px-2 overflow-hidden">
-            <div
-              className={`flex items-center justify-center gap-2 transition-all duration-300 ${
-                isFading ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#B89B6A] shrink-0" />
-              <span className="text-[11.5px] sm:text-xs font-medium tracking-[0.02em] text-[#14110F]">
-                {ANNOUNCEMENTS[currentNotice].text}
-              </span>
+      {/* 1. Continuous Luxury Infinite Marquee Ribbon ("Gole Gole Ghumne Wali Sale") */}
+      <div 
+        className="bg-[#EDE5D8] border-b border-[#14110F]/10 text-xs py-2.5 overflow-hidden relative select-none group transition-colors hover:bg-[#EAE1D3]"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)",
+        }}
+      >
+        <div className="animate-marquee flex items-center whitespace-nowrap">
+          {/* Track 1 */}
+          <div className="flex items-center shrink-0">
+            {MARQUEE_SALE_ITEMS.map((item, idx) => (
               <Link
-                href={ANNOUNCEMENTS[currentNotice].href}
-                className="hidden md:inline-flex items-center gap-1 text-[11px] font-medium text-[#B89B6A] hover:text-[#7A5A43] underline underline-offset-3 ml-1.5 transition-colors whitespace-nowrap"
+                key={`m1-${idx}`}
+                href={item.href}
+                className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
               >
-                <span>{ANNOUNCEMENTS[currentNotice].cta}</span>
-                <ArrowRight className="w-3 h-3" />
+                <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
+                  {item.badge}
+                </span>
+                <span className="font-semibold text-[#14110F]">
+                  {item.title}:
+                </span>
+                <span className="text-[#2A2623] font-normal tracking-[0.06em]">
+                  {item.desc}
+                </span>
+                <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
+                  {item.action}
+                </span>
+                <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
               </Link>
-            </div>
+            ))}
           </div>
 
-          {/* Right: Flagship Showroom Hours & All Offers */}
-          <div className="hidden lg:flex items-center gap-4 text-[11px] text-[#7A7168] shrink-0">
-            <span className="flex items-center gap-1.5 text-[#14110F]">
-              <Clock className="w-3.5 h-3.5 text-[#B89B6A]" />
-              <span>Flagship: 10 AM – 9 PM</span>
-            </span>
-            <span className="text-[#B89B6A]">•</span>
-            <Link
-              href="/offers"
-              className="text-[#14110F] hover:text-[#B89B6A] font-medium uppercase tracking-[0.14em] text-[10.5px] transition-colors"
-            >
-              All Privileges →
-            </Link>
+          {/* Track 2 (Exact duplicate for seamless continuous 360 loop) */}
+          <div className="flex items-center shrink-0" aria-hidden="true">
+            {MARQUEE_SALE_ITEMS.map((item, idx) => (
+              <Link
+                key={`m2-${idx}`}
+                href={item.href}
+                className="inline-flex items-center gap-2.5 mx-6 sm:mx-8 text-[11px] sm:text-xs tracking-[0.14em] uppercase transition-opacity hover:opacity-75"
+              >
+                <span className="px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#D4BE96] text-[8.5px] font-mono tracking-[0.2em] font-semibold">
+                  {item.badge}
+                </span>
+                <span className="font-semibold text-[#14110F]">
+                  {item.title}:
+                </span>
+                <span className="text-[#2A2623] font-normal tracking-[0.06em]">
+                  {item.desc}
+                </span>
+                <span className="text-[#B89B6A] font-medium underline underline-offset-3 ml-1.5">
+                  {item.action}
+                </span>
+                <span className="text-[#B89B6A] ml-6 sm:ml-8 text-xs select-none">✦</span>
+              </Link>
+            ))}
           </div>
-
         </div>
       </div>
 
