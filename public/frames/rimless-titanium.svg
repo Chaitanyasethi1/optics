@@ -1,76 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
   <defs>
-    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE0D6" />
-      <stop offset="35%" stop-color="#D99E8F" />
-      <stop offset="70%" stop-color="#A86E60" />
-      <stop offset="100%" stop-color="#F2C4B8" />
+    <!-- Ultra-Refined Medical-Grade Rose Gold Titanium Gradient -->
+    <linearGradient id="roseTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EED5C8" />
+      <stop offset="35%" stop-color="#C99885" />
+      <stop offset="70%" stop-color="#9C6B59" />
+      <stop offset="100%" stop-color="#DEB09E" />
     </linearGradient>
 
-    <!-- Clear Prescription Lens with Blue-Cut Anti-Reflective Reflex -->
-    <linearGradient id="clearBlueCut" x1="10%" y1="0%" x2="90%" y2="100%">
-      <stop offset="0%" stop-color="#dff0fc" stop-opacity="0.22" />
-      <stop offset="35%" stop-color="#c9e4fb" stop-opacity="0.12" />
-      <stop offset="70%" stop-color="#d0dcf5" stop-opacity="0.08" />
-      <stop offset="100%" stop-color="#8bb4ec" stop-opacity="0.2" />
+    <!-- Diamond-Polished Bevel Highlight (Very subtle, 100% natural, NO thick white borders!) -->
+    <linearGradient id="diamondEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#9dbbd8" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
     </linearGradient>
 
-    <!-- Diamond-Polished Beveled Rim Edge Glow -->
-    <linearGradient id="bevelEdge" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="#a6c8e8" stop-opacity="0.5" />
+    <!-- Crystal Clear Optical Lens (100% See-Through so eyes are completely visible) -->
+    <linearGradient id="clearGlass" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#eaf3fb" stop-opacity="0.06" />
+      <stop offset="50%" stop-color="#d4e8fa" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#b6d5f5" stop-opacity="0.08" />
     </linearGradient>
 
-    <filter id="rimlessShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.3" />
+    <!-- Faint AR Reflection Glint -->
+    <linearGradient id="arGlint" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="25%" stop-color="#80d0ff" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.18" />
+    </linearGradient>
+
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.25" />
     </filter>
   </defs>
 
-  <g id="rimless-frame" filter="url(#rimlessShadow)">
-    <!-- Silicone Nose Pads -->
-    <ellipse cx="440" cy="235" rx="8" ry="16" fill="#f0eae1" opacity="0.88" stroke="#A86E60" stroke-width="1.5" />
-    <path d="M440,225 Q450,215 456,220" stroke="url(#roseGold)" stroke-width="3" fill="none" stroke-linecap="round" />
+  <g id="rimless-frame" filter="url(#subtleShadow)">
+    <!-- 1. Silicone Nose Pads & Titanium Stems -->
+    <ellipse cx="435" cy="225" rx="6" ry="14" fill="#f8f4ee" opacity="0.88" stroke="#9C6B59" stroke-width="1.2" />
+    <path d="M435,216 Q446,206 452,210" stroke="url(#roseTitanium)" stroke-width="2.2" fill="none" stroke-linecap="round" />
 
-    <ellipse cx="560" cy="235" rx="8" ry="16" fill="#f0eae1" opacity="0.88" stroke="#A86E60" stroke-width="1.5" />
-    <path d="M560,225 Q550,215 544,220" stroke="url(#roseGold)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <ellipse cx="565" cy="225" rx="6" ry="14" fill="#f8f4ee" opacity="0.88" stroke="#9C6B59" stroke-width="1.2" />
+    <path d="M565,216 Q554,206 548,210" stroke="url(#roseTitanium)" stroke-width="2.2" fill="none" stroke-linecap="round" />
 
-    <!-- Left Floating Rimless Lens (Gentle Rectangle-Oval) -->
-    <rect x="150" y="155" width="244" height="130" rx="45" ry="40" fill="url(#clearBlueCut)" />
-    <!-- Diamond Polished Edge -->
-    <rect x="150" y="155" width="244" height="130" rx="45" ry="40" fill="none" stroke="url(#bevelEdge)" stroke-width="2.5" />
-    <rect x="152" y="157" width="240" height="126" rx="43" ry="38" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.6" />
+    <!-- 2. Left Floating Rimless Lens (Pure Rimless Silhouette Shape) -->
+    <!-- Crystal clear glass body -->
+    <rect x="145" y="150" width="255" height="150" rx="36" ry="32" fill="url(#clearGlass)" />
+    <rect x="145" y="150" width="255" height="150" rx="36" ry="32" fill="url(#arGlint)" />
+    <!-- Ultra-delicate diamond-polished edge bevel (hairline stroke, NOT glowing box) -->
+    <rect x="145" y="150" width="255" height="150" rx="36" ry="32" fill="none" stroke="url(#diamondEdge)" stroke-width="1.2" />
 
-    <!-- Right Floating Rimless Lens -->
-    <rect x="606" y="155" width="244" height="130" rx="45" ry="40" fill="url(#clearBlueCut)" />
-    <!-- Diamond Polished Edge -->
-    <rect x="606" y="155" width="244" height="130" rx="45" ry="40" fill="none" stroke="url(#bevelEdge)" stroke-width="2.5" />
-    <rect x="608" y="157" width="240" height="126" rx="43" ry="38" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.6" />
+    <!-- 3. Right Floating Rimless Lens (Pure Rimless Silhouette Shape) -->
+    <rect x="600" y="150" width="255" height="150" rx="36" ry="32" fill="url(#clearGlass)" />
+    <rect x="600" y="150" width="255" height="150" rx="36" ry="32" fill="url(#arGlint)" />
+    <rect x="600" y="150" width="255" height="150" rx="36" ry="32" fill="none" stroke="url(#diamondEdge)" stroke-width="1.2" />
 
-    <!-- Minimalist Screwless Bridge Arch -->
-    <path d="M 394,208 Q 500,185 606,208" stroke="url(#roseGold)" stroke-width="4.5" fill="none" stroke-linecap="round" />
-    <path d="M 396,207 Q 500,184 604,207" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.8" />
+    <!-- 4. Pure Titanium Screwless Bridge Arch (Silhouette TMA Icon signature) -->
+    <path d="M 398,206 Q 500,188 602,206" stroke="url(#roseTitanium)" stroke-width="2.8" fill="none" stroke-linecap="round" />
+    <path d="M 400,205 Q 500,187 600,205" stroke="#FFFFFF" stroke-width="0.8" fill="none" opacity="0.75" />
 
-    <!-- Left Bridge Pin Mount -->
-    <circle cx="394" cy="208" r="4.5" fill="url(#roseGold)" />
-    <circle cx="394" cy="208" r="1.5" fill="#5E382F" />
+    <!-- Bridge Drill-Mount Pins (Medical grade titanium compression sleeves) -->
+    <circle cx="400" cy="206" r="3.2" fill="url(#roseTitanium)" />
+    <circle cx="400" cy="206" r="1.2" fill="#522f23" />
 
-    <!-- Right Bridge Pin Mount -->
-    <circle cx="606" cy="208" r="4.5" fill="url(#roseGold)" />
-    <circle cx="606" cy="208" r="1.5" fill="#5E382F" />
+    <circle cx="600" cy="206" r="3.2" fill="url(#roseTitanium)" />
+    <circle cx="600" cy="206" r="1.2" fill="#522f23" />
 
-    <!-- Left Hinge Mount Bracket -->
-    <g id="left-mount">
-      <circle cx="150" cy="208" r="4.5" fill="url(#roseGold)" />
-      <circle cx="150" cy="208" r="1.5" fill="#5E382F" />
-      <path d="M 150,208 L 125,205" stroke="url(#roseGold)" stroke-width="3" stroke-linecap="round" />
+    <!-- 5. Left Titanium Hinge Bracket & Temple (extends to cheekbones) -->
+    <g id="left-bracket">
+      <circle cx="145" cy="206" r="3.2" fill="url(#roseTitanium)" />
+      <circle cx="145" cy="206" r="1.2" fill="#522f23" />
+      <path d="M 145,206 L 68,202" stroke="url(#roseTitanium)" stroke-width="2.4" stroke-linecap="round" />
+      <path d="M 145,205 L 68,201" stroke="#FFFFFF" stroke-width="0.7" opacity="0.7" stroke-linecap="round" />
     </g>
 
-    <!-- Right Hinge Mount Bracket -->
-    <g id="right-mount">
-      <circle cx="850" cy="208" r="4.5" fill="url(#roseGold)" />
-      <circle cx="850" cy="208" r="1.5" fill="#5E382F" />
-      <path d="M 850,208 L 875,205" stroke="url(#roseGold)" stroke-width="3" stroke-linecap="round" />
+    <!-- 6. Right Titanium Hinge Bracket & Temple -->
+    <g id="right-bracket">
+      <circle cx="855" cy="206" r="3.2" fill="url(#roseTitanium)" />
+      <circle cx="855" cy="206" r="1.2" fill="#522f23" />
+      <path d="M 855,206 L 932,202" stroke="url(#roseTitanium)" stroke-width="2.4" stroke-linecap="round" />
+      <path d="M 855,205 L 932,201" stroke="#FFFFFF" stroke-width="0.7" opacity="0.7" stroke-linecap="round" />
     </g>
   </g>
 </svg>

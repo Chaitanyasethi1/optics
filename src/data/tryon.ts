@@ -246,7 +246,7 @@ export function getTryOnFrameForProduct(product: Product): TryOnFrame {
     frameColor = "#2A2623";
     defaultTint = isSunglasses ? "gradient" : "clear";
     svgTemplate = "cateye";
-  } else if (shape === "Rimless" || product.specs?.material?.includes("Titanium")) {
+  } else if (shape === "Rimless") {
     overlayUrl = "/frames/rimless-titanium.svg";
     frameColor = "#D4BE96";
     defaultTint = "clear";
@@ -257,7 +257,7 @@ export function getTryOnFrameForProduct(product: Product): TryOnFrame {
     defaultTint = isSunglasses ? "g15" : "clear";
     svgTemplate = "geometric";
   } else if (shape === "Rectangle" || shape === "Square") {
-    overlayUrl = "/frames/holbrook-square.svg";
+    overlayUrl = isSunglasses ? "/frames/holbrook-square.svg" : "/frames/rectangle-black.svg";
     frameColor = "#14110F";
     defaultTint = isSunglasses ? "blue" : "clear";
     svgTemplate = "rectangle";

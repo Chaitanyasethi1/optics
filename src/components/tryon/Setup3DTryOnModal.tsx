@@ -183,7 +183,10 @@ export default function Setup3DTryOnModal() {
 
     if (landmarker) {
       try {
+        await landmarker.setOptions({ runningMode: "IMAGE" });
         const results = landmarker.detect(canvasOrImg);
+        await landmarker.setOptions({ runningMode: "VIDEO" });
+
         if (results.faceLandmarks && results.faceLandmarks.length > 0) {
           const landmarks = results.faceLandmarks[0];
 
@@ -265,15 +268,71 @@ export default function Setup3DTryOnModal() {
     };
   };
 
-  // 1-Click Fast Photo Capture
+  // 1-Click Fast Photo Capture directly from live video
   const handleTakePhoto = async () => {
+    const video = videoRef.current;
     const snapshot = captureMirroredSnapshot();
-    if (!snapshot) return;
+    if (!snapshot || !video) return;
 
     setIsCapturing(true);
-    const calib = await extractCalibration(snapshot.canvas, snapshot.width, snapshot.height);
-    playChime(920);
 
+    let calib = null;
+    const landmarker = faceLandmarkerRef.current;
+    if (landmarker && video.readyState >= 2) {
+      try {
+        const detections = landmarker.detectForVideo(video, performance.now());
+        if (detections.faceLandmarks && detections.faceLandmarks.length > 0) {
+          const raw = detections.faceLandmarks[0];
+          const w = snapshot.width;
+          const h = snapshot.height;
+
+          // Mirror X coordinates to match the mirrored canvas
+          const lm = raw.map((pt: any) => ({ ...pt, x: 1 - pt.x }));
+
+          const eye1 = {
+            x: ((lm[33].x + lm[133].x) / 2) * w,
+            y: ((lm[33].y + lm[133].y) / 2) * h,
+          };
+          const eye2 = {
+            x: ((lm[263].x + lm[362].x) / 2) * w,
+            y: ((lm[263].y + lm[362].y) / 2) * h,
+          };
+          const leftEye = eye1.x < eye2.x ? eye1 : eye2;
+          const rightEye = eye1.x < eye2.x ? eye2 : eye1;
+
+          const ipd = Math.hypot(rightEye.x - leftEye.x, rightEye.y - leftEye.y);
+          const angle = Math.atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x);
+
+          const pupilMidX = (leftEye.x + rightEye.x) / 2;
+          const pupilMidY = (leftEye.y + rightEye.y) / 2;
+
+          const noseTipX = lm[4] ? lm[4].x * w : pupilMidX;
+          const noseTipY = lm[4] ? lm[4].y * h : pupilMidY;
+          const yaw = (noseTipX - pupilMidX) / (ipd * 0.4 || 1);
+          const neutralNoseDist = ipd * 0.58;
+          const pitch = (noseTipY - pupilMidY - neutralNoseDist) / (ipd * 0.45 || 1);
+
+          calib = {
+            x: pupilMidX,
+            y: pupilMidY,
+            ipd,
+            angle,
+            yaw,
+            pitch,
+            imgWidth: w,
+            imgHeight: h,
+          };
+        }
+      } catch (err) {
+        console.error("Direct video detection error:", err);
+      }
+    }
+
+    if (!calib) {
+      calib = await extractCalibration(snapshot.canvas, snapshot.width, snapshot.height);
+    }
+
+    playChime(920);
     setTryOnData(snapshot.dataUrl, calib);
     setIsCapturing(false);
     stopCamera();

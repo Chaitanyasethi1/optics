@@ -1,76 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
   <defs>
-    <linearGradient id="gunmetalTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#737982" />
-      <stop offset="35%" stop-color="#41454c" />
-      <stop offset="70%" stop-color="#2a2c30" />
-      <stop offset="100%" stop-color="#545861" />
+    <!-- Satin Japanese Gunmetal Titanium Gradient -->
+    <linearGradient id="satinGunmetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5a6069" />
+      <stop offset="35%" stop-color="#33373d" />
+      <stop offset="70%" stop-color="#22252a" />
+      <stop offset="100%" stop-color="#464b54" />
     </linearGradient>
 
-    <!-- Clear Prescription Lens with Blue-Cut Reflex -->
-    <linearGradient id="geoClear" x1="10%" y1="0%" x2="90%" y2="100%">
-      <stop offset="0%" stop-color="#d9ebf7" stop-opacity="0.22" />
-      <stop offset="50%" stop-color="#cadff2" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#93beee" stop-opacity="0.2" />
+    <!-- Metallic Wire Edge Chamfer Highlight -->
+    <linearGradient id="wireChamfer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#a8b2c0" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#141619" stop-opacity="0.4" />
     </linearGradient>
 
-    <linearGradient id="geoGlare" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
-      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.1" />
+    <!-- Clear Prescription Optical Glass (100% See-Through) -->
+    <linearGradient id="geoGlass" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#eaf3fb" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#d4e8fa" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#b6d5f5" stop-opacity="0.06" />
+    </linearGradient>
+
+    <!-- Faint AR Reflection Glint -->
+    <linearGradient id="geoAR" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28" />
+      <stop offset="25%" stop-color="#80d0ff" stop-opacity="0.08" />
       <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
-      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.12" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.20" />
     </linearGradient>
 
     <filter id="geoShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.4" />
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.32" />
     </filter>
   </defs>
 
   <g id="geometric-frame" filter="url(#geoShadow)">
-    <!-- Silicone Nose Pads -->
-    <ellipse cx="435" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#41454c" stroke-width="1.8" />
-    <path d="M435,225 Q445,215 452,218" stroke="url(#gunmetalTitanium)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <!-- 1. Silicone Nose Pads & Stems -->
+    <ellipse cx="435" cy="225" rx="6" ry="14" fill="#f4efe6" opacity="0.9" stroke="#33373d" stroke-width="1.2" />
+    <path d="M435,216 Q445,206 452,210" stroke="url(#satinGunmetal)" stroke-width="2.2" fill="none" stroke-linecap="round" />
 
-    <ellipse cx="565" cy="235" rx="8" ry="16" fill="#e8e2d5" opacity="0.85" stroke="#41454c" stroke-width="1.8" />
-    <path d="M565,225 Q555,215 548,218" stroke="url(#gunmetalTitanium)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <ellipse cx="565" cy="225" rx="6" ry="14" fill="#f4efe6" opacity="0.9" stroke="#33373d" stroke-width="1.2" />
+    <path d="M565,216 Q555,206 548,210" stroke="url(#satinGunmetal)" stroke-width="2.2" fill="none" stroke-linecap="round" />
 
-    <!-- Left Octagonal Polygon Lens -->
+    <!-- 2. Left Octagonal Geometric Lens & Slim Wire Rim -->
     <polygon
-      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
-      fill="url(#geoClear)" />
+      points="195,145 350,145 398,190 398,260 350,305 195,305 146,260 146,190"
+      fill="url(#geoGlass)" />
     <polygon
-      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
-      fill="url(#geoGlare)" />
-    <!-- Metallic Rim -->
+      points="195,145 350,145 398,190 398,260 350,305 195,305 146,260 146,190"
+      fill="url(#geoAR)" />
+    <!-- Fine 2.2px Titanium Wire Rim (NOT thick cartoon line!) -->
     <polygon
-      points="200,140 344,140 395,190 395,260 344,310 200,310 149,260 149,190"
-      fill="none" stroke="url(#gunmetalTitanium)" stroke-width="5" stroke-linejoin="round" />
+      points="195,145 350,145 398,190 398,260 350,305 195,305 146,260 146,190"
+      fill="none" stroke="url(#satinGunmetal)" stroke-width="2.4" stroke-linejoin="round" />
     <polygon
-      points="201,141 343,141 394,191 394,259 343,309 201,309 150,259 150,191"
-      fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" stroke-linejoin="round" />
+      points="195,145 350,145 398,190 398,260 350,305 195,305 146,260 146,190"
+      fill="none" stroke="url(#wireChamfer)" stroke-width="0.8" opacity="0.75" stroke-linejoin="round" />
 
-    <!-- Right Octagonal Polygon Lens -->
+    <!-- 3. Right Octagonal Geometric Lens & Slim Wire Rim -->
     <polygon
-      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
-      fill="url(#geoClear)" />
+      points="805,145 650,145 602,190 602,260 650,305 805,305 854,260 854,190"
+      fill="url(#geoGlass)" />
     <polygon
-      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
-      fill="url(#geoGlare)" />
-    <!-- Metallic Rim -->
+      points="805,145 650,145 602,190 602,260 650,305 805,305 854,260 854,190"
+      fill="url(#geoAR)" />
     <polygon
-      points="800,140 656,140 605,190 605,260 656,310 800,310 851,260 851,190"
-      fill="none" stroke="url(#gunmetalTitanium)" stroke-width="5" stroke-linejoin="round" />
+      points="805,145 650,145 602,190 602,260 650,305 805,305 854,260 854,190"
+      fill="none" stroke="url(#satinGunmetal)" stroke-width="2.4" stroke-linejoin="round" />
     <polygon
-      points="799,141 657,141 606,191 606,259 657,309 799,309 850,259 850,191"
-      fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" stroke-linejoin="round" />
+      points="805,145 650,145 602,190 602,260 650,305 805,305 854,260 854,190"
+      fill="none" stroke="url(#wireChamfer)" stroke-width="0.8" opacity="0.75" stroke-linejoin="round" />
 
-    <!-- Architectural Titanium Bridge -->
-    <line x1="395" y1="205" x2="605" y2="205" stroke="url(#gunmetalTitanium)" stroke-width="5.5" stroke-linecap="round" />
-    <line x1="396" y1="203" x2="604" y2="203" stroke="#FFFFFF" stroke-width="1" opacity="0.7" />
+    <!-- 4. Architectural Titanium Bridge (Mont Blanc executive style) -->
+    <path d="M 398,206 Q 500,195 602,206" stroke="url(#satinGunmetal)" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M 400,205 Q 500,194 600,205" stroke="#FFFFFF" stroke-width="0.8" opacity="0.75" fill="none" stroke-linecap="round" />
 
-    <!-- End Pieces -->
-    <rect x="135" y="195" width="16" height="10" rx="2" fill="url(#gunmetalTitanium)" />
-    <rect x="849" y="195" width="16" height="10" rx="2" fill="url(#gunmetalTitanium)" />
+    <!-- 5. 3D Outer Hinge Pieces (extends to cheekbones) -->
+    <path d="M 146,206 L 68,202 L 68,212 L 146,212 Z" fill="url(#satinGunmetal)" />
+    <circle cx="140" cy="209" r="2" fill="#1b1d20" />
+
+    <path d="M 854,206 L 932,202 L 932,212 L 854,212 Z" fill="url(#satinGunmetal)" />
+    <circle cx="860" cy="209" r="2" fill="#1b1d20" />
   </g>
 </svg>

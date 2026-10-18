@@ -54,18 +54,16 @@
     <circle cx="272" cy="225" r="128" fill="url(#arGlare)" />
 
     <!-- Left Metallic Wire Rim with Luxury Chamfer -->
-    <circle cx="272" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="5" />
-    <circle cx="272" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="1.2" opacity="0.8" />
-    <circle cx="272" cy="225" r="129.5" fill="none" stroke="#523814" stroke-width="0.8" opacity="0.4" />
+    <circle cx="272" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="2.4" />
+    <circle cx="272" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="0.8" opacity="0.8" />
 
     <!-- 3. Right Optical Circular Lens (Clear transparent glass) -->
     <circle cx="728" cy="225" r="128" fill="url(#opticalClearLens)" />
     <circle cx="728" cy="225" r="128" fill="url(#arGlare)" />
 
     <!-- Right Metallic Wire Rim with Luxury Chamfer -->
-    <circle cx="728" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="5" />
-    <circle cx="728" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="1.2" opacity="0.8" />
-    <circle cx="728" cy="225" r="129.5" fill="none" stroke="#523814" stroke-width="0.8" opacity="0.4" />
+    <circle cx="728" cy="225" r="128" fill="none" stroke="url(#roundGold)" stroke-width="2.4" />
+    <circle cx="728" cy="225" r="126.5" fill="none" stroke="url(#bevelGold)" stroke-width="0.8" opacity="0.8" />
 
     <!-- 4. Sculpted Filigree Nose Bridge -->
     <path d="M 398,212 Q 500,172 602,212" stroke="url(#roundGold)" stroke-width="5" fill="none" stroke-linecap="round" />

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450">
+  <defs>
+    <!-- Satin Executive Obsidian / Gunmetal Gradient -->
+    <linearGradient id="execBlack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d4045" />
+      <stop offset="35%" stop-color="#1e2023" />
+      <stop offset="70%" stop-color="#111214" />
+      <stop offset="100%" stop-color="#2c2f34" />
+    </linearGradient>
+
+    <!-- Metallic Wire Edge Chamfer Highlight -->
+    <linearGradient id="rectChamfer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="50%" stop-color="#9ea7b4" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#111214" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Clear Prescription Optical Glass (100% See-Through) -->
+    <linearGradient id="rectGlass" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#eaf3fb" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#d4e8fa" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#b6d5f5" stop-opacity="0.06" />
+    </linearGradient>
+
+    <!-- Faint AR Reflection Glint -->
+    <linearGradient id="rectAR" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28" />
+      <stop offset="25%" stop-color="#80d0ff" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.0" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.20" />
+    </linearGradient>
+
+    <filter id="rectShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.32" />
+    </filter>
+  </defs>
+
+  <g id="rectangle-frame" filter="url(#rectShadow)">
+    <!-- 1. Silicone Nose Pads & Stems -->
+    <ellipse cx="435" cy="225" rx="6" ry="14" fill="#f4efe6" opacity="0.9" stroke="#222" stroke-width="1.2" />
+    <path d="M435,216 Q445,206 452,210" stroke="url(#execBlack)" stroke-width="2.2" fill="none" stroke-linecap="round" />
+
+    <ellipse cx="565" cy="225" rx="6" ry="14" fill="#f4efe6" opacity="0.9" stroke="#222" stroke-width="1.2" />
+    <path d="M565,216 Q555,206 548,210" stroke="url(#execBlack)" stroke-width="2.2" fill="none" stroke-linecap="round" />
+
+    <!-- 2. Left Rectangular Lens & Slim Wire Rim -->
+    <rect x="150" y="152" width="250" height="146" rx="20" ry="20" fill="url(#rectGlass)" />
+    <rect x="150" y="152" width="250" height="146" rx="20" ry="20" fill="url(#rectAR)" />
+    <rect x="150" y="152" width="250" height="146" rx="20" ry="20" fill="none" stroke="url(#execBlack)" stroke-width="2.4" />
+    <rect x="150" y="152" width="250" height="146" rx="20" ry="20" fill="none" stroke="url(#rectChamfer)" stroke-width="0.8" opacity="0.75" />
+
+    <!-- 3. Right Rectangular Lens & Slim Wire Rim -->
+    <rect x="600" y="152" width="250" height="146" rx="20" ry="20" fill="url(#rectGlass)" />
+    <rect x="600" y="152" width="250" height="146" rx="20" ry="20" fill="url(#rectAR)" />
+    <rect x="600" y="152" width="250" height="146" rx="20" ry="20" fill="none" stroke="url(#execBlack)" stroke-width="2.4" />
+    <rect x="600" y="152" width="250" height="146" rx="20" ry="20" fill="none" stroke="url(#rectChamfer)" stroke-width="0.8" opacity="0.75" />
+
+    <!-- 4. Slim Titanium Bridge Arch -->
+    <path d="M 400,206 Q 500,195 600,206" stroke="url(#execBlack)" stroke-width="2.8" fill="none" stroke-linecap="round" />
+    <path d="M 402,205 Q 500,194 598,205" stroke="#FFFFFF" stroke-width="0.8" opacity="0.7" fill="none" stroke-linecap="round" />
+
+    <!-- 5. 3D Outer Hinge Pieces (extends to cheekbones) -->
+    <path d="M 150,206 L 68,202 L 68,212 L 150,212 Z" fill="url(#execBlack)" />
+    <circle cx="144" cy="209" r="2" fill="#000" />
+
+    <path d="M 850,206 L 932,202 L 932,212 L 850,212 Z" fill="url(#execBlack)" />
+    <circle cx="856" cy="209" r="2" fill="#000" />
+  </g>
+</svg>
