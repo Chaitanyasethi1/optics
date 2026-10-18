@@ -12,27 +12,27 @@ export default function ContactLensesSection() {
   return (
     <section
       id="contact-lenses"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#EDE5D8] border-b border-[#14110F]/8"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#EDE5D8] border-b border-[#14110F]/8"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 lg:mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <span className="w-6 h-[1px] bg-[#B89B6A]" />
               <Eyebrow>BREATHABLE OCULAR HYDRATION</Eyebrow>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-              Contact Lenses & Eye Care
+            <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+              Contact Lens <span className="font-serif italic font-normal text-[#B89B6A]">Atelier</span> & Eye Care
             </h2>
-            <p className="text-xs sm:text-sm text-[#7A7168] mt-3 max-w-xl">
+            <p className="text-xs sm:text-sm text-[#7A7168] mt-2 max-w-xl font-light">
               From silky water-gradient daily disposables to therapeutic monthly lenses. Complimentary trial fitting & insertion tutorials at our showroom.
             </p>
           </div>
 
           <Link
             href="/contact-lenses"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-[#14110F] hover:text-[#B89B6A] group"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] hover:text-[#B89B6A] group shrink-0"
           >
             <span>Browse All Contact Lenses</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -61,19 +61,19 @@ export default function ContactLensesSection() {
                   </div>
                 </div>
 
-                <h3 className="font-serif text-xl sm:text-2xl text-[#14110F] font-normal mb-1">
+                <h3 className="font-serif text-xl sm:text-2xl text-[#14110F] font-medium mb-0.5">
                   {item.brand}
                 </h3>
-                <span className="text-[10px] uppercase font-sans tracking-[0.2em] text-[#B89B6A] font-medium block mb-2">
+                <span className="text-[10.5px] uppercase font-sans tracking-[0.24em] text-[#B89B6A] font-bold block mb-1.5">
                   {item.title}
                 </span>
-                <p className="text-xs text-[#7A7168] line-clamp-2 leading-relaxed mb-4 font-light">
+                <p className="text-xs text-[#7A7168] line-clamp-2 leading-relaxed mb-3.5 font-light">
                   {item.type}
                 </p>
 
-                <div className="text-xs font-medium text-[#14110F] mb-4">
+                <div className="text-sm font-bold text-[#14110F] tabular-nums mb-3.5">
                   Starting ₹{item.startingPrice.toLocaleString("en-IN")}{" "}
-                  <span className="text-[10px] text-[#7A7168] font-normal">/ pack</span>
+                  <span className="text-[10px] text-[#7A7168] font-normal uppercase font-mono tracking-wider">/ pack</span>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ export default function ContactLensesSection() {
                 href={getWhatsAppLink(`Hello ${STORE_NAME}, I'd like to ask about availability and fitting for ${item.brand} contact lenses.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.16em] font-medium border border-[#14110F]/20 text-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
+                className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-[2px] text-[10px] uppercase tracking-[0.18em] font-bold border border-[#14110F]/25 text-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-[#B89B6A]" />
                 <span>Inquire on WhatsApp</span>

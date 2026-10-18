@@ -63,17 +63,17 @@ export default function TryOnStudioClient() {
             <Eyebrow>BESPOKE AUGMENTED ATELIER</Eyebrow>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-            Virtual Try-On Studio
+            Virtual <span className="font-serif italic font-normal text-[#B89B6A]">Try-On</span> Studio
           </h1>
         </div>
 
         {/* Studio Tips & Quality Badge */}
         <div className="flex flex-wrap items-center gap-3 text-xs text-[#7A7168]">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[2px] bg-[#EDE5D8]/70 border border-[#14110F]/8">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[2px] bg-[#EDE5D8]/70 border border-[#14110F]/8 font-medium">
             <Sun className="w-3.5 h-3.5 text-[#B89B6A]" />
             Natural lighting recommended
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[2px] bg-[#EDE5D8]/70 border border-[#14110F]/8">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[2px] bg-[#EDE5D8]/70 border border-[#14110F]/8 font-medium">
             <Eye className="w-3.5 h-3.5 text-[#B89B6A]" />
             Direct eye-level posture
           </span>
@@ -99,10 +99,10 @@ export default function TryOnStudioClient() {
           {/* Frame Selector Carousel */}
           <div className="p-5 bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] shadow-xs">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] uppercase font-sans tracking-[0.24em] font-semibold text-[#14110F]">
+              <span className="text-[10.5px] uppercase font-sans tracking-[0.24em] font-bold text-[#14110F]">
                 Curated Try-On Frames
               </span>
-              <span className="text-[10px] uppercase font-mono text-[#B89B6A]">
+              <span className="text-[10px] uppercase font-mono font-bold text-[#B89B6A]">
                 {TRYON_FRAMES.length} Available
               </span>
             </div>

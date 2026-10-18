@@ -24,20 +24,20 @@ export default function TitaniumRow() {
               <Eyebrow>FEATHERWEIGHT AEROSPACE ALLOY</Eyebrow>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
-              Premium Titanium Collection
+              Premium <span className="font-serif italic font-normal text-[#B89B6A]">Titanium</span> Collection
             </h2>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-[11px] sm:text-xs text-[#7A7168]">
-              <span className="text-[#B89B6A] font-medium tracking-wide">✦ Sabae, Japan & Linz, Austria</span>
+              <span className="text-[#B89B6A] font-bold tracking-wider">✦ Sabae, Japan & Linz, Austria</span>
               <span className="text-[#14110F]/30">•</span>
-              <span>1.8g Ultralight Featherweight</span>
+              <span className="font-medium text-[#14110F]/80">1.8g Ultralight Featherweight</span>
               <span className="text-[#14110F]/30">•</span>
-              <span>23K Gold Ion-Plated Beta Titanium</span>
+              <span className="font-medium text-[#14110F]/80">23K Gold Ion-Plated Beta Titanium</span>
             </div>
           </div>
 
           <Link
             href="/eyeglasses?material=Pure+Titanium"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-[#14110F] hover:text-[#B89B6A] group shrink-0"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] hover:text-[#B89B6A] group shrink-0"
           >
             <span>View All Titanium</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

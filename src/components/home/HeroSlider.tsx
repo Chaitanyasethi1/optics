@@ -9,7 +9,9 @@ import Eyebrow from "@/components/ui/Eyebrow";
 interface Slide {
   id: string;
   tag: string;
-  title: string;
+  titlePrefix: string;
+  titleItalic: string;
+  titleSuffix?: string;
   subtitle: string;
   ctaText: string;
   ctaLink: string;
@@ -21,7 +23,8 @@ const SLIDES: Slide[] = [
   {
     id: "slide-1",
     tag: "HAUTE SUNWEAR 2026",
-    title: "The Pure Art of Solar Clarity",
+    titlePrefix: "The Pure Art of ",
+    titleItalic: "Solar Clarity",
     subtitle: "Hand-sculpted Italian acetate paired with high-definition polarized optics, curated for panoramic daylight and understated glamour.",
     ctaText: "Explore Sunglasses",
     ctaLink: "/sunglasses",
@@ -31,7 +34,8 @@ const SLIDES: Slide[] = [
   {
     id: "slide-2",
     tag: "BESPOKE OPTICAL CRAFT",
-    title: "Architectural Elegance For Everyday Vision",
+    titlePrefix: "Architectural Elegance for ",
+    titleItalic: "Everyday Vision",
     subtitle: "Refined silhouettes and intellectual geometry designed to balance facial harmony, high-index prescription lenses, and all-day comfort.",
     ctaText: "Discover Eyeglasses",
     ctaLink: "/eyeglasses",
@@ -41,7 +45,8 @@ const SLIDES: Slide[] = [
   {
     id: "slide-3",
     tag: "ENGINEERED IN JAPAN & AUSTRIA",
-    title: "Pure Titanium: Weightless Perfection",
+    titlePrefix: "Pure Titanium: ",
+    titleItalic: "Weightless Perfection",
     subtitle: "Weighing as little as 1.8 grams. Sourced from Fukui Prefecture, featuring screwless hinges and 23K gold ion plating.",
     ctaText: "View Titanium Collection",
     ctaLink: "/eyeglasses?material=Pure+Titanium",
@@ -51,7 +56,8 @@ const SLIDES: Slide[] = [
   {
     id: "slide-4",
     tag: "COMPLIMENTARY CONSULTATION",
-    title: "14-Step Precision Eye Examination",
+    titlePrefix: "14-Step Precision ",
+    titleItalic: "Eye Examination",
     subtitle: "Step into our Indiranagar lounge for computerized Zeiss corneal wavefront mapping and customized progressive lens fitting by certified optometrists.",
     ctaText: "Book Your Free Eye Test",
     ctaLink: "/book-eye-test",
@@ -121,13 +127,17 @@ export default function HeroSlider() {
                   <Eyebrow>{slide.tag}</Eyebrow>
                 </div>
 
-                {/* Main Serif Headline with clamp typography */}
-                <h1 className="font-serif text-4xl sm:text-6xl xl:text-[clamp(3.2rem,5.5vw,5.5rem)] font-normal tracking-tight text-[#14110F] leading-[1.08]">
-                  {slide.title}
+                {/* Main Serif Headline with clamp typography & italic flourish */}
+                <h1 className="font-serif text-4xl sm:text-6xl xl:text-[clamp(3.3rem,5.5vw,5.5rem)] font-normal tracking-tight text-[#14110F] leading-[1.08]">
+                  {slide.titlePrefix}
+                  <span className="font-serif italic font-normal text-[#B89B6A]">
+                    {slide.titleItalic}
+                  </span>
+                  {slide.titleSuffix}
                 </h1>
 
                 {/* Subtext */}
-                <p className="text-sm sm:text-base text-[#7A7168] leading-relaxed max-w-xl font-normal">
+                <p className="text-sm sm:text-base text-[#7A7168] leading-relaxed max-w-xl font-light tracking-wide">
                   {slide.subtitle}
                 </p>
 
@@ -136,7 +146,7 @@ export default function HeroSlider() {
                   {/* Primary Section CTA */}
                   <Link
                     href={slide.ctaLink}
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.18em] font-sans font-medium bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] transition-all duration-300 shadow-sm group"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.2em] font-sans font-bold bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] transition-all duration-300 shadow-sm group"
                   >
                     <span>{slide.ctaText}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -145,7 +155,7 @@ export default function HeroSlider() {
                   {/* Prominent Virtual Try-On CTA */}
                   <Link
                     href="/try-on"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.18em] font-sans font-medium border border-[#14110F]/20 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300 group"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-[2px] text-xs uppercase tracking-[0.2em] font-sans font-bold border border-[#14110F]/25 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300 group"
                   >
                     <Glasses className="w-4 h-4 text-[#B89B6A] group-hover:text-[#B89B6A]" />
                     <span>Experience Virtual Try-On</span>

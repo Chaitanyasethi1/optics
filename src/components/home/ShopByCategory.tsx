@@ -67,25 +67,25 @@ export default function ShopByCategory() {
   return (
     <section
       id="categories"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#EDE5D8] overflow-hidden"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#EDE5D8] overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 mb-12">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 mb-8 lg:mb-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <span className="w-6 h-[1px] bg-[#B89B6A]" />
               <Eyebrow>CURATED DEPARTMENTS</Eyebrow>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-              Shop by Category
+            <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+              Curated <span className="font-serif italic font-normal text-[#B89B6A]">Departments</span> & Categories
             </h2>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-xs sm:text-sm text-[#7A7168] max-w-md">
-            <p className="leading-relaxed">
+            <p className="leading-relaxed font-light">
               Explore our curated optical categories, where international luxury meets ophthalmic engineering.
             </p>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#14110F]/5 rounded-[2px] text-[10px] uppercase font-mono tracking-widest text-[#B89B6A] shrink-0 self-start sm:self-auto">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#14110F]/10 rounded-[2px] text-[10px] uppercase font-mono tracking-widest text-[#B89B6A] shrink-0 self-start sm:self-auto font-bold">
               <Sparkles className="w-3 h-3" />
               Continuous Tape
             </span>

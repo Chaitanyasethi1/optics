@@ -10,20 +10,20 @@ export default function VisitStoreSection() {
   return (
     <section
       id="visit"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#EDE5D8] border-t border-[#14110F]/8"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#EDE5D8] border-t border-[#14110F]/8"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 lg:mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <span className="w-6 h-[1px] bg-[#B89B6A]" />
               <Eyebrow>FLAGSHIP SHOWROOM</Eyebrow>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-              Visit Our Indiranagar Salon
+            <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+              Visit Our Indiranagar <span className="font-serif italic font-normal text-[#B89B6A]">Salon</span>
             </h2>
-            <p className="text-xs sm:text-sm text-[#7A7168] mt-3 max-w-xl">
+            <p className="text-xs sm:text-sm text-[#7A7168] mt-2 max-w-xl font-light">
               Experience luxury eyewear as it was meant to be—held in the hands, fitted with optical millimeter accuracy, and matched to your individuality.
             </p>
           </div>
@@ -32,7 +32,7 @@ export default function VisitStoreSection() {
             href={GOOGLE_MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-[#14110F] hover:text-[#B89B6A] group"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] hover:text-[#B89B6A] group shrink-0"
           >
             <Navigation className="w-4 h-4 text-[#B89B6A]" />
             <span>Open in Google Maps</span>

@@ -86,39 +86,39 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div>
           {/* Brand & Shape */}
           <div className="flex items-center justify-between text-xs mb-1">
-            <span className="font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-medium text-[10px]">
+            <span className="font-sans uppercase tracking-[0.28em] text-[#B89B6A] font-bold text-[11px]">
               {product.brand}
             </span>
-            <span className="text-[10px] text-[#7A7168] uppercase tracking-[0.1em]">
+            <span className="text-[9.5px] text-[#7A7168] uppercase tracking-[0.15em] font-medium font-mono">
               {product.specs.shape}
             </span>
           </div>
 
           {/* Product Name in Serif with thin champagne underline on hover */}
           <Link href={`/product/${product.slug}`} className="block group/title">
-            <h3 className="font-serif text-base sm:text-lg text-[#14110F] font-normal leading-snug line-clamp-1 relative inline-block">
+            <h3 className="font-serif text-lg sm:text-xl text-[#14110F] font-medium leading-snug line-clamp-1 relative inline-block">
               {product.name}
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#B89B6A] transition-all duration-300 group-hover/title:w-full" />
             </h3>
           </Link>
 
           {/* Spec preview snippet */}
-          <p className="text-[10px] sm:text-[11px] text-[#7A7168] mt-1 line-clamp-1 tracking-wide">
+          <p className="text-[10px] sm:text-[11px] text-[#7A7168] mt-1 line-clamp-1 tracking-wide font-light">
             {product.specs.material} • {product.specs.gender}
           </p>
 
           {/* Price with tabular numbers & muted strikethrough */}
           <div className="flex items-baseline gap-2 mt-2 pt-1.5 border-t border-[#14110F]/6">
-            <span className="text-sm sm:text-base font-sans font-medium text-[#14110F] tabular-nums tracking-tight">
+            <span className="text-base sm:text-lg font-sans font-bold text-[#14110F] tabular-nums tracking-tight">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.oldPrice && (
-              <span className="text-[11px] text-[#7A7168]/70 line-through tabular-nums">
+              <span className="text-xs text-[#7A7168]/70 line-through tabular-nums font-normal">
                 ₹{product.oldPrice.toLocaleString("en-IN")}
               </span>
             )}
             {product.category === "lenses" && (
-              <span className="text-[10px] uppercase tracking-wider text-[#7A7168]">
+              <span className="text-[10px] uppercase tracking-wider text-[#7A7168] font-medium">
                 from
               </span>
             )}
@@ -132,7 +132,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             href={enquiryLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.15em] font-medium border border-[#14110F]/20 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
+            className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.18em] font-bold border border-[#14110F]/25 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
             title="Inquire directly with our store optician via WhatsApp"
           >
             <MessageCircle className="w-3 h-3 text-[#B89B6A]" />
@@ -142,7 +142,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* View Details */}
           <Link
             href={`/product/${product.slug}`}
-            className="inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.15em] font-medium border border-[#B89B6A] text-[#14110F] hover:bg-[#B89B6A] hover:text-[#14110F] transition-all duration-300"
+            className="inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-[2px] text-[10px] font-sans uppercase tracking-[0.18em] font-bold border border-[#B89B6A] text-[#14110F] hover:bg-[#B89B6A] hover:text-[#14110F] transition-all duration-300"
           >
             <span className="truncate">Details</span>
             <ArrowUpRight className="w-3 h-3" />

@@ -351,7 +351,7 @@ export default function Header() {
               {/* Book Free Eye Test CTA Pill - Pure Maison Luxury */}
               <Link
                 href="/book-eye-test"
-                className="hidden lg:inline-flex items-center gap-2 px-4 2xl:px-5 py-2 2xl:py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.18em] font-sans font-medium bg-[#14110F] text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30 shadow-xs transition-all duration-300 shrink-0"
+                className="hidden lg:inline-flex items-center gap-2 px-4 2xl:px-5 py-2 2xl:py-2.5 rounded-[2px] text-[10px] uppercase tracking-[0.2em] font-sans font-bold bg-[#14110F] text-[#F7F3EC] hover:bg-[#B89B6A] hover:text-[#14110F] border border-[#B89B6A]/30 shadow-xs transition-all duration-300 shrink-0"
               >
                 <Calendar className="w-3.5 h-3.5 text-[#B89B6A]" />
                 <span className="whitespace-nowrap">Book Free Eye Test</span>

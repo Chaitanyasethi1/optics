@@ -11,18 +11,18 @@ export default function InstagramGrid() {
   return (
     <section
       id="instagram"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#F7F3EC] border-t border-[#14110F]/8"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#F7F3EC] border-t border-[#14110F]/8"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 lg:mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <span className="w-6 h-[1px] bg-[#B89B6A]" />
               <Eyebrow>EDITORIAL FEED</Eyebrow>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-              Curated Eyewear Aesthetics
+            <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+              Curated <span className="font-serif italic font-normal text-[#B89B6A]">Eyewear</span> Aesthetics
             </h2>
           </div>
 
@@ -30,7 +30,7 @@ export default function InstagramGrid() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-[2px] text-xs uppercase tracking-[0.18em] font-medium border border-[#14110F]/20 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-[2px] text-xs uppercase tracking-[0.2em] font-bold border border-[#14110F]/25 text-[#14110F] hover:border-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] transition-all duration-300 shrink-0"
           >
             <InstagramIcon className="w-3.5 h-3.5 text-[#B89B6A]" />
             <span>Follow Us @DemoOptics</span>

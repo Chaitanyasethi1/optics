@@ -17,7 +17,7 @@ export default function Footer() {
               <ShieldCheck className="w-5 h-5 text-[#B89B6A]" />
             </div>
             <div>
-              <h5 className="font-serif text-sm font-normal text-white">100% Genuine Brands</h5>
+              <h5 className="font-serif text-base font-medium text-white">100% Genuine Brands</h5>
               <p className="text-[11px] text-[#A89F95] font-light">Direct from Luxottica & Safilo</p>
             </div>
           </div>
@@ -27,7 +27,7 @@ export default function Footer() {
               <Award className="w-5 h-5 text-[#B89B6A]" />
             </div>
             <div>
-              <h5 className="font-serif text-sm font-normal text-white">14-Step Precision Eye Test</h5>
+              <h5 className="font-serif text-base font-medium text-white">14-Step Precision Eye Test</h5>
               <p className="text-[11px] text-[#A89F95] font-light">Zeiss digital diagnostics</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function Footer() {
               <Sparkles className="w-5 h-5 text-[#B89B6A]" />
             </div>
             <div>
-              <h5 className="font-serif text-sm font-normal text-white">Bespoke Frame Fitting</h5>
+              <h5 className="font-serif text-base font-medium text-white">Bespoke Frame Fitting</h5>
               <p className="text-[11px] text-[#A89F95] font-light">Custom facial contour tuning</p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function Footer() {
               <MessageCircle className="w-5 h-5 text-[#B89B6A]" />
             </div>
             <div>
-              <h5 className="font-serif text-sm font-normal text-white">WhatsApp Concierge</h5>
+              <h5 className="font-serif text-base font-medium text-white">WhatsApp Concierge</h5>
               <p className="text-[11px] text-[#A89F95] font-light">Real-time optical advice</p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function Footer() {
 
           {/* Column 3: Eyewear Collections */}
           <div>
-            <h4 className="font-sans uppercase tracking-[0.24em] text-[10px] font-semibold text-[#B89B6A] mb-4">
+            <h4 className="font-sans uppercase tracking-[0.26em] text-[10.5px] font-bold text-[#B89B6A] mb-4">
               Eyewear Salon
             </h4>
             <ul className="space-y-2.5 text-xs text-[#A89F95]">
@@ -177,7 +177,7 @@ export default function Footer() {
 
           {/* Column 4: Customer Care & Services */}
           <div>
-            <h4 className="font-sans uppercase tracking-[0.24em] text-[10px] font-semibold text-[#B89B6A] mb-4">
+            <h4 className="font-sans uppercase tracking-[0.26em] text-[10.5px] font-bold text-[#B89B6A] mb-4">
               Services & Salon
             </h4>
             <ul className="space-y-2.5 text-xs text-[#A89F95]">
@@ -216,7 +216,7 @@ export default function Footer() {
 
           {/* Column 5: Store Showroom Details */}
           <div>
-            <h4 className="font-sans uppercase tracking-[0.24em] text-[10px] font-semibold text-[#B89B6A] mb-4">
+            <h4 className="font-sans uppercase tracking-[0.26em] text-[10.5px] font-bold text-[#B89B6A] mb-4">
               Visit Showroom
             </h4>
             <div className="space-y-3 text-xs text-[#A89F95]">
@@ -245,7 +245,7 @@ export default function Footer() {
                   href={getWhatsAppLink("Hello DemoOptics Concierge, I would like to visit the showroom.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[2px] bg-white/5 border border-white/10 text-[#D4BE96] hover:bg-[#B89B6A] hover:text-[#14110F] transition-colors text-[10px] uppercase tracking-[0.16em] font-medium"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-[2px] bg-white/5 border border-white/10 text-[#D4BE96] hover:bg-[#B89B6A] hover:text-[#14110F] transition-colors text-[10px] uppercase tracking-[0.18em] font-bold"
                 >
                   <MessageCircle className="w-3.5 h-3.5" />
                   Chat on WhatsApp

@@ -1,4 +1,16 @@
 @import "tailwindcss";
+@theme {
+  --font-serif: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-ivory: #F7F3EC;
+  --color-sand: #EDE5D8;
+  --color-ink: #14110F;
+  --color-graphite: #2A2623;
+  --color-champagne: #B89B6A;
+  --color-champagne-light: #D4BE96;
+  --color-muted: #7A7168;
+}
 
 :root {
   /* Luxury Maison Palette */
@@ -43,11 +55,26 @@ body {
   overflow-x: hidden;
 }
 
-/* Luxury Typography */
+/* Luxury Typography Scale & Font Mappings */
 h1, h2, h3, h4, .font-serif {
   font-family: var(--font-cormorant), "Playfair Display", Georgia, serif;
-  letter-spacing: -0.015em;
   font-feature-settings: "kern" 1, "liga" 1;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  letter-spacing: -0.015em;
+}
+
+h3, h4 {
+  letter-spacing: -0.01em;
+}
+
+.font-sans {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .tabular-nums {

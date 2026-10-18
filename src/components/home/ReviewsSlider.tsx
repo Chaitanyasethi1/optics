@@ -21,26 +21,26 @@ export default function ReviewsSlider() {
   return (
     <section
       id="reviews"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#EDE5D8] border-b border-[#14110F]/8"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#EDE5D8] border-b border-[#14110F]/8"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-6 lg:mb-8">
+          <div className="flex items-center justify-center gap-2 mb-2">
             <span className="w-6 h-[1px] bg-[#B89B6A]" />
             <Eyebrow>CLIENT TESTIMONIALS</Eyebrow>
             <span className="w-6 h-[1px] bg-[#B89B6A]" />
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-            Words From Our Patrons
+          <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+            Words From Our <span className="font-serif italic font-normal text-[#B89B6A]">Patrons</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#7A7168] mt-3">
+          <p className="text-xs sm:text-sm text-[#7A7168] mt-2 font-light">
             Read unfiltered experiences from discerning professionals, doctors, and collectors who trust DemoOptics with their vision.
           </p>
         </div>
 
         {/* Featured Testimonial Card */}
-        <div className="max-w-4xl mx-auto bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] p-8 sm:p-14 relative shadow-sm">
+        <div className="max-w-4xl mx-auto bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] p-6 sm:p-10 relative shadow-sm">
           {/* Corner brackets */}
           <div className="corner-bracket-tl" />
           <div className="corner-bracket-tr" />
@@ -48,31 +48,31 @@ export default function ReviewsSlider() {
           <div className="corner-bracket-br" />
 
           {/* Star Rating */}
-          <div className="flex items-center gap-1.5 mb-6">
+          <div className="flex items-center gap-1.5 mb-4">
             {[...Array(activeReview.rating)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-[#B89B6A] text-[#B89B6A]" />
             ))}
-            <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#B89B6A] font-medium ml-3">
+            <span className="text-[10.5px] font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-bold ml-3">
               5.0 Verified Patron
             </span>
           </div>
 
           {/* Review Text */}
-          <blockquote className="font-serif text-xl sm:text-3xl text-[#14110F] leading-relaxed font-normal min-h-[140px] italic">
+          <blockquote className="font-serif text-lg sm:text-2xl text-[#14110F] leading-relaxed font-normal min-h-[100px] italic">
             &ldquo;{activeReview.review}&rdquo;
           </blockquote>
 
           {/* Author Details & Purchased Product */}
-          <div className="mt-10 pt-6 border-t border-[#14110F]/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="mt-6 pt-4 border-t border-[#14110F]/8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif text-lg font-medium text-[#14110F]">
+                <span className="font-serif text-lg font-bold text-[#14110F]">
                   {activeReview.author}
                 </span>
-                <span className="text-xs text-[#7A7168]">({activeReview.city})</span>
+                <span className="text-xs text-[#7A7168] font-light">({activeReview.city})</span>
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#B89B6A]" />
               </div>
-              <span className="text-xs text-[#B89B6A] block mt-0.5">
+              <span className="text-xs text-[#B89B6A] block mt-0.5 font-medium">
                 Acquired: {activeReview.productPurchased}
               </span>
             </div>

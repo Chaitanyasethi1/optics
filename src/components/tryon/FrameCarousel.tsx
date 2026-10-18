@@ -33,7 +33,7 @@ export default function FrameCarousel({
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => setCategoryFilter("all")}
-            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.16em] rounded-[2px] transition-colors ${
+            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.18em] font-bold rounded-[2px] transition-colors ${
               categoryFilter === "all"
                 ? "bg-[#14110F] text-[#F7F3EC]"
                 : "bg-[#EDE5D8]/50 text-[#7A7168] hover:text-[#14110F]"
@@ -43,7 +43,7 @@ export default function FrameCarousel({
           </button>
           <button
             onClick={() => setCategoryFilter("sunglasses")}
-            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.16em] rounded-[2px] transition-colors ${
+            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.18em] font-bold rounded-[2px] transition-colors ${
               categoryFilter === "sunglasses"
                 ? "bg-[#14110F] text-[#F7F3EC]"
                 : "bg-[#EDE5D8]/50 text-[#7A7168] hover:text-[#14110F]"
@@ -53,7 +53,7 @@ export default function FrameCarousel({
           </button>
           <button
             onClick={() => setCategoryFilter("eyeglasses")}
-            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.16em] rounded-[2px] transition-colors ${
+            className={`px-3 py-1.5 text-[10px] uppercase font-sans tracking-[0.18em] font-bold rounded-[2px] transition-colors ${
               categoryFilter === "eyeglasses"
                 ? "bg-[#14110F] text-[#F7F3EC]"
                 : "bg-[#EDE5D8]/50 text-[#7A7168] hover:text-[#14110F]"
@@ -68,10 +68,10 @@ export default function FrameCarousel({
             <button
               key={g}
               onClick={() => setGenderFilter(g)}
-              className={`px-2.5 py-1 text-[9px] uppercase font-sans tracking-[0.14em] rounded-[2px] transition-colors ${
+              className={`px-2.5 py-1 text-[9px] uppercase font-sans tracking-[0.16em] rounded-[2px] transition-colors ${
                 genderFilter === g
-                  ? "text-[#B89B6A] font-semibold underline underline-offset-4"
-                  : "text-[#7A7168] hover:text-[#14110F]"
+                  ? "text-[#B89B6A] font-bold underline underline-offset-4"
+                  : "text-[#7A7168] hover:text-[#14110F] font-medium"
               }`}
             >
               {g === "all" ? "Gender: All" : g}
@@ -98,7 +98,7 @@ export default function FrameCarousel({
             >
               {/* Face Shape Match Badge */}
               {isRecommended && (
-                <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 text-[7.5px] uppercase font-mono tracking-widest bg-[#14110F] text-[#B89B6A] rounded-[2px]">
+                <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold tracking-widest bg-[#14110F] text-[#B89B6A] rounded-[2px]">
                   Match
                 </span>
               )}
@@ -116,13 +116,13 @@ export default function FrameCarousel({
 
               {/* Info */}
               <div>
-                <span className="text-[9px] uppercase tracking-[0.2em] font-sans text-[#B89B6A] font-medium block">
+                <span className="text-[9px] uppercase tracking-[0.24em] font-sans text-[#B89B6A] font-bold block">
                   {frame.brand}
                 </span>
-                <span className="font-serif text-xs text-[#14110F] font-normal line-clamp-1 block leading-snug">
+                <span className="font-serif text-xs text-[#14110F] font-medium line-clamp-1 block leading-snug">
                   {frame.name}
                 </span>
-                <span className="text-[11px] font-sans font-medium text-[#14110F] tabular-nums block mt-1">
+                <span className="text-xs font-sans font-bold text-[#14110F] tabular-nums block mt-1">
                   ₹{frame.price.toLocaleString("en-IN")}
                 </span>
               </div>

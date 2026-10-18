@@ -53,20 +53,20 @@ export default function TryOnControls({
       {/* 1. Selected Frame Info Card */}
       <div className="p-5 bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] flex items-center justify-between">
         <div>
-          <span className="text-[10px] font-sans uppercase tracking-[0.24em] text-[#B89B6A] font-semibold block mb-0.5">
+          <span className="text-[10.5px] font-sans uppercase tracking-[0.26em] text-[#B89B6A] font-bold block mb-0.5">
             {selectedFrame.brand} • {selectedFrame.shape}
           </span>
-          <h2 className="font-serif text-xl sm:text-2xl text-[#14110F] font-normal leading-snug">
+          <h2 className="font-serif text-xl sm:text-2xl text-[#14110F] font-medium leading-snug">
             {selectedFrame.name}
           </h2>
-          <span className="text-sm font-sans font-medium text-[#14110F] tabular-nums block mt-1">
+          <span className="text-base font-sans font-bold text-[#14110F] tabular-nums block mt-1">
             ₹{selectedFrame.price.toLocaleString("en-IN")}
           </span>
         </div>
 
         {detectedFaceShape && selectedFrame.suitableFaceShapes.includes(detectedFaceShape) && (
           <div className="text-right">
-            <span className="px-2.5 py-1 text-[9px] uppercase font-mono tracking-wider bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/30 rounded-[2px] inline-flex items-center gap-1">
+            <span className="px-2.5 py-1 text-[9px] uppercase font-mono tracking-wider bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/30 rounded-[2px] inline-flex items-center gap-1 font-bold">
               <Sparkles className="w-3 h-3 text-[#B89B6A]" />
               Suits your {detectedFaceShape} face
             </span>
@@ -77,10 +77,10 @@ export default function TryOnControls({
       {/* 2. Lens Tint Switcher (Available for all sunglasses & tintable frames) */}
       <div className="p-5 bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] space-y-3">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] uppercase font-sans tracking-[0.2em] font-semibold text-[#14110F]">
+          <span className="text-[10.5px] uppercase font-sans tracking-[0.22em] font-bold text-[#14110F]">
             Lens Tint Customization
           </span>
-          <span className="text-[10px] text-[#7A7168] font-mono">Real-time shade</span>
+          <span className="text-[10px] text-[#7A7168] font-mono font-medium">Real-time shade</span>
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
@@ -117,13 +117,13 @@ export default function TryOnControls({
       {/* 3. Manual Precision Fit Sliders */}
       <div className="p-5 bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] uppercase font-sans tracking-[0.2em] font-semibold text-[#14110F] flex items-center gap-1.5">
+          <span className="text-[10.5px] uppercase font-sans tracking-[0.22em] font-bold text-[#14110F] flex items-center gap-1.5">
             <Sliders className="w-3.5 h-3.5 text-[#B89B6A]" />
             Fine-Tune Frame Position
           </span>
           <button
             onClick={onResetAdjustments}
-            className="text-[10px] uppercase font-sans tracking-widest text-[#7A7168] hover:text-[#14110F] flex items-center gap-1"
+            className="text-[10px] uppercase font-sans tracking-widest text-[#7A7168] hover:text-[#14110F] flex items-center gap-1 font-bold"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset</span>
@@ -132,9 +132,9 @@ export default function TryOnControls({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <div className="flex justify-between text-[11px] text-[#7A7168] mb-1">
+            <div className="flex justify-between text-[11px] text-[#7A7168] mb-1 font-medium">
               <span>Frame Scale</span>
-              <span className="font-mono">{sizeAdjustment > 0 ? `+${sizeAdjustment}` : sizeAdjustment}%</span>
+              <span className="font-mono font-bold text-[#14110F]">{sizeAdjustment > 0 ? `+${sizeAdjustment}` : sizeAdjustment}%</span>
             </div>
             <input
               type="range"
@@ -147,9 +147,9 @@ export default function TryOnControls({
           </div>
 
           <div>
-            <div className="flex justify-between text-[11px] text-[#7A7168] mb-1">
+            <div className="flex justify-between text-[11px] text-[#7A7168] mb-1 font-medium">
               <span>Nasal Bridge Height</span>
-              <span className="font-mono">{verticalAdjustment > 0 ? `+${verticalAdjustment}` : verticalAdjustment}px</span>
+              <span className="font-mono font-bold text-[#14110F]">{verticalAdjustment > 0 ? `+${verticalAdjustment}` : verticalAdjustment}px</span>
             </div>
             <input
               type="range"
@@ -169,7 +169,7 @@ export default function TryOnControls({
           href={enquiryLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] rounded-[2px] text-xs font-sans uppercase tracking-[0.18em] font-medium transition-all shadow-sm"
+          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#B89B6A] text-[#14110F] hover:bg-[#2A2623] hover:text-[#F7F3EC] rounded-[2px] text-xs font-sans uppercase tracking-[0.2em] font-bold transition-all shadow-sm"
         >
           <MessageCircle className="w-4 h-4" />
           <span>Inquire on WhatsApp for Store Trial</span>
@@ -178,7 +178,7 @@ export default function TryOnControls({
         <div className="grid grid-cols-2 gap-2">
           <Link
             href="/book-eye-test"
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 border border-[#14110F]/20 text-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] rounded-[2px] text-[10px] font-sans uppercase tracking-[0.16em] font-medium transition-all"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 border border-[#14110F]/20 text-[#14110F] hover:bg-[#14110F] hover:text-[#F7F3EC] rounded-[2px] text-[10.5px] font-sans uppercase tracking-[0.18em] font-bold transition-all"
           >
             <Calendar className="w-3.5 h-3.5 text-[#B89B6A]" />
             <span>Book Free Eye Test</span>
@@ -186,7 +186,7 @@ export default function TryOnControls({
 
           <Link
             href={`/product/${selectedFrame.slug}`}
-            className="inline-flex items-center justify-center gap-1 px-4 py-3 border border-[#B89B6A] text-[#14110F] hover:bg-[#B89B6A] hover:text-[#14110F] rounded-[2px] text-[10px] font-sans uppercase tracking-[0.16em] font-medium transition-all"
+            className="inline-flex items-center justify-center gap-1 px-4 py-3 border border-[#B89B6A] text-[#14110F] hover:bg-[#B89B6A] hover:text-[#14110F] rounded-[2px] text-[10.5px] font-sans uppercase tracking-[0.18em] font-bold transition-all"
           >
             <span>View Full Specs</span>
             <span>→</span>

@@ -13,7 +13,7 @@ export default function Eyebrow({
 }: EyebrowProps) {
   return (
     <span
-      className={`inline-block font-sans text-[11px] sm:text-[12px] uppercase tracking-[0.28em] font-medium ${
+      className={`inline-block font-sans text-[10.5px] sm:text-[11.5px] uppercase tracking-[0.28em] font-bold ${
         theme === "dark" ? "text-[#D4BE96]" : "text-[#B89B6A]"
       } ${className}`}
     >

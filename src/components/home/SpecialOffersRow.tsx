@@ -13,27 +13,27 @@ export default function SpecialOffersRow() {
   return (
     <section
       id="offers"
-      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-24 xl:py-32 bg-[#F7F3EC] border-y border-[#14110F]/8"
+      className="relative w-full min-h-auto xl:min-h-screen flex flex-col justify-center snap-frame py-10 sm:py-12 xl:py-14 bg-[#F7F3EC] border-y border-[#14110F]/8"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 lg:mb-8 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-2">
               <span className="w-6 h-[1px] bg-[#B89B6A]" />
               <Eyebrow>SEASONAL PRIVILEGE ACQUISITIONS</Eyebrow>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal tracking-tight">
-              Special Offers: Up to 40% Off
+            <h2 className="font-serif text-3xl sm:text-4xl xl:text-5xl text-[#14110F] font-normal tracking-tight">
+              Seasonal <span className="font-serif italic font-normal text-[#B89B6A]">Privilege</span> Offers: Up to 40% Off
             </h2>
-            <p className="text-xs sm:text-sm text-[#7A7168] mt-3 max-w-xl">
+            <p className="text-xs sm:text-sm text-[#7A7168] mt-2 max-w-xl font-light">
               Limited seasonal privilege privileges on select international designer frames. Inquire via WhatsApp to reserve for an in-store trial.
             </p>
           </div>
 
           <Link
             href="/offers"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-[#14110F] hover:text-[#B89B6A] group"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] hover:text-[#B89B6A] group shrink-0"
           >
             <span>View All Offers</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

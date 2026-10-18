@@ -110,19 +110,19 @@ export default function BrandStrip() {
               <Eyebrow>OFFICIAL MAISON PARTNERS</Eyebrow>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#14110F] font-normal tracking-tight">
-              Curated International Eyewear Houses
+              Curated <span className="font-serif italic font-normal text-[#B89B6A]">International</span> Eyewear Houses
             </h3>
           </div>
 
           <div className="flex items-center gap-4 text-xs shrink-0">
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#7A7168] font-medium">
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-[#7A7168] font-bold">
               <ShieldCheck className="w-3.5 h-3.5 text-[#B89B6A]" />
               100% Direct Certified Retailer
             </span>
             <span className="hidden sm:inline text-[#14110F]/20">•</span>
             <Link
               href="/brands"
-              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.18em] font-medium text-[#14110F] hover:text-[#B89B6A] group transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] hover:text-[#B89B6A] group transition-colors"
             >
               <span>Explore All Maisons</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 text-[#B89B6A]" />
@@ -210,7 +210,7 @@ export default function BrandStrip() {
           <div className="flex items-start gap-3">
             <ShieldCheck className="w-4 h-4 text-[#B89B6A] shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs uppercase tracking-[0.16em] font-semibold text-[#14110F] mb-1">
+              <h5 className="text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] mb-1">
                 Direct Authorization
               </h5>
               <p className="text-[11px] text-[#7A7168] leading-relaxed">
@@ -222,7 +222,7 @@ export default function BrandStrip() {
           <div className="flex items-start gap-3">
             <Award className="w-4 h-4 text-[#B89B6A] shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs uppercase tracking-[0.16em] font-semibold text-[#14110F] mb-1">
+              <h5 className="text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] mb-1">
                 Global Warranty
               </h5>
               <p className="text-[11px] text-[#7A7168] leading-relaxed">
@@ -234,7 +234,7 @@ export default function BrandStrip() {
           <div className="flex items-start gap-3">
             <Box className="w-4 h-4 text-[#B89B6A] shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs uppercase tracking-[0.16em] font-semibold text-[#14110F] mb-1">
+              <h5 className="text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] mb-1">
                 Original Packaging
               </h5>
               <p className="text-[11px] text-[#7A7168] leading-relaxed">
@@ -246,7 +246,7 @@ export default function BrandStrip() {
           <div className="flex items-start gap-3">
             <Wrench className="w-4 h-4 text-[#B89B6A] shrink-0 mt-0.5" />
             <div>
-              <h5 className="text-xs uppercase tracking-[0.16em] font-semibold text-[#14110F] mb-1">
+              <h5 className="text-xs uppercase tracking-[0.2em] font-bold text-[#14110F] mb-1">
                 Bespoke Fitting
               </h5>
               <p className="text-[11px] text-[#7A7168] leading-relaxed">
