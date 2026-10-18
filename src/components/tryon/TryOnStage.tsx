@@ -441,13 +441,12 @@ export default function TryOnStage({
     // Roll angle
     const rawAngle = Math.atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x);
 
-    // Pupil center line
+    // Exact pupil center coordinates
     const pupilMidX = (leftEye.x + rightEye.x) / 2;
     const pupilMidY = (leftEye.y + rightEye.y) / 2;
 
-    // Sellion (root of nose bridge between eyes)
-    const noseRoot = landmarks[6] ? { x: landmarks[6].x * width, y: landmarks[6].y * height } : null;
-    const targetY = noseRoot ? noseRoot.y * 0.72 + pupilMidY * 0.28 : pupilMidY;
+    // Optical center alignment: Frame lenses must sit directly centered on the eye pupils
+    const targetY = pupilMidY;
     const targetX = pupilMidX;
 
     // 3D Yaw calculation (horizontal turn)

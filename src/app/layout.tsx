@@ -57,6 +57,9 @@ export const metadata: Metadata = {
   },
 };
 
+import { TryOnProvider } from "@/context/TryOnContext";
+import Setup3DTryOnModal from "@/components/tryon/Setup3DTryOnModal";
+
 export default function RootLayout({
   children,
 }: {
@@ -68,12 +71,15 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#F7F3EC] text-[#14110F] font-sans">
-        <CustomCursor />
-        <Header />
-        <main className="flex-1 pb-16 sm:pb-0">{children}</main>
-        <Footer />
-        <FloatingWhatsApp />
-        <MobileStickyBar />
+        <TryOnProvider>
+          <CustomCursor />
+          <Header />
+          <main className="flex-1 pb-16 sm:pb-0">{children}</main>
+          <Footer />
+          <FloatingWhatsApp />
+          <MobileStickyBar />
+          <Setup3DTryOnModal />
+        </TryOnProvider>
       </body>
     </html>
   );

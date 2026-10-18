@@ -14,6 +14,7 @@ import {
 import { PRODUCTS } from "@/data/products";
 import { Product, ProductCategory, FrameShape, FrameMaterial, Gender } from "@/types";
 import ProductCard from "@/components/ProductCard";
+import { useTryOn } from "@/context/TryOnContext";
 
 interface CollectionPageProps {
   title: string;
@@ -195,56 +196,110 @@ export default function CollectionPage({
     onlyPolarized ||
     onlyTitanium;
 
+  const { isTryOnActive, setIsTryOnActive, userPhoto, setSetupModalOpen } = useTryOn();
+
   return (
-    <div className="bg-[#FAF7F2] min-h-screen pb-20">
+    <div className="bg-[#F7F3EC] min-h-screen pb-20">
       {/* Header Banner */}
-      <div className="bg-white border-b border-[#EADFD2] py-12 sm:py-16">
+      <div className="bg-[#F7F3EC] border-b border-[#14110F]/10 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-          <span className="font-sans text-[11px] uppercase tracking-[0.2em] font-semibold text-[#B08968]">
+          <span className="font-sans text-[10.5px] uppercase tracking-[0.28em] font-bold text-[#B89B6A]">
             DEMOOPTICS SHOWROOM CATALOGUE
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#2B2622] font-medium mt-2 mb-3">
+          <h1 className="font-serif text-3xl sm:text-5xl text-[#14110F] font-normal mt-2 mb-3">
             {title}
           </h1>
-          <div className="w-12 h-[1px] bg-[#B08968] mx-auto mb-4" />
-          <p className="text-xs sm:text-sm text-[#7C746C] leading-relaxed">
+          <div className="w-12 h-[1px] bg-[#B89B6A] mx-auto mb-4" />
+          <p className="text-xs sm:text-sm text-[#7A7168] leading-relaxed">
             {subtitle}
           </p>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {/* Top Control Bar: Active count, Mobile filter button & Sort Dropdown */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#EADFD2]">
+        {/* Top Control Bar: Active count, Lenskart 3D Try-on Toggle, Sort Dropdown */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#14110F]/10">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileFilterOpen(true)}
-              className="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B08968] bg-white text-xs font-medium text-[#7A5A43]"
+              className="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-[2px] border border-[#14110F]/20 bg-white text-xs font-bold uppercase tracking-wider text-[#14110F]"
             >
               <SlidersHorizontal className="w-4 h-4" />
               <span>Filters {hasActiveFilters ? "(Active)" : ""}</span>
             </button>
-            <span className="text-xs text-[#7C746C]">
-              Showing <span className="font-semibold text-[#2B2622]">{sortedProducts.length}</span> of {baseProducts.length} curated designs
+            <span className="text-xs text-[#7A7168]">
+              Showing <span className="font-bold text-[#14110F]">{sortedProducts.length}</span> of {baseProducts.length} curated designs
             </span>
           </div>
 
-          {/* Sort By Dropdown */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-[#7C746C] whitespace-nowrap">Sort by:</span>
-            <div className="relative">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-[#EADFD2] rounded-full px-4 py-2 pr-8 text-xs text-[#2B2622] focus:outline-none focus:border-[#B08968] cursor-pointer"
+          {/* Right Controls: LENSKART 3D TRY-ON ACTIVE SWITCH & SORT */}
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            {/* 3D Try-on Toggle Switch (Exact Lenskart Feature) */}
+            <div className="flex items-center gap-2.5 bg-white border border-[#14110F]/12 rounded-[2px] px-3 py-1.5 shadow-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  if (!userPhoto) {
+                    setSetupModalOpen(true);
+                  } else {
+                    setIsTryOnActive(!isTryOnActive);
+                  }
+                }}
+                className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                  isTryOnActive && userPhoto ? "bg-[#14110F]" : "bg-neutral-300"
+                }`}
+                role="switch"
+                aria-checked={isTryOnActive && !!userPhoto}
               >
-                <option value="featured">Featured Curations</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="newest">New Arrivals</option>
-                <option value="brand-az">Brand: A to Z</option>
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 text-[#7C746C] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <span
+                  className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${
+                    isTryOnActive && userPhoto ? "translate-x-4" : "translate-x-0"
+                  }`}
+                />
+              </button>
+
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#14110F]">
+                  3D Try-on
+                </span>
+                {isTryOnActive && userPhoto ? (
+                  <span className="px-1.5 py-0.5 rounded-[2px] bg-[#14110F] text-[#B89B6A] text-[8.5px] font-mono font-bold tracking-widest">
+                    ACTIVE
+                  </span>
+                ) : (
+                  <span className="text-[9.5px] text-[#7A7168] font-mono">
+                    OFF
+                  </span>
+                )}
+              </div>
+
+              {userPhoto && (
+                <button
+                  onClick={() => setSetupModalOpen(true)}
+                  className="text-[9.5px] uppercase font-sans tracking-wider text-[#B89B6A] hover:underline font-bold ml-1 pl-2 border-l border-[#14110F]/10"
+                >
+                  Change Photo
+                </button>
+              )}
+            </div>
+
+            {/* Sort By Dropdown */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[#7A7168] whitespace-nowrap">Sort by:</span>
+              <div className="relative">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="appearance-none bg-white border border-[#14110F]/15 rounded-[2px] px-3 py-1.5 pr-8 text-xs font-medium text-[#14110F] focus:outline-none focus:border-[#B89B6A] cursor-pointer"
+                >
+                  <option value="featured">Featured Curations</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="newest">New Arrivals</option>
+                  <option value="brand-az">Brand: A to Z</option>
+                </select>
+                <ChevronDown className="w-3.5 h-3.5 text-[#7A7168] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
           </div>
         </div>

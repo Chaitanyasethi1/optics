@@ -216,3 +216,72 @@ export const TRYON_FRAMES: TryOnFrame[] = [
     suitableFaceShapes: ["Oval", "Round"],
   },
 ];
+
+import { Product } from "@/types";
+
+export function getTryOnFrameForProduct(product: Product): TryOnFrame {
+  const match = TRYON_FRAMES.find((f) => f.slug === product.slug);
+  if (match) return match;
+
+  const shape = product.specs?.shape || "Wayfarer";
+  const isSunglasses = product.category === "sunglasses";
+
+  let overlayUrl = "/frames/wayfarer-black.svg";
+  let frameColor = "#14110F";
+  let defaultTint = isSunglasses ? "g15" : "clear";
+  let svgTemplate: TryOnFrame["svgTemplate"] = "wayfarer";
+
+  if (shape === "Aviator") {
+    overlayUrl = "/frames/aviator-gold.svg";
+    frameColor = "#B89B6A";
+    defaultTint = isSunglasses ? "g15" : "clear";
+    svgTemplate = "aviator";
+  } else if (shape === "Round") {
+    overlayUrl = "/frames/round-gold.svg";
+    frameColor = "#B89B6A";
+    defaultTint = isSunglasses ? "brown" : "clear";
+    svgTemplate = "round";
+  } else if (shape === "Cat-eye") {
+    overlayUrl = "/frames/cateye-black.svg";
+    frameColor = "#2A2623";
+    defaultTint = isSunglasses ? "gradient" : "clear";
+    svgTemplate = "cateye";
+  } else if (shape === "Rimless" || product.specs?.material?.includes("Titanium")) {
+    overlayUrl = "/frames/rimless-titanium.svg";
+    frameColor = "#D4BE96";
+    defaultTint = "clear";
+    svgTemplate = "rimless";
+  } else if (shape === "Geometric") {
+    overlayUrl = "/frames/geometric-gunmetal.svg";
+    frameColor = "#2A2623";
+    defaultTint = isSunglasses ? "g15" : "clear";
+    svgTemplate = "geometric";
+  } else if (shape === "Rectangle" || shape === "Square") {
+    overlayUrl = "/frames/holbrook-square.svg";
+    frameColor = "#14110F";
+    defaultTint = isSunglasses ? "blue" : "clear";
+    svgTemplate = "rectangle";
+  }
+
+  return {
+    id: `tryon-${product.id}`,
+    slug: product.slug,
+    name: product.name,
+    brand: product.brand,
+    price: product.price,
+    category: isSunglasses ? "sunglasses" : "eyeglasses",
+    gender: (product.specs?.gender as any) || "Unisex",
+    shape: (product.specs?.shape as any) || "Wayfarer",
+    frameWidthMm: 140,
+    bridgeMm: 18,
+    lensWidthMm: 52,
+    lensHeightMm: 40,
+    image: product.images[0],
+    overlayUrl,
+    frameColor,
+    accentColor: "#B89B6A",
+    defaultTint,
+    svgTemplate,
+    suitableFaceShapes: ["Oval", "Round", "Square"],
+  };
+}

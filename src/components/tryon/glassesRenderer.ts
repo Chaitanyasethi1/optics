@@ -82,13 +82,13 @@ export function drawGlassesOnCanvas({
 
   // 1. Move to the bridge center between the user's eyes
   // Pitch naturally slides the frame slightly down the nasal slope when looking down
-  const pitchYOffset = clampedPitch * (ipd * 0.18);
+  const pitchYOffset = clampedPitch * (ipd * 0.10);
   ctx.translate(x, y + verticalAdjustment + pitchYOffset);
   ctx.rotate(angle);
 
   // 2. Optical-grade scaling
-  // In our SVG master artboards (1000px × 450px), optical center distance = 456px
-  const baseW = (ipd / 0.456) * (1 + sizeAdjustment / 100);
+  // In our SVG master artboards (1000px × 450px), adult frame width scales to IPD / 0.42
+  const baseW = (ipd / 0.42) * (1 + sizeAdjustment / 100);
   const baseH = baseW * (450 / 1000);
 
   // 3. 3D Perspective Foreshortening
@@ -97,9 +97,9 @@ export function drawGlassesOnCanvas({
   const projectedW = baseW * Math.abs(cosYaw);
   const projectedH = baseH * (1 + Math.abs(clampedPitch) * 0.08);
 
-  // Optical center Y is at ~48.88% of height
+  // Optical center Y is at ~52% of height (matching pupil horizontal line in SVGs)
   const drawX = -projectedW / 2;
-  const drawY = -projectedH * 0.48888;
+  const drawY = -projectedH * 0.52;
 
   // 4. Draw 3D Temple Arms (Dandi) when head turns!
   // In real glasses, turning head reveals the side temple arm going back to the ear.
