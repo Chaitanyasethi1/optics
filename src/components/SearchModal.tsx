@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Search, X, ArrowRight, Glasses, Sparkles } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { Product } from "@/types";
+import PriceReveal from "@/components/PriceReveal";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -164,15 +165,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <h4 className="font-serif text-base text-[#2B2622] group-hover:text-[#7A5A43] truncate transition-colors">
                     {product.name}
                   </h4>
-                  <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-xs font-medium text-[#7A5A43]">
-                      ₹{product.price.toLocaleString("en-IN")}
-                    </span>
-                    {product.oldPrice && (
-                      <span className="text-[11px] text-[#7C746C] line-through">
-                        ₹{product.oldPrice.toLocaleString("en-IN")}
-                      </span>
-                    )}
+                  <div className="flex items-center gap-2 mt-1 min-h-[24px]">
+                    <PriceReveal
+                      id={product.id}
+                      price={product.price}
+                      oldPrice={product.oldPrice}
+                      productName={`${product.brand} ${product.name}`}
+                      size="xs"
+                      priceClassName="text-xs font-medium text-[#7A5A43]"
+                      oldPriceClassName="text-[11px] text-[#7C746C]"
+                    />
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-[#B08968] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />

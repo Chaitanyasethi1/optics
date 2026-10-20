@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { TryOnFrame, LENS_TINTS } from "@/data/tryon";
 import { getWhatsAppLink, STORE_NAME } from "@/data/config";
+import PriceReveal from "@/components/PriceReveal";
 
 interface TryOnControlsProps {
   selectedFrame: TryOnFrame;
@@ -59,9 +60,14 @@ export default function TryOnControls({
           <h2 className="font-serif text-xl sm:text-2xl text-[#14110F] font-medium leading-snug">
             {selectedFrame.name}
           </h2>
-          <span className="text-base font-sans font-bold text-[#14110F] tabular-nums block mt-1">
-            ₹{selectedFrame.price.toLocaleString("en-IN")}
-          </span>
+          <div className="mt-1 min-h-[28px] flex items-center">
+            <PriceReveal
+              id={selectedFrame.id}
+              price={selectedFrame.price}
+              productName={`${selectedFrame.brand} ${selectedFrame.name}`}
+              size="md"
+            />
+          </div>
         </div>
 
         {detectedFaceShape && selectedFrame.suitableFaceShapes.includes(detectedFaceShape) && (

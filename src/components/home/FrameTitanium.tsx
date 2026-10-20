@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { getProductEnquiryLink } from "@/data/config";
+import PriceReveal from "@/components/PriceReveal";
 
 export default function FrameTitanium() {
   const titaniumProducts = PRODUCTS.filter((p) => p.isTitanium).slice(0, 4);
@@ -110,15 +111,14 @@ export default function FrameTitanium() {
                   >
                     {prod.name}
                   </Link>
-                  <div className="flex items-baseline gap-2 mt-0.5 mb-2">
-                    <span className="font-serif text-sm sm:text-base font-semibold text-[#14110F]">
-                      ₹{prod.price.toLocaleString("en-IN")}
-                    </span>
-                    {prod.oldPrice && (
-                      <span className="text-[10px] text-[#7A7168] line-through font-mono">
-                        ₹{prod.oldPrice.toLocaleString("en-IN")}
-                      </span>
-                    )}
+                  <div className="flex items-center min-h-[26px] mt-0.5 mb-2">
+                    <PriceReveal
+                      id={prod.id}
+                      price={prod.price}
+                      oldPrice={prod.oldPrice}
+                      productName={`${prod.brand} ${prod.name}`}
+                      size="sm"
+                    />
                   </div>
                 </div>
 

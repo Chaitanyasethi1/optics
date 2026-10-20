@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, MessageCircle, Shield } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { getProductEnquiryLink } from "@/data/config";
+import PriceReveal from "@/components/PriceReveal";
 
 const POLARIZED_KEYS = [
   { key: "prod-polarized-his", tag: "FOR GENTLEMEN", gender: "Men" },
@@ -94,15 +95,15 @@ export default function FramePolarized() {
                 >
                   {prod.name}
                 </Link>
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="font-serif text-base sm:text-lg font-semibold text-[#D4BE96]">
-                    ₹{prod.price.toLocaleString("en-IN")}
-                  </span>
-                  {prod.oldPrice && (
-                    <span className="text-xs text-[#7A7168] line-through font-mono">
-                      ₹{prod.oldPrice.toLocaleString("en-IN")}
-                    </span>
-                  )}
+                <div className="flex items-center min-h-[30px] mb-3">
+                  <PriceReveal
+                    id={prod.id}
+                    price={prod.price}
+                    oldPrice={prod.oldPrice}
+                    productName={`${prod.brand} ${prod.name}`}
+                    theme="dark"
+                    size="sm"
+                  />
                 </div>
               </div>
 

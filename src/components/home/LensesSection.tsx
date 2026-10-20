@@ -7,6 +7,7 @@ import { MessageCircle, Calendar, Sparkles, Check, ArrowUpRight } from "lucide-r
 import { LENS_BRANDS } from "@/data/products";
 import { getWhatsAppLink, STORE_NAME } from "@/data/config";
 import Eyebrow from "@/components/ui/Eyebrow";
+import PriceReveal from "@/components/PriceReveal";
 
 export default function LensesSection() {
   return (
@@ -135,10 +136,13 @@ export default function LensesSection() {
                         <span className="text-[9px] text-[#7A7168] font-medium">Digital Wavefront & Anti-Glare</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-[9px] text-[#7A7168] block uppercase font-mono tracking-wider">Starting from</span>
-                        <span className="text-sm sm:text-base font-bold text-[#14110F] tabular-nums">
-                          ₹{item.singleVisionStarting.toLocaleString("en-IN")}
-                        </span>
+                        <span className="text-[9px] text-[#7A7168] block uppercase font-mono tracking-wider mb-0.5">Starting from</span>
+                        <PriceReveal
+                          id={`lens-sv-${item.brand.toLowerCase()}`}
+                          price={item.singleVisionStarting}
+                          productName={`${item.brand} Single Vision Lenses`}
+                          size="xs"
+                        />
                       </div>
                     </div>
 
@@ -148,10 +152,13 @@ export default function LensesSection() {
                         <span className="text-[9px] text-[#7A7168] font-medium">Distortion-Free Custom Corridor</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-[9px] text-[#7A7168] block uppercase font-mono tracking-wider">Starting from</span>
-                        <span className="text-sm sm:text-base font-bold text-[#14110F] tabular-nums">
-                          ₹{item.progressiveStarting.toLocaleString("en-IN")}
-                        </span>
+                        <span className="text-[9px] text-[#7A7168] block uppercase font-mono tracking-wider mb-0.5">Starting from</span>
+                        <PriceReveal
+                          id={`lens-prog-${item.brand.toLowerCase()}`}
+                          price={item.progressiveStarting}
+                          productName={`${item.brand} Progressive Lenses`}
+                          size="xs"
+                        />
                       </div>
                     </div>
                   </div>

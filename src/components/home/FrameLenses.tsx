@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import PriceReveal from "@/components/PriceReveal";
 
 interface LensMaison {
   name: string;
@@ -137,16 +138,17 @@ export default function FrameLenses() {
 
             {/* Bottom Pricing & CTA */}
             <div className="pt-4 border-t border-[#14110F]/10">
-              <div className="flex items-baseline justify-between mb-3">
+              <div className="flex items-center justify-between mb-3 min-h-[32px]">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#7A7168]">
                   Custom Pairs
                 </span>
-                <div className="text-right">
-                  <span className="text-[10px] text-[#7A7168] font-mono mr-1">FROM</span>
-                  <span className="font-serif text-xl sm:text-2xl font-bold text-[#14110F]">
-                    ₹{house.priceFrom.toLocaleString("en-IN")}
-                  </span>
-                </div>
+                <PriceReveal
+                  id={`lens-house-${house.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  price={house.priceFrom}
+                  prefix="FROM "
+                  productName={`${house.name} Custom Lenses`}
+                  size="sm"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-2">

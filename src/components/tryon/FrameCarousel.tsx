@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { TryOnFrame } from "@/data/tryon";
+import PriceReveal from "@/components/PriceReveal";
 
 interface FrameCarouselProps {
   frames: TryOnFrame[];
@@ -87,10 +88,18 @@ export default function FrameCarousel({
           const isRecommended = detectedFaceShape && frame.suitableFaceShapes.includes(detectedFaceShape);
 
           return (
-            <button
+            <div
               key={frame.id}
+              role="button"
+              tabIndex={0}
               onClick={() => onSelectFrame(frame)}
-              className={`relative text-left p-2.5 rounded-[2px] border transition-all duration-300 group flex flex-col justify-between ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onSelectFrame(frame);
+                }
+              }}
+              className={`relative text-left p-2.5 rounded-[2px] border transition-all duration-300 group flex flex-col justify-between cursor-pointer select-none ${
                 isSelected
                   ? "bg-[#EDE5D8] border-[#B89B6A] ring-1 ring-[#B89B6A] shadow-xs"
                   : "bg-[#F7F3EC] border-[#14110F]/10 hover:border-[#B89B6A]/50 hover:bg-[#EDE5D8]/40"
@@ -122,11 +131,16 @@ export default function FrameCarousel({
                 <span className="font-serif text-xs text-[#14110F] font-medium line-clamp-1 block leading-snug">
                   {frame.name}
                 </span>
-                <span className="text-xs font-sans font-bold text-[#14110F] tabular-nums block mt-1">
-                  ₹{frame.price.toLocaleString("en-IN")}
-                </span>
+                <div className="mt-1 min-h-[22px] flex items-center">
+                  <PriceReveal
+                    id={frame.id}
+                    price={frame.price}
+                    productName={`${frame.brand} ${frame.name}`}
+                    size="xs"
+                  />
+                </div>
               </div>
-            </button>
+            </div>
           );
         })}
       </div>

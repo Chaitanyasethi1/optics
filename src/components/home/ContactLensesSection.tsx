@@ -7,6 +7,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { CONTACT_LENS_BRANDS } from "@/data/products";
 import { getWhatsAppLink, STORE_NAME } from "@/data/config";
 import Eyebrow from "@/components/ui/Eyebrow";
+import PriceReveal from "@/components/PriceReveal";
 
 export default function ContactLensesSection() {
   return (
@@ -71,9 +72,15 @@ export default function ContactLensesSection() {
                   {item.type}
                 </p>
 
-                <div className="text-sm font-bold text-[#14110F] tabular-nums mb-3.5">
-                  Starting ₹{item.startingPrice.toLocaleString("en-IN")}{" "}
-                  <span className="text-[10px] text-[#7A7168] font-normal uppercase font-mono tracking-wider">/ pack</span>
+                <div className="mb-3.5 min-h-[30px] flex items-center">
+                  <PriceReveal
+                    id={`contact-lens-${item.brand.toLowerCase()}`}
+                    price={item.startingPrice}
+                    prefix="Starting "
+                    suffix=" / pack"
+                    productName={`${item.brand} Contact Lenses`}
+                    size="sm"
+                  />
                 </div>
               </div>
 

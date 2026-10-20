@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles, MessageCircle, Tag } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
+import { Product } from "@/types";
 import { getProductEnquiryLink } from "@/data/config";
+import PriceReveal, { useIsPriceRevealed } from "@/components/PriceReveal";
 
 export default function FrameOffers() {
   const offerProducts = PRODUCTS.filter((p) => (p.discountPercent || 0) > 0)
@@ -75,86 +77,94 @@ export default function FrameOffers() {
 
         {/* Right Column: 3 Discounted Product Cards (8 of 12 cols) */}
         <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 min-h-0 items-stretch">
-          {offerProducts.map((prod) => {
-            const enquiryLink = getProductEnquiryLink(prod.name, prod.brand, prod.price);
-
-            return (
-              <div
-                key={prod.id}
-                className="group relative bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] p-3 sm:p-4 flex flex-col justify-between hover:border-[#B89B6A] transition-all duration-300"
-              >
-                {/* Discount Badge */}
-                <div className="flex items-center justify-between mb-2">
-                  <span className="px-2 py-0.5 rounded-[2px] bg-[#B89B6A] text-[#14110F] text-[9px] font-mono tracking-wider font-bold">
-                    SAVE {prod.discountPercent}%
-                  </span>
-                  <span className="text-[9px] font-mono text-[#7A7168] uppercase tracking-wider">
-                    {prod.specs.shape || "Classic"}
-                  </span>
-                </div>
-
-                {/* Product Image Stage */}
-                <Link
-                  href={`/products/${prod.slug}`}
-                  className="relative w-full flex-1 min-h-[110px] sm:min-h-[140px] max-h-[180px] bg-[#EDE5D8]/50 rounded-[2px] overflow-hidden flex items-center justify-center p-3 mb-2"
-                >
-                  <Image
-                    src={prod.images[0]}
-                    alt={prod.name}
-                    fill
-                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, 25vw"
-                  />
-                </Link>
-
-                {/* Metadata */}
-                <div>
-                  <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#B89B6A] font-semibold block mb-0.5">
-                    {prod.brand}
-                  </span>
-                  <Link
-                    href={`/products/${prod.slug}`}
-                    className="block font-serif text-base sm:text-lg text-[#14110F] font-normal truncate hover:text-[#B89B6A] transition-colors mb-1"
-                  >
-                    {prod.name}
-                  </Link>
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="font-serif text-base font-semibold text-[#14110F]">
-                      ₹{prod.price.toLocaleString("en-IN")}
-                    </span>
-                    {prod.oldPrice && (
-                      <span className="text-xs text-[#7A7168] line-through font-mono">
-                        ₹{prod.oldPrice.toLocaleString("en-IN")}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Actions */}
-                <div className="pt-2 border-t border-[#14110F]/8 grid grid-cols-2 gap-2">
-                  <Link
-                    href={`/try-on?product=${prod.slug}`}
-                    className="py-1.5 rounded-[2px] bg-[#14110F]/5 hover:bg-[#B89B6A] hover:text-[#14110F] text-[#14110F] text-center text-[9px] font-mono uppercase tracking-[0.15em] font-medium transition-colors flex items-center justify-center gap-1"
-                  >
-                    <Sparkles className="w-2.5 h-2.5 text-[#B89B6A]" />
-                    <span>Try On</span>
-                  </Link>
-
-                  <a
-                    href={enquiryLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-1.5 rounded-[2px] bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white text-center text-[9px] font-mono uppercase tracking-[0.15em] font-medium transition-colors flex items-center justify-center gap-1"
-                  >
-                    <MessageCircle className="w-2.5 h-2.5" />
-                    <span>Inquire</span>
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+          {offerProducts.map((prod) => (
+            <OfferCard key={prod.id} prod={prod} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function OfferCard({ prod }: { prod: Product }) {
+  const enquiryLink = getProductEnquiryLink(prod.name, prod.brand, prod.price);
+  const isRevealed = useIsPriceRevealed(prod.id);
+
+  return (
+    <div className="group relative bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] p-3 sm:p-4 flex flex-col justify-between hover:border-[#B89B6A] transition-all duration-300">
+      {/* Discount Badge */}
+      <div className="flex items-center justify-between mb-2">
+        {isRevealed ? (
+          <span className="px-2 py-0.5 rounded-[2px] bg-[#B89B6A] text-[#14110F] text-[9px] font-mono tracking-wider font-bold">
+            SAVE {prod.discountPercent}%
+          </span>
+        ) : (
+          <span className="px-2 py-0.5 rounded-[2px] bg-[#EDE5D8] text-[#7A7168] text-[9px] font-mono tracking-wider font-bold">
+            PRIVILEGE OFFER
+          </span>
+        )}
+        <span className="text-[9px] font-mono text-[#7A7168] uppercase tracking-wider">
+          {prod.specs.shape || "Classic"}
+        </span>
+      </div>
+
+      {/* Product Image Stage */}
+      <Link
+        href={`/products/${prod.slug}`}
+        className="relative w-full flex-1 min-h-[110px] sm:min-h-[140px] max-h-[180px] bg-[#EDE5D8]/50 rounded-[2px] overflow-hidden flex items-center justify-center p-3 mb-2"
+      >
+        <Image
+          src={prod.images[0]}
+          alt={prod.name}
+          fill
+          className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 640px) 100vw, 25vw"
+        />
+      </Link>
+
+      {/* Metadata */}
+      <div>
+        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#B89B6A] font-semibold block mb-0.5">
+          {prod.brand}
+        </span>
+        <Link
+          href={`/products/${prod.slug}`}
+          className="block font-serif text-base sm:text-lg text-[#14110F] font-normal truncate hover:text-[#B89B6A] transition-colors mb-1"
+        >
+          {prod.name}
+        </Link>
+        <div className="flex items-center min-h-[26px] mb-2">
+          <PriceReveal
+            id={prod.id}
+            price={prod.price}
+            oldPrice={prod.oldPrice}
+            discountPercent={prod.discountPercent}
+            productName={`${prod.brand} ${prod.name}`}
+            size="sm"
+          />
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="pt-2 border-t border-[#14110F]/8 grid grid-cols-2 gap-2">
+        <Link
+          href={`/try-on?product=${prod.slug}`}
+          className="py-1.5 rounded-[2px] bg-[#14110F]/5 hover:bg-[#B89B6A] hover:text-[#14110F] text-[#14110F] text-center text-[9px] font-mono uppercase tracking-[0.15em] font-medium transition-colors flex items-center justify-center gap-1"
+        >
+          <Sparkles className="w-2.5 h-2.5 text-[#B89B6A]" />
+          <span>Try On</span>
+        </Link>
+
+        <a
+          href={enquiryLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="py-1.5 rounded-[2px] bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white text-center text-[9px] font-mono uppercase tracking-[0.15em] font-medium transition-colors flex items-center justify-center gap-1"
+        >
+          <MessageCircle className="w-2.5 h-2.5" />
+          <span>Inquire</span>
+        </a>
+      </div>
+    </div>
   );
 }

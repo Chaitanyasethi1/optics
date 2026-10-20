@@ -9,6 +9,7 @@ import { getProductEnquiryLink } from "@/data/config";
 import { useTryOn } from "@/context/TryOnContext";
 import { getTryOnFrameForProduct } from "@/data/tryon";
 import { drawGlassesOnCanvas } from "@/components/tryon/glassesRenderer";
+import PriceReveal, { useIsPriceRevealed } from "@/components/PriceReveal";
 
 interface ProductCardProps {
   product: Product;
@@ -78,6 +79,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [activeAngle, setActiveAngle] = useState<"front" | "left" | "right">("front");
   const enquiryLink = getProductEnquiryLink(product.name, product.brand, product.price);
+  const isRevealed = useIsPriceRevealed(product.id);
 
   const { isTryOnActive, userPhoto, calibration, setIsTryOnActive, setSetupModalOpen } = useTryOn();
   const isEyewear = product.category === "sunglasses" || product.category === "eyeglasses";
@@ -111,7 +113,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           ) : (
             <>
-              {product.discountPercent && (
+              {isRevealed && product.discountPercent && (
                 <span className="px-2.5 py-0.5 text-[9px] uppercase font-mono font-bold tracking-[0.15em] bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/30">
                   {product.discountPercent}% PRIVILEGE
                 </span>
@@ -268,21 +270,17 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.specs.material} • {product.specs.gender}
           </p>
 
-          {/* Price with tabular numbers & muted strikethrough */}
-          <div className="flex items-baseline gap-2 mt-2 pt-1.5 border-t border-[#14110F]/6">
-            <span className="text-base sm:text-lg font-sans font-bold text-[#14110F] tabular-nums tracking-tight">
-              ₹{product.price.toLocaleString("en-IN")}
-            </span>
-            {product.oldPrice && (
-              <span className="text-xs text-[#7A7168]/70 line-through tabular-nums font-normal">
-                ₹{product.oldPrice.toLocaleString("en-IN")}
-              </span>
-            )}
-            {product.category === "lenses" && (
-              <span className="text-[10px] uppercase tracking-wider text-[#7A7168] font-bold">
-                from
-              </span>
-            )}
+          {/* Price with Get Quote / Reveal */}
+          <div className="flex items-center min-h-[30px] mt-2 pt-1.5 border-t border-[#14110F]/6">
+            <PriceReveal
+              id={product.id}
+              price={product.price}
+              oldPrice={product.oldPrice}
+              discountPercent={product.discountPercent}
+              suffix={product.category === "lenses" ? "from" : undefined}
+              productName={`${product.brand} ${product.name}`}
+              size="sm"
+            />
           </div>
         </div>
 

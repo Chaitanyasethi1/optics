@@ -21,6 +21,7 @@ import {
 import { Product } from "@/types";
 import { STORE_NAME, PHONE, ADDRESS, getProductEnquiryLink, getWhatsAppLink } from "@/data/config";
 import ProductCard from "@/components/ProductCard";
+import PriceReveal from "@/components/PriceReveal";
 
 interface ProductDetailViewProps {
   product: Product;
@@ -161,17 +162,18 @@ export default function ProductDetailView({
                 )}
               </div>
 
-              {/* Pricing Box */}
-              <div className="p-4 bg-[#EDE5D8]/50 rounded-[2px] border border-[#B89B6A]/30 flex items-baseline gap-3 shadow-xs">
-                <span className="text-2xl sm:text-3xl font-bold font-sans text-[#14110F] tabular-nums">
-                  ₹{product.price.toLocaleString("en-IN")}
-                </span>
-                {product.oldPrice && (
-                  <span className="text-sm text-[#7A7168]/70 line-through tabular-nums font-normal">
-                    ₹{product.oldPrice.toLocaleString("en-IN")}
-                  </span>
-                )}
-                <span className="text-[11px] text-[#7A7168] uppercase font-mono tracking-wider ml-auto">
+              {/* Pricing Box with Get Quote / Reveal */}
+              <div className="p-4 bg-[#EDE5D8]/50 rounded-[2px] border border-[#B89B6A]/30 flex items-center justify-between gap-3 shadow-xs min-h-[68px]">
+                <PriceReveal
+                  id={product.id}
+                  price={product.price}
+                  oldPrice={product.oldPrice}
+                  discountPercent={product.discountPercent}
+                  productName={`${product.brand} ${product.name}`}
+                  size="lg"
+                  showDiscountBadge
+                />
+                <span className="text-[11px] text-[#7A7168] uppercase font-mono tracking-wider ml-auto shrink-0 pl-3">
                   Showroom Inclusive
                 </span>
               </div>
