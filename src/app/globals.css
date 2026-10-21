@@ -236,4 +236,86 @@ h3, h4 {
   animation-play-state: paused;
 }
 
+/* Luxury Optical PriceReveal Keyframe Suite */
+@keyframes goldShimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+  }
+}
 
+@keyframes lensFlareScan {
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+@keyframes apertureIrisRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.85);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes radialAuraPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes clickRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.animate-gold-shimmer {
+  animation: goldShimmerSweep 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-lens-scan {
+  animation: lensFlareScan 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-iris-focus {
+  animation: apertureIrisRotate 1.1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.animate-aura-pulse {
+  animation: radialAuraPulse 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-click-ripple {
+  animation: clickRipple 0.55s ease-out forwards;
+}
