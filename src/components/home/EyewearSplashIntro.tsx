@@ -1,10 +1,170 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { playApertureClick } from "@/lib/audioHaptics";
+
+/**
+ * Ultra-Modern Avant-Garde Titanium Eyewear Vector
+ * Sleek Japanese Geometric Silhouette with Champagne Gold & Brushed Titanium Bevels
+ */
+function ModernAvantGardeSpecs() {
+  return (
+    <svg
+      viewBox="0 0 440 160"
+      className="w-full h-auto max-h-[160px] select-none pointer-events-none drop-shadow-[0_8px_24px_rgba(184,155,106,0.3)]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        {/* Luxury Brushed Champagne Gold Gradient */}
+        <linearGradient id="modernGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFF2D6" />
+          <stop offset="25%" stopColor="#D8BA84" />
+          <stop offset="55%" stopColor="#A8864E" />
+          <stop offset="80%" stopColor="#EAD2A8" />
+          <stop offset="100%" stopColor="#87652E" />
+        </linearGradient>
+
+        {/* Satin Japanese Titanium Rim Gradient */}
+        <linearGradient id="modernTitanium" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#4A4E57" />
+          <stop offset="35%" stopColor="#25282E" />
+          <stop offset="70%" stopColor="#1A1C20" />
+          <stop offset="100%" stopColor="#3E424A" />
+        </linearGradient>
+
+        {/* Crystal Clear Sapphire Optical Glass */}
+        <linearGradient id="modernSapphireLens" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(255, 255, 255, 0.22)" />
+          <stop offset="35%" stopColor="rgba(184, 155, 106, 0.08)" />
+          <stop offset="70%" stopColor="rgba(56, 189, 248, 0.16)" />
+          <stop offset="100%" stopColor="rgba(255, 255, 255, 0.06)" />
+        </linearGradient>
+
+        {/* Diagonal AR Multi-Coating Glare Reflection */}
+        <linearGradient id="modernARGlint" x1="10%" y1="0%" x2="90%" y2="100%">
+          <stop offset="0%" stopColor="transparent" />
+          <stop offset="35%" stopColor="rgba(255, 255, 255, 0.65)" />
+          <stop offset="42%" stopColor="rgba(125, 211, 252, 0.45)" />
+          <stop offset="50%" stopColor="transparent" />
+          <stop offset="78%" stopColor="rgba(255, 255, 255, 0.35)" />
+          <stop offset="100%" stopColor="transparent" />
+        </linearGradient>
+      </defs>
+
+      {/* ========================================================
+          LEFT LENS & FRAME (Sculpted Modern Hexagonal Contour)
+          ======================================================== */}
+      {/* Left Glass Base */}
+      <polygon
+        points="46,45 178,45 194,62 194,106 172,126 62,126 38,106 38,62"
+        fill="url(#modernSapphireLens)"
+      />
+      {/* Left AR Glint Sheen */}
+      <polygon
+        points="46,45 178,45 194,62 194,106 172,126 62,126 38,106 38,62"
+        fill="url(#modernARGlint)"
+      />
+      {/* Left Titanium Outer Rim */}
+      <polygon
+        points="46,45 178,45 194,62 194,106 172,126 62,126 38,106 38,62"
+        stroke="url(#modernTitanium)"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+      {/* Left Gold Inner Chamfer Edge */}
+      <polygon
+        points="50,48 174,48 189,64 189,103 169,122 66,122 43,103 43,64"
+        stroke="url(#modernGold)"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+        opacity="0.8"
+      />
+
+      {/* ========================================================
+          RIGHT LENS & FRAME (Symmetrical Hexagonal Contour)
+          ======================================================== */}
+      {/* Right Glass Base */}
+      <polygon
+        points="262,45 394,45 402,62 402,106 378,126 268,126 246,106 246,62"
+        fill="url(#modernSapphireLens)"
+      />
+      {/* Right AR Glint Sheen */}
+      <polygon
+        points="262,45 394,45 402,62 402,106 378,126 268,126 246,106 246,62"
+        fill="url(#modernARGlint)"
+      />
+      {/* Right Titanium Outer Rim */}
+      <polygon
+        points="262,45 394,45 402,62 402,106 378,126 268,126 246,106 246,62"
+        stroke="url(#modernTitanium)"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+      {/* Right Gold Inner Chamfer Edge */}
+      <polygon
+        points="266,48 390,48 397,64 397,103 374,122 272,122 251,103 251,64"
+        stroke="url(#modernGold)"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+        opacity="0.8"
+      />
+
+      {/* ========================================================
+          ARCHITECTURAL CENTER BRIDGE (Sleek Modern Double Bar)
+          ======================================================== */}
+      {/* Top Floating Brow Bar */}
+      <line
+        x1="178"
+        y1="45"
+        x2="262"
+        y2="45"
+        stroke="url(#modernGold)"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+      />
+      {/* Lower Titanium Bridge Arch */}
+      <path
+        d="M 194,62 Q 220,54 246,62"
+        stroke="url(#modernTitanium)"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Gold Center Accent Dot */}
+      <circle cx="220" cy="45" r="2.2" fill="#FFF2D6" />
+
+      {/* ========================================================
+          MINIMALIST NOSE PADS
+          ======================================================== */}
+      <ellipse cx="198" cy="78" rx="3.5" ry="7.5" fill="#EAD2A8" opacity="0.9" />
+      <ellipse cx="242" cy="78" rx="3.5" ry="7.5" fill="#EAD2A8" opacity="0.9" />
+
+      {/* ========================================================
+          CYLINDRICAL BARREL HINGES & TEMPLE ARMS
+          ======================================================== */}
+      {/* Left Temple Hinge Pin */}
+      <path
+        d="M 38,62 L 12,58"
+        stroke="url(#modernGold)"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <circle cx="36" cy="62" r="2.5" fill="#FFF2D6" />
+
+      {/* Right Temple Hinge Pin */}
+      <path
+        d="M 402,62 L 428,58"
+        stroke="url(#modernGold)"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <circle cx="404" cy="62" r="2.5" fill="#FFF2D6" />
+    </svg>
+  );
+}
 
 export default function EyewearSplashIntro() {
   const [mounted, setMounted] = useState(false);
@@ -36,7 +196,7 @@ export default function EyewearSplashIntro() {
     setPhase("opening");
     setTimeout(() => {
       setPhase("done");
-    }, 400);
+    }, 380);
   };
 
   if (!mounted || phase === "done") return null;
@@ -45,7 +205,7 @@ export default function EyewearSplashIntro() {
     <div
       onClick={handleOpenNow}
       className="fixed inset-0 z-[9999] select-none cursor-pointer overflow-hidden pointer-events-auto"
-      title="Click to open"
+      title="Click to enter showroom immediately"
     >
       {/* ========================================================
           TOP HALF (Slides UP from center)
@@ -137,7 +297,7 @@ export default function EyewearSplashIntro() {
       </motion.div>
 
       {/* ========================================================
-          CENTER LUXURY SPECS (Upright 360° Turntable Rotation)
+          CENTER ULTRA-MODERN SPECS (Upright 360° Turntable Rotation)
           ======================================================== */}
       <div
         className="fixed inset-0 pointer-events-none z-[10001] flex items-center justify-center"
@@ -153,9 +313,9 @@ export default function EyewearSplashIntro() {
             opacity: { duration: 0.3 },
             scale: { duration: 0.45 },
           }}
-          className="relative w-72 h-36 sm:w-84 sm:h-40 flex items-center justify-center filter drop-shadow-[0_10px_30px_rgba(184,155,106,0.35)]"
+          className="relative w-80 h-36 sm:w-96 sm:h-44 flex items-center justify-center filter drop-shadow-[0_12px_35px_rgba(184,155,106,0.35)]"
         >
-          {/* 360° Horizontal Y-Axis Turntable Spin (Stays perfectly upright!) */}
+          {/* 360° Horizontal Y-Axis Turntable Spin (Stays perfectly upright & level) */}
           <motion.div
             animate={{
               rotateY: [0, 360],
@@ -169,14 +329,7 @@ export default function EyewearSplashIntro() {
             }}
             className="w-full h-full relative flex items-center justify-center"
           >
-            <Image
-              src="/frames/round-gold.svg"
-              alt="Haute Eyewear"
-              width={340}
-              height={150}
-              priority
-              className="w-full h-auto object-contain select-none pointer-events-none"
-            />
+            <ModernAvantGardeSpecs />
           </motion.div>
         </motion.div>
       </div>
