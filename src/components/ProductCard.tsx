@@ -81,10 +81,35 @@ export default function ProductCard({ product }: ProductCardProps) {
   const enquiryLink = getProductEnquiryLink(product.name, product.brand, product.price);
   const isRevealed = useIsPriceRevealed(product.id);
 
+  const [lensCoating, setLensCoating] = useState<"standard" | "blueprotect" | "polarized">("standard");
+  const [tilt, setTilt] = useState({ x: 0, y: 0, glareX: 50, glareY: 50, active: false });
+
   const { isTryOnActive, userPhoto, calibration, setIsTryOnActive, setSetupModalOpen } = useTryOn();
   const isEyewear = product.category === "sunglasses" || product.category === "eyeglasses";
   const showTryOnFace = isTryOnActive && userPhoto && calibration && isEyewear;
   const yawOffset = activeAngle === "left" ? -0.38 : activeAngle === "right" ? 0.38 : 0;
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (showTryOnFace) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5.5;
+    const rotateY = ((x - centerX) / centerX) * 5.5;
+    setTilt({
+      x: rotateX,
+      y: rotateY,
+      glareX: (x / rect.width) * 100,
+      glareY: (y / rect.height) * 100,
+      active: true,
+    });
+  };
+
+  const handleCardMouseLeave = () => {
+    setTilt({ x: 0, y: 0, glareX: 50, glareY: 50, active: false });
+  };
 
   const handleTryOnButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -99,13 +124,20 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      className="group relative bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] overflow-hidden hover:border-[#B89B6A]/50 transition-all duration-500 flex flex-col justify-between hover:shadow-lg"
+      onMouseMove={handleCardMouseMove}
+      onMouseLeave={handleCardMouseLeave}
+      className="group relative bg-[#F7F3EC] border border-[#14110F]/10 rounded-[2px] overflow-hidden hover:border-[#B89B6A]/50 transition-all duration-500 flex flex-col justify-between hover:shadow-xl"
       data-cursor={showTryOnFace ? "TRY ON" : "VIEW"}
     >
-      {/* Top Image Container: Calibrated luxury aspect ratio for frame fit */}
-      <div className="relative aspect-[4/3.8] xl:aspect-[4/3.6] w-full bg-[#EDE5D8]/40 flex items-center justify-center overflow-hidden border-b border-[#14110F]/8">
+      {/* Top Image Container: Calibrated luxury aspect ratio for frame fit with 3D Holographic Tilt */}
+      <div
+        className="relative aspect-[4/3.8] xl:aspect-[4/3.6] w-full bg-[#EDE5D8]/40 flex items-center justify-center overflow-hidden border-b border-[#14110F]/8"
+        style={{
+          perspective: 1000,
+        }}
+      >
         {/* Floating Badges */}
-        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start">
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start pointer-events-none">
           {showTryOnFace ? (
             <span className="px-2.5 py-0.5 text-[9px] uppercase font-mono font-bold tracking-[0.16em] bg-[#14110F] text-[#B89B6A] border border-[#B89B6A]/50 flex items-center gap-1 shadow-sm">
               <Sparkles className="w-2.5 h-2.5 text-[#B89B6A]" />
@@ -143,7 +175,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </button>
         )}
 
-        {/* Primary Image Link / Canvas Try-On Face */}
+        {/* Primary Image Link with 3D Tilt Transform & Specular Lens AR Glare */}
         <Link
           href={`/product/${product.slug}`}
           className="relative w-full h-full block"
@@ -157,7 +189,15 @@ export default function ProductCard({ product }: ProductCardProps) {
               yawOffset={yawOffset}
             />
           ) : (
-            <div className="relative w-full h-full p-4 sm:p-5 flex items-center justify-center">
+            <div
+              className="relative w-full h-full p-4 sm:p-5 flex items-center justify-center transition-transform duration-150 ease-out"
+              style={{
+                transform: tilt.active
+                  ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)`
+                  : "rotateX(0deg) rotateY(0deg) scale(1)",
+                transformStyle: "preserve-3d",
+              }}
+            >
               <Image
                 src={product.images[0]}
                 alt={product.name}
@@ -179,9 +219,85 @@ export default function ProductCard({ product }: ProductCardProps) {
                   className="object-cover object-center absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                 />
               )}
+
+              {/* Specular AR Lens Flare Glare Highlight */}
+              <div
+                className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
+                style={{
+                  opacity: tilt.active ? 0.75 : 0,
+                  background: `radial-gradient(circle 140px at ${tilt.glareX}% ${tilt.glareY}%, rgba(255,255,255,0.45) 0%, rgba(184,155,106,0.2) 35%, transparent 75%)`,
+                }}
+              />
+
+              {/* Live Lens Coating Filter Layer */}
+              {lensCoating === "blueprotect" && (
+                <div className="pointer-events-none absolute inset-0 z-10 bg-cyan-500/15 mix-blend-color backdrop-saturate-125 transition-all duration-300" />
+              )}
+              {lensCoating === "polarized" && (
+                <div className="pointer-events-none absolute inset-0 z-10 bg-[#14110F]/20 mix-blend-multiply transition-all duration-300" />
+              )}
             </div>
           )}
         </Link>
+
+        {/* Interactive Lens Coating Switcher Pill (Hover) */}
+        {!showTryOnFace && isEyewear && (
+          <div className="absolute bottom-2.5 inset-x-2.5 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-between px-2 py-1 bg-[#14110F]/90 backdrop-blur-md rounded-[2px] border border-[#B89B6A]/30 shadow-md">
+            <span className="text-[7.5px] uppercase font-mono font-bold tracking-[0.16em] text-[#B89B6A]">
+              COATING
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLensCoating("standard");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  lensCoating === "standard"
+                    ? "bg-[#B89B6A] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="Clear Diamond Coat"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLensCoating("blueprotect");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  lensCoating === "blueprotect"
+                    ? "bg-[#38BDF8] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="BlueProtect Digital Shield"
+              >
+                BlueCut
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLensCoating("polarized");
+                }}
+                className={`px-1.5 py-0.5 text-[7.5px] uppercase font-mono font-bold rounded-[2px] transition-colors ${
+                  lensCoating === "polarized"
+                    ? "bg-[#D4BE96] text-[#14110F]"
+                    : "text-[#F7F3EC]/70 hover:text-white"
+                }`}
+                title="Polarized Sun Shield"
+              >
+                Polarized
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Interactive 3D Angle Toggle on the Product Card */}
         {showTryOnFace && (

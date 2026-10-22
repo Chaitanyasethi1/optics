@@ -60,6 +60,7 @@ export const metadata: Metadata = {
 import { TryOnProvider } from "@/context/TryOnContext";
 import { NavbarThemeProvider } from "@/context/NavbarThemeContext";
 import Setup3DTryOnModal from "@/components/tryon/Setup3DTryOnModal";
+import EyewearSplashIntro from "@/components/home/EyewearSplashIntro";
 
 export default function RootLayout({
   children,
@@ -74,6 +75,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#F7F3EC] text-[#14110F] font-sans">
         <NavbarThemeProvider>
           <TryOnProvider>
+            <EyewearSplashIntro />
             <CustomCursor />
             <Header />
             <main className="flex-1 pb-16 sm:pb-0">{children}</main>

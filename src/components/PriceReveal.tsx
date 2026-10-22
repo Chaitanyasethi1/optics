@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, EyeOff } from "lucide-react";
+import { playApertureClick, playPriceChime } from "@/lib/audioHaptics";
 
 const STORAGE_KEY = "optics_revealed_prices";
 const listeners = new Set<() => void>();
@@ -128,6 +129,14 @@ function useCountUp(target: number, duration = 600, active = true) {
   return current;
 }
 
+// Particle micro-burst on quote tap
+interface SparkleParticle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+}
+
 export interface PriceRevealProps {
   id?: string;
   productId?: string;
@@ -181,6 +190,7 @@ export default function PriceReveal({
   const [mounted, setMounted] = useState(false);
   const [status, setStatus] = useState<"idle" | "focusing" | "revealed">("idle");
   const [ripple, setRipple] = useState<{ x: number; y: number } | null>(null);
+  const [particles, setParticles] = useState<SparkleParticle[]>([]);
   const [showTooltip, setShowTooltip] = useState(false);
   const [magneticOffset, setMagneticOffset] = useState({ x: 0, y: 0 });
   const [showUnlockedBadge, setShowUnlockedBadge] = useState(false);
@@ -246,14 +256,31 @@ export default function PriceReveal({
 
     if (status !== "idle") return;
 
+    // Tactile audio-haptics
+    playApertureClick();
+
     // Capture ripple origin
     const rect = e.currentTarget.getBoundingClientRect();
-    setRipple({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+    setRipple({ x: clickX, y: clickY });
     setShowTooltip(false);
     setMagneticOffset({ x: 0, y: 0 });
+
+    // Generate gold sparkle particles burst
+    const newParticles: SparkleParticle[] = Array.from({ length: 8 }, (_, i) => {
+      const angle = (i / 8) * Math.PI * 2 + (Math.random() * 0.4 - 0.2);
+      const distance = 24 + Math.random() * 18;
+      return {
+        id: i,
+        x: Math.cos(angle) * distance,
+        y: Math.sin(angle) * distance,
+        size: 2.5 + Math.random() * 2,
+      };
+    });
+    setParticles(newParticles);
+    const particleTimer = setTimeout(() => setParticles([]), 700);
+    timersRef.current.push(particleTimer);
 
     // Check prefers-reduced-motion
     const prefersReducedMotion =
@@ -261,16 +288,18 @@ export default function PriceReveal({
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (prefersReducedMotion) {
+      playPriceChime();
       setStatus("revealed");
       if (effectiveId) revealPrice(effectiveId);
       return;
     }
 
-    // Step 1: Start focusing (Aperture Iris + "Focusing price...")
+    // Step 1: Start focusing (Aperture Iris + "Focusing quote...")
     setStatus("focusing");
 
     // Step 2 & 3: Reveal price with camera blur rack-focus (~1450ms)
     const revealTimer = setTimeout(() => {
+      playPriceChime();
       setStatus("revealed");
       setRipple(null);
       if (effectiveId) revealPrice(effectiveId);
@@ -312,7 +341,7 @@ export default function PriceReveal({
   const sizeStyles = {
     xs: {
       container: "min-h-[26px]",
-      btn: "h-[26px] min-w-[96px] px-2.5 text-[9px] tracking-[0.14em]",
+      btn: "h-[26px] min-w-[104px] px-2.5 text-[9px] tracking-[0.14em]",
       icon: "w-2.5 h-2.5",
       price: "text-xs font-semibold",
       oldPrice: "text-[10.5px]",
@@ -320,7 +349,7 @@ export default function PriceReveal({
     },
     sm: {
       container: "min-h-[32px]",
-      btn: "h-[32px] min-w-[115px] px-3 text-[10px] tracking-[0.16em]",
+      btn: "h-[32px] min-w-[124px] px-3 text-[10px] tracking-[0.16em]",
       icon: "w-3 h-3",
       price: "text-sm sm:text-base font-bold",
       oldPrice: "text-xs",
@@ -328,7 +357,7 @@ export default function PriceReveal({
     },
     md: {
       container: "min-h-[36px]",
-      btn: "h-[36px] min-w-[130px] px-3.5 text-[11px] tracking-[0.18em]",
+      btn: "h-[36px] min-w-[138px] px-3.5 text-[11px] tracking-[0.18em]",
       icon: "w-3.5 h-3.5",
       price: "text-base sm:text-lg font-bold",
       oldPrice: "text-xs",
@@ -336,7 +365,7 @@ export default function PriceReveal({
     },
     lg: {
       container: "min-h-[46px]",
-      btn: "h-[44px] min-w-[160px] px-5 text-xs font-bold tracking-[0.2em]",
+      btn: "h-[44px] min-w-[168px] px-5 text-xs font-bold tracking-[0.2em]",
       icon: "w-4 h-4",
       price: "text-2xl sm:text-3xl font-bold",
       oldPrice: "text-sm",
@@ -385,11 +414,33 @@ export default function PriceReveal({
                   className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 z-30 px-2 py-0.5 rounded-[2px] bg-[#14110F] text-[#F7F3EC] border border-[#B89B6A]/50 text-[9px] font-mono tracking-wider whitespace-nowrap shadow-md flex items-center gap-1"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#B89B6A] animate-ping" />
-                  <span>Click to see price</span>
+                  <span>Tap to see quote</span>
                   <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#14110F]" />
                 </motion.div>
               )}
             </AnimatePresence>
+
+            {/* Sparkle Particles Burst on Tap */}
+            {particles.map((p) => (
+              <motion.span
+                key={p.id}
+                initial={{ opacity: 1, scale: 0, x: 0, y: 0 }}
+                animate={{
+                  opacity: 0,
+                  scale: 1,
+                  x: p.x,
+                  y: p.y,
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="pointer-events-none absolute left-1/2 top-1/2 rounded-full bg-[#B89B6A] shadow-[0_0_6px_#B89B6A] z-30"
+                style={{
+                  width: p.size,
+                  height: p.size,
+                  marginLeft: -p.size / 2,
+                  marginTop: -p.size / 2,
+                }}
+              />
+            ))}
 
             {/* Premium Button */}
             <motion.button
@@ -412,10 +463,10 @@ export default function PriceReveal({
               }}
               aria-label={
                 status === "focusing"
-                  ? "Focusing price quote..."
+                  ? "Focusing quote..."
                   : productName
-                  ? `Get quote for ${productName}`
-                  : "Get price quote"
+                  ? `Tap for quote on ${productName}`
+                  : "Tap for quote"
               }
               aria-busy={status === "focusing"}
               className={`group relative overflow-hidden inline-flex items-center justify-center font-sans uppercase font-bold rounded-[2px] transition-all duration-300 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B89B6A] focus-visible:ring-offset-2 ${btnThemeClasses} ${sizeStyles.btn} ${buttonClassName}`}
@@ -461,7 +512,7 @@ export default function PriceReveal({
                 />
 
                 <span className="truncate">
-                  {status === "focusing" ? "Focusing price..." : "Get Quote"}
+                  {status === "focusing" ? "Focusing quote..." : "Tap for Quote"}
                 </span>
               </div>
             </motion.button>
